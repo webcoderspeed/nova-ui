@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "generate-docs": "node scripts/generate-docs-data.mjs",
     "type:check": "npx tsc --noEmit --skipLibCheck",
-    "build": "npm run type:check && next build",
-    "dev": "next dev",
+    "build": "npm run generate-docs && npm run type:check && next build",
+    "dev": "npm run generate-docs && next dev",
     "lint": "eslint .",
     "start": "next start"
   },

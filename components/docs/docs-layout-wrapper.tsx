@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import type { ReactNode } from "react"
-import { useState, useEffect, useMemo } from "react"
-import Link from "next/link"
-import { usePathname, useRouter } from "next/navigation"
-import { NovaButton } from "@/components/nova/nova-button"
-import { NovaScrollArea } from "@/components/nova/nova-scroll-area"
+import type { ReactNode } from "react";
+import { useState, useEffect, useMemo } from "react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { NovaButton } from "@/components/nova/nova-button";
+import { NovaScrollArea } from "@/components/nova/nova-scroll-area";
 import {
   NovaCommandDialog,
   NovaCommandEmpty,
@@ -14,10 +14,13 @@ import {
   NovaCommandItem,
   NovaCommandList,
   NovaCommandSeparator,
-} from "@/components/nova/nova-command"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { VersionToggle } from "@/components/version-toggle"
-import { useVersion, type Version } from "@/components/version-provider"
+} from "@/components/nova/nova-command";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { VersionToggle } from "@/components/version-toggle";
+import { useVersion, type Version } from "@/components/version-provider";
+import { TableOfContents } from "@/components/docs/table-of-contents";
+import { DocsPager } from "@/components/docs/docs-pager";
+import { componentVersions, novaExtrasVersions } from "@/lib/docs-config";
 import {
   Search,
   Menu,
@@ -35,65 +38,10 @@ import {
   Zap,
 } from "lucide-react"
 
-const componentVersions: Record<string, Version[]> = {
-  accordion: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  alert: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  "alert-dialog": ["1.0.0", "1.1.0", "2.0.0-beta"],
-  "aspect-ratio": ["1.0.0", "1.1.0", "2.0.0-beta"],
-  avatar: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  badge: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  breadcrumb: ["1.1.0", "2.0.0-beta"],
-  button: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  calendar: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  card: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  carousel: ["1.1.0", "2.0.0-beta"],
-  checkbox: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  collapsible: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  command: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  "context-menu": ["1.0.0", "1.1.0", "2.0.0-beta"],
-  dialog: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  drawer: ["1.1.0", "2.0.0-beta"],
-  "dropdown-menu": ["1.0.0", "1.1.0", "2.0.0-beta"],
-  form: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  "hover-card": ["1.0.0", "1.1.0", "2.0.0-beta"],
-  input: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  "input-otp": ["1.1.0", "2.0.0-beta"],
-  label: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  menubar: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  "navigation-menu": ["1.0.0", "1.1.0", "2.0.0-beta"],
-  pagination: ["1.1.0", "2.0.0-beta"],
-  popover: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  progress: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  "radio-group": ["1.0.0", "1.1.0", "2.0.0-beta"],
-  resizable: ["1.1.0", "2.0.0-beta"],
-  "scroll-area": ["1.0.0", "1.1.0", "2.0.0-beta"],
-  select: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  separator: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  sheet: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  skeleton: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  slider: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  switch: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  table: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  tabs: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  textarea: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  toggle: ["1.0.0", "1.1.0", "2.0.0-beta"],
-  "toggle-group": ["1.1.0", "2.0.0-beta"],
-  tooltip: ["1.0.0", "1.1.0", "2.0.0-beta"],
-}
-
-// Nova.UI Extras availability
-const novaExtrasVersions: Record<string, Version[]> = {
-  "animated-button": ["1.1.0", "2.0.0-beta"],
-  "floating-input": ["1.1.0", "2.0.0-beta"],
-  "glass-card": ["1.1.0", "2.0.0-beta"],
-  "motion-dialog": ["2.0.0-beta"],
-  "shimmer-badge": ["1.1.0", "2.0.0-beta"],
-}
-
 // Helper to create nav items based on version
 function getNavItems(version: Version) {
   const availableComponents = Object.entries(componentVersions)
-    .filter(([_, versions]) => versions.includes(version))
+    .filter(([_, versions]) => (versions as readonly string[]).includes(version))
     .map(([name]) => ({
       title: name
         .split("-")
@@ -101,10 +49,10 @@ function getNavItems(version: Version) {
         .join(" "),
       href: `/docs/components/${name}`,
     }))
-    .sort((a, b) => a.title.localeCompare(b.title))
+    .sort((a, b) => a.title.localeCompare(b.title));
 
   const availableNovaExtras = Object.entries(novaExtrasVersions)
-    .filter(([_, versions]) => versions.includes(version))
+    .filter(([_, versions]) => (versions as readonly string[]).includes(version))
     .map(([name]) => ({
       title: name
         .split("-")
@@ -112,7 +60,7 @@ function getNavItems(version: Version) {
         .join(" "),
       href: `/docs/nova-extras/${name}`,
     }))
-    .sort((a, b) => a.title.localeCompare(b.title))
+    .sort((a, b) => a.title.localeCompare(b.title));
 
   return [
     {
@@ -180,7 +128,7 @@ function getNavItems(version: Version) {
       icon: HelpCircle,
       href: "/docs/troubleshooting",
     },
-  ]
+  ];
 }
 
 function NavItem({
@@ -189,35 +137,36 @@ function NavItem({
   onNavigate,
   defaultExpanded = false,
 }: {
-  item: ReturnType<typeof getNavItems>[0]
-  pathname: string
-  onNavigate?: () => void
-  defaultExpanded?: boolean
+  item: ReturnType<typeof getNavItems>[0];
+  pathname: string;
+  onNavigate?: () => void;
+  defaultExpanded?: boolean;
 }) {
-  const isActive = pathname === item.href || item.children?.some((c) => pathname === c.href)
-  const [expanded, setExpanded] = useState(isActive || defaultExpanded)
-  const Icon = item.icon
+  const isActive =
+    pathname === item.href || item.children?.some((c) => pathname === c.href);
+  const [expanded, setExpanded] = useState(isActive || defaultExpanded);
+  const Icon = item.icon;
 
   useEffect(() => {
     if (isActive && !expanded) {
-      setExpanded(true)
+      setExpanded(true);
     }
-  }, [isActive, expanded])
+  }, [isActive, expanded]);
 
   return (
     <div>
       <button
         onClick={() => {
           if (item.children) {
-            setExpanded(!expanded)
+            setExpanded(!expanded);
           }
         }}
         className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-medium transition-all ${
           isActive && !item.children
             ? "bg-primary text-primary-foreground"
             : isActive
-              ? "text-primary"
-              : "text-muted-foreground hover:bg-accent hover:text-foreground"
+            ? "text-primary"
+            : "text-muted-foreground hover:bg-accent hover:text-foreground"
         }`}
       >
         <span className="flex items-center gap-3">
@@ -226,7 +175,9 @@ function NavItem({
         </span>
         {item.children && (
           <ChevronDown
-            className={`h-4 w-4 transition-transform duration-200 ${expanded ? "rotate-0" : "-rotate-90"}`}
+            className={`h-4 w-4 transition-transform duration-200 ${
+              expanded ? "rotate-0" : "-rotate-90"
+            }`}
           />
         )}
       </button>
@@ -249,18 +200,18 @@ function NavItem({
         </div>
       )}
     </div>
-  )
+  );
 }
 
 export function DocsLayoutWrapper({ children }: { children: ReactNode }) {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
-  const [searchOpen, setSearchOpen] = useState(false)
-  const pathname = usePathname()
-  const router = useRouter()
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
 
-  const { version } = useVersion()
+  const { version } = useVersion();
 
-  const navItems = useMemo(() => getNavItems(version), [version])
+  const navItems = useMemo(() => getNavItems(version), [version]);
 
   const searchItems = useMemo(() => {
     return navItems.flatMap((section) => {
@@ -271,39 +222,43 @@ export function DocsLayoutWrapper({ children }: { children: ReactNode }) {
             group: section.title,
             icon: section.icon,
           }))
-        : [{ title: section.title, href: section.href, group: "Resources", icon: section.icon }]
-      return items
-    })
-  }, [navItems])
+        : [
+            {
+              title: section.title,
+              href: section.href,
+              group: "Resources",
+              icon: section.icon,
+            },
+          ];
+      return items;
+    });
+  }, [navItems]);
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault()
-        setSearchOpen((open) => !open)
+        e.preventDefault();
+        setSearchOpen((open) => !open);
       }
-    }
+    };
 
-    document.addEventListener("keydown", down)
-    return () => document.removeEventListener("keydown", down)
-  }, [])
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, []);
 
   const runCommand = (command: () => void) => {
-    setSearchOpen(false)
-    command()
-  }
+    setSearchOpen(false);
+    command();
+  };
 
   // Group search items by section
-  const groupedItems = searchItems.reduce(
-    (acc, item) => {
-      if (!acc[item.group]) {
-        acc[item.group] = []
-      }
-      acc[item.group].push(item)
-      return acc
-    },
-    {} as Record<string, typeof searchItems>,
-  )
+  const groupedItems = searchItems.reduce((acc, item) => {
+    if (!acc[item.group]) {
+      acc[item.group] = [];
+    }
+    acc[item.group].push(item);
+    return acc;
+  }, {} as Record<string, typeof searchItems>);
 
   return (
     <div className="min-h-screen bg-background">
@@ -315,7 +270,7 @@ export function DocsLayoutWrapper({ children }: { children: ReactNode }) {
             <div key={group}>
               <NovaCommandGroup heading={group}>
                 {items.map((item) => {
-                  const Icon = item.icon
+                  const Icon = item.icon;
                   return (
                     <NovaCommandItem
                       key={item.href}
@@ -326,10 +281,12 @@ export function DocsLayoutWrapper({ children }: { children: ReactNode }) {
                       <Icon className="mr-2 h-4 w-4 text-muted-foreground" />
                       <span>{item.title}</span>
                     </NovaCommandItem>
-                  )
+                  );
                 })}
               </NovaCommandGroup>
-              {idx < Object.keys(groupedItems).length - 1 && <NovaCommandSeparator />}
+              {idx < Object.keys(groupedItems).length - 1 && (
+                <NovaCommandSeparator />
+              )}
             </div>
           ))}
         </NovaCommandList>
@@ -339,12 +296,22 @@ export function DocsLayoutWrapper({ children }: { children: ReactNode }) {
       <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="flex h-14 items-center justify-between px-4 lg:px-6">
           <div className="flex items-center gap-4">
-            <button className="lg:hidden" onClick={() => setSidebarOpen(!sidebarOpen)} aria-label="Toggle sidebar">
-              {sidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            <button
+              className="lg:hidden"
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+              aria-label="Toggle sidebar"
+            >
+              {sidebarOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
             </button>
             <Link href="/" className="flex items-center gap-2">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-primary/70">
-                <span className="text-sm font-bold text-primary-foreground">N</span>
+                <span className="text-sm font-bold text-primary-foreground">
+                  N
+                </span>
               </div>
               <span className="font-bold text-foreground">Nova.UI</span>
             </Link>
@@ -361,12 +328,21 @@ export function DocsLayoutWrapper({ children }: { children: ReactNode }) {
                 ⌘K
               </kbd>
             </button>
-            <NovaButton variant="ghost" size="icon" className="h-9 w-9 md:hidden" onClick={() => setSearchOpen(true)}>
+            <NovaButton
+              variant="ghost"
+              size="icon"
+              className="h-9 w-9 md:hidden"
+              onClick={() => setSearchOpen(true)}
+            >
               <Search className="h-4 w-4" />
             </NovaButton>
             <ThemeToggle />
             <NovaButton variant="ghost" size="icon" asChild className="h-9 w-9">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Github className="h-4 w-4" />
               </a>
             </NovaButton>
@@ -382,7 +358,11 @@ export function DocsLayoutWrapper({ children }: { children: ReactNode }) {
           }`}
         >
           <NovaScrollArea className="h-full">
-            <nav className="flex flex-col gap-1 p-4" role="navigation" aria-label="Documentation">
+            <nav
+              className="flex flex-col gap-1 p-4"
+              role="navigation"
+              aria-label="Documentation"
+            >
               {navItems.map((item, index) => (
                 <NavItem
                   key={item.href}
@@ -417,9 +397,14 @@ export function DocsLayoutWrapper({ children }: { children: ReactNode }) {
 
         {/* Main Content */}
         <main className="min-w-0 flex-1">
-          <div className="mx-auto max-w-4xl px-6 py-10 lg:px-10 lg:py-12">{children}</div>
+          <div className="mx-auto max-w-4xl px-6 py-10 lg:px-10 lg:py-12">
+            {children}
+            <DocsPager navItems={navItems} pathname={pathname} />
+          </div>
         </main>
+
+        <TableOfContents />
       </div>
     </div>
-  )
+  );
 }

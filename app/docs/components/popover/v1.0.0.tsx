@@ -111,7 +111,7 @@ export default function PopoverDocsV1() {
   </NovaPopoverContent>
 </NovaPopover>`,
           preview: (
-            <div className="p-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex justify-center">
+            <div className="p-8 bg-linear-to-r from-orange-500 to-red-500 rounded-lg flex justify-center">
                 <NovaPopover>
                 <NovaPopoverTrigger asChild>
                     <NovaButton variant="outline" className="bg-white/20 border-white/40 text-white hover:bg-white/30 hover:text-white">

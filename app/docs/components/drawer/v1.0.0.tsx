@@ -153,7 +153,7 @@ export default function DrawerDocsV1() {
   </NovaDrawerContent>
 </NovaDrawer>`,
           preview: (
-            <div className="p-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg">
+            <div className="p-8 bg-linear-to-r from-blue-500 to-cyan-500 rounded-lg">
                 <NovaDrawer>
                 <NovaDrawerTrigger asChild>
                     <NovaButton variant="outline" className="bg-white/20 border-white/40 text-white hover:bg-white/30 hover:text-white">

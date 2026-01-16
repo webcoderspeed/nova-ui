@@ -67,11 +67,11 @@ Source components: `/components/nova/`
 - [x] **Hover Card** (`nova-hover-card.tsx`)
 - [x] **Popover** (`nova-popover.tsx`)
 - [x] **Progress** (`nova-progress.tsx`)
-- [ ] **Sheet** (`nova-sheet.tsx`)
+- [x] **Sheet** (`nova-sheet.tsx`)
 - [x] **Sonner** (`nova-sonner.tsx`)
-- [ ] **Spinner** (`nova-spinner.tsx`)
+- [x] **Spinner** (`nova-spinner.tsx`)
 - [x] **Toast** (`nova-toast.tsx`, `nova-toaster.tsx`)
-- [ ] **Tooltip** (`nova-tooltip.tsx`)
+- [x] **Tooltip** (`nova-tooltip.tsx`)
 
 ### ⌨️ Other
 - [x] **Item** (`nova-item.tsx`)

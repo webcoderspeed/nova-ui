@@ -32,10 +32,7 @@ export default function HoverCardDocsV1() {
           </NovaHoverCardTrigger>
           <NovaHoverCardContent className="w-80">
             <div className="flex justify-between space-x-4">
-              <NovaAvatar>
-                <NovaAvatarImage src="https://github.com/vercel.png" />
-                <NovaAvatarFallback>VC</NovaAvatarFallback>
-              </NovaAvatar>
+              <NovaAvatar src="https://github.com/vercel.png" fallback="VC" />
               <div className="space-y-1">
                 <h4 className="text-sm font-semibold">@nextjs</h4>
                 <p className="text-sm">
@@ -83,7 +80,7 @@ export default function HoverCardDocsV1() {
   </NovaHoverCardContent>
 </NovaHoverCard>`,
           preview: (
-            <div className="p-8 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg flex justify-center">
+            <div className="p-8 bg-linear-to-r from-indigo-500 to-purple-500 rounded-lg flex justify-center">
                 <NovaHoverCard>
                 <NovaHoverCardTrigger asChild>
                     <NovaButton variant="link" className="text-white hover:text-white/80">Hover me</NovaButton>

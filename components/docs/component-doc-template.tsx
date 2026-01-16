@@ -175,7 +175,7 @@ export function ComponentDocTemplate({
 
         {whenToUse && whenToUse.length > 0 && (
           <div className="mt-8 space-y-3">
-            <h3 className="font-semibold text-foreground flex items-center gap-2">
+            <h3 id="when-to-use" className="font-semibold text-foreground flex items-center gap-2 scroll-m-20">
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary text-xs">
                 ?
               </span>
@@ -202,7 +202,7 @@ export function ComponentDocTemplate({
       <section className="space-y-4">
         <NovaTabs defaultValue="preview" className="w-full">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-2xl font-semibold tracking-tight">Preview</h2>
+            <h2 id="preview" className="text-2xl font-semibold tracking-tight scroll-m-20">Preview</h2>
             <NovaTabsList className="grid w-[200px] grid-cols-2">
               <NovaTabsTrigger value="preview">Preview</NovaTabsTrigger>
               <NovaTabsTrigger value="code">Code</NovaTabsTrigger>
@@ -224,7 +224,7 @@ export function ComponentDocTemplate({
 
       {/* Installation */}
       <section className="space-y-6">
-        <h2 className="text-2xl font-semibold tracking-tight">Installation</h2>
+        <h2 id="installation" className="text-2xl font-semibold tracking-tight scroll-m-20">Installation</h2>
         <NovaTabs defaultValue="cli" className="w-full">
           <NovaTabsList className="w-auto justify-start bg-transparent p-0 border-b w-full rounded-none h-auto">
             <NovaTabsTrigger
@@ -294,7 +294,7 @@ export function ComponentDocTemplate({
 
       {/* API Reference */}
       <section className="space-y-6">
-        <h2 className="text-2xl font-semibold tracking-tight">API Reference</h2>
+        <h2 id="api-reference" className="text-2xl font-semibold tracking-tight scroll-m-20">API Reference</h2>
         <div className="rounded-xl border border-border overflow-hidden bg-card">
           <table className="w-full text-sm">
             <thead className="bg-muted/50 border-b border-border">
