@@ -173,15 +173,15 @@ export default function TroubleshootingPage() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-muted-foreground">React</span>
-                <NovaBadge variant="outline">18.x / 19.x</NovaBadge> 
+                <NovaBadge variant="outline">18.x / 19.x</NovaBadge>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-muted-foreground">Next.js</span>
-                <NovaBadge variant="outline">14.x / 15.x</NovaBadge> 
+                <NovaBadge variant="outline">14.x / 15.x</NovaBadge>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-muted-foreground">Tailwind</span>
-                <NovaBadge variant="outline">3.x / 4.x</NovaBadge> 
+                <NovaBadge variant="outline">3.x / 4.x</NovaBadge>
               </div>
             </div>
           </NovaCardContent>
