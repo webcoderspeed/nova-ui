@@ -14,8 +14,8 @@ const novaSeparatorVariants = cva(
         glass: "bg-white/20 dark:bg-white/10 backdrop-blur-sm",
         gradient: "bg-gradient-to-r from-transparent via-primary to-transparent",
         glow: "bg-primary/50 shadow-[0_0_10px_rgba(var(--primary),0.5)]",
-        dashed: "bg-transparent border-dashed !h-0 !w-0",
-        dotted: "bg-transparent border-dotted !h-0 !w-0",
+        dashed: "bg-transparent border-dashed",
+        dotted: "bg-transparent border-dotted",
       },
       size: {
         default: "",
@@ -35,16 +35,15 @@ export interface NovaSeparatorProps
     VariantProps<typeof novaSeparatorVariants> {}
 
 function NovaSeparator({ className, variant, size, orientation = "horizontal", ...props }: NovaSeparatorProps) {
-  // Logic to handle size and border styles for dashed/dotted variants
   const isBorderVariant = variant === 'dashed' || variant === 'dotted';
   
   let sizeClasses = "";
   
   if (isBorderVariant) {
     if (orientation === 'horizontal') {
-        sizeClasses = "border-b-2 w-full"; 
+        sizeClasses = "border-b h-px w-full border-border"; 
     } else {
-        sizeClasses = "border-l-2 h-full";
+        sizeClasses = "border-l h-full w-px border-border";
     }
   } else {
     // Standard size overrides

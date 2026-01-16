@@ -66,16 +66,16 @@ These components exist in ui/ but are missing from nova/ directory:
 | Field | `field.tsx` | 🟡 Medium | ❌ Missing |
 | Hover Card | `hover-card.tsx` | 🟡 Medium | ❌ Missing |
 | Input Group | `input-group.tsx` | 🟡 Medium | ❌ Missing |
-| Input OTP | `input-otp.tsx` | 🟡 Medium | ❌ Missing |
+| Input OTP | `nova-input-otp.tsx` | ✅ Complete |
 | Item | `item.tsx` | 🟡 Medium | ❌ Missing |
 | KBD | `kbd.tsx` | 🟡 Medium | ❌ Missing |
-| Label | `label.tsx` | 🟡 Medium | ❌ Missing |
+| Label | `nova-label.tsx` | ✅ Complete |
 | Menubar | `menubar.tsx` | 🟡 Medium | ❌ Missing |
 | Popover | `popover.tsx` | 🟡 Medium | ❌ Missing |
 | Resizable | `resizable.tsx` | 🟡 Medium | ❌ Missing |
 | Sheet | `sheet.tsx` | 🟡 Medium | ❌ Missing |
 | Sidebar | `sidebar.tsx` | 🟡 Medium | ❌ Missing |
-| Sonner | `sonner.tsx` | 🟡 Medium | ❌ Missing |
+| Sonner | `nova-sonner.tsx` | ✅ Complete |
 | Spinner | `spinner.tsx` | 🟡 Medium | ❌ Missing |
 | Toaster | `toaster.tsx` | 🟡 Medium | ❌ Missing |
 | Toggle Group | `toggle-group.tsx` | 🟡 Medium | ❌ Missing |
