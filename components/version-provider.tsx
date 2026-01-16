@@ -13,8 +13,6 @@ interface VersionContextType {
 
 const versions: { value: Version; label: string; description: string }[] = [
   { value: "1.0.0", label: "v1.0.0", description: "Stable release" },
-  { value: "1.1.0", label: "v1.1.0", description: "Latest stable" },
-  { value: "2.0.0-beta", label: "v2.0.0-beta", description: "Beta release" },
 ]
 
 const VersionContext = React.createContext<VersionContextType>({
