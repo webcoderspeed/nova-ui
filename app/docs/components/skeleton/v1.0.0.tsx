@@ -6,24 +6,21 @@ import { ComponentDocTemplate } from "@/components/docs/component-doc-template"
 export default function SkeletonDocsV1() {
   return (
     <ComponentDocTemplate
-      badgeText="v1.0.0"
+      badgeText="Feedback"
       title="Skeleton"
       description="Use to show a placeholder while content is loading."
       whenToUse={[
-        "To improve perceived performance by showing a layout structure immediately.",
-        "When data is being fetched asynchronously.",
-        "To prevent layout shifts as content loads."
+        "To improve perceived performance by providing a visual cue that content is loading.",
+        "To reduce layout shift as content loads.",
+        "When the exact content size is known or can be estimated."
       ]}
       hints={[
-        {
-          type: "info",
-          title: "Nova Enhancement",
-          content: "NovaSkeleton introduces `animation` (pulse, shimmer, wave) and `variant` (card, circle) props for more engaging loading states."
-        }
+        { type: "info", content: "Supports `pulse`, `shimmer`, and `wave` animation variants." },
+        { type: "info", content: "Supports `default`, `card`, and `circle` shape variants." }
       ]}
       preview={
         <div className="flex items-center space-x-4">
-          <NovaSkeleton className="h-12 w-12" variant="circle" />
+          <NovaSkeleton variant="circle" className="h-12 w-12" />
           <div className="space-y-2">
             <NovaSkeleton className="h-4 w-[250px]" />
             <NovaSkeleton className="h-4 w-[200px]" />
@@ -32,53 +29,57 @@ export default function SkeletonDocsV1() {
       }
       installCommand="npx nova-ui@latest add skeleton"
       importCode={`import { NovaSkeleton } from "@/components/nova/nova-skeleton"`}
-      usageCode={`import { NovaSkeleton } from "@/components/nova/nova-skeleton"
-
-export function SkeletonDemo() {
-  return (
-    <div className="flex items-center space-x-4">
-      <NovaSkeleton className="h-12 w-12 rounded-full" />
-      <div className="space-y-2">
-        <NovaSkeleton className="h-4 w-[250px]" />
-        <NovaSkeleton className="h-4 w-[200px]" />
-      </div>
-    </div>
-  )
-}`}
+      usageCode={`<NovaSkeleton className="h-4 w-[250px]" />`}
       props={[
         {
           name: "animation",
           type: '"pulse" | "shimmer" | "wave"',
           defaultValue: '"pulse"',
-          description: "Animation style for the skeleton.",
+          description: "Animation style of the skeleton.",
         },
         {
           name: "variant",
           type: '"default" | "card" | "circle"',
           defaultValue: '"default"',
-          description: "Shape variant.",
+          description: "Shape variant of the skeleton.",
         },
       ]}
       examples={[
         {
-          title: "Shimmer Animation",
-          description: "A smooth shimmer effect moving across the element.",
-          code: `<div className="space-y-2">
-  <NovaSkeleton className="h-4 w-[250px]" animation="shimmer" />
-  <NovaSkeleton className="h-4 w-[200px]" animation="shimmer" />
+          title: "Card Skeleton",
+          description: "A skeleton placeholder for a card component.",
+          code: `<div className="flex flex-col space-y-3">
+  <NovaSkeleton variant="card" className="h-[125px] w-[250px] rounded-xl" />
+  <div className="space-y-2">
+    <NovaSkeleton className="h-4 w-[250px]" />
+    <NovaSkeleton className="h-4 w-[200px]" />
+  </div>
 </div>`,
           preview: (
-            <div className="space-y-2">
-              <NovaSkeleton className="h-4 w-[250px]" animation="shimmer" />
-              <NovaSkeleton className="h-4 w-[200px]" animation="shimmer" />
+            <div className="flex flex-col space-y-3">
+              <NovaSkeleton variant="card" className="h-[125px] w-[250px] rounded-xl" />
+              <div className="space-y-2">
+                <NovaSkeleton className="h-4 w-[250px]" />
+                <NovaSkeleton className="h-4 w-[200px]" />
+              </div>
             </div>
           )
         },
         {
-          title: "Card Variant",
-          description: "Pre-styled skeleton for cards.",
-          code: `<NovaSkeleton className="h-[125px] w-[250px] rounded-xl" variant="card" />`,
-          preview: <NovaSkeleton className="h-[125px] w-[250px]" variant="card" />
+          title: "Shimmer Animation",
+          description: "A skeleton with a shimmer animation.",
+          code: `<NovaSkeleton animation="shimmer" className="h-4 w-[250px]" />`,
+          preview: (
+            <NovaSkeleton animation="shimmer" className="h-4 w-[250px]" />
+          )
+        },
+        {
+          title: "Wave Animation",
+          description: "A skeleton with a wave animation.",
+          code: `<NovaSkeleton animation="wave" className="h-4 w-[250px]" />`,
+          preview: (
+            <NovaSkeleton animation="wave" className="h-4 w-[250px]" />
+          )
         }
       ]}
     />

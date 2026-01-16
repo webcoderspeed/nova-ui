@@ -56,20 +56,21 @@ Source components: `/components/nova/`
 - [x] **Context Menu** (`nova-context-menu.tsx`)
 - [x] **Dropdown Menu** (`nova-dropdown-menu.tsx`)
 - [x] **Menubar** (`nova-menubar.tsx`)
-- [ ] **Navigation Menu** (`nova-navigation-menu.tsx`)
-- [ ] **Pagination** (`nova-pagination.tsx`)
+- [x] **Navigation Menu** (`nova-navigation-menu.tsx`)
+- [x] **Pagination** (`nova-pagination.tsx`)
 
 ### 🔔 Feedback & Overlays
-- [ ] **Alert Dialog** (`nova-alert-dialog.tsx`)
-- [ ] **Dialog** (`nova-dialog.tsx`)
-- [ ] **Drawer** (`nova-drawer.tsx`)
+- [x] **Alert** (`nova-alert.tsx`)### 🎭 Overlays
+- [x] **Alert Dialog** (`nova-alert-dialog.tsx`)
+- [x] **Dialog** (`nova-dialog.tsx`)
+- [x] **Drawer** (`nova-drawer.tsx`)
 - [x] **Hover Card** (`nova-hover-card.tsx`)
-- [ ] **Popover** (`nova-popover.tsx`)
-- [ ] **Progress** (`nova-progress.tsx`)
+- [x] **Popover** (`nova-popover.tsx`)
+- [x] **Progress** (`nova-progress.tsx`)
 - [ ] **Sheet** (`nova-sheet.tsx`)
-- [ ] **Sonner** (`nova-sonner.tsx`)
+- [x] **Sonner** (`nova-sonner.tsx`)
 - [ ] **Spinner** (`nova-spinner.tsx`)
-- [ ] **Toast** (`nova-toast.tsx`, `nova-toaster.tsx`)
+- [x] **Toast** (`nova-toast.tsx`, `nova-toaster.tsx`)
 - [ ] **Tooltip** (`nova-tooltip.tsx`)
 
 ### ⌨️ Other
