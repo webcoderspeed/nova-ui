@@ -54,4 +54,28 @@ const NovaToast = React.forwardRef<
 })
 NovaToast.displayName = "NovaToast"
 
-export { NovaToast }
+function NovaToaster() {
+  const { toasts } = useToast()
+
+  return (
+    <ToastProvider>
+      {toasts.map(function ({ id, title, description, action, ...props }) {
+        return (
+          <NovaToast key={id} {...props} variant={props.variant as NovaToastProps["variant"]}>
+            <div className="grid gap-1">
+              {title && <ToastTitle>{title}</ToastTitle>}
+              {description && (
+                <ToastDescription>{description}</ToastDescription>
+              )}
+            </div>
+            {action}
+            <ToastClose />
+          </NovaToast>
+        )
+      })}
+      <ToastViewport />
+    </ToastProvider>
+  )
+}
+
+export { NovaToast, NovaToaster }

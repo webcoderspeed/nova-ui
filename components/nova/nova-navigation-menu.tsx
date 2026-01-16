@@ -79,6 +79,7 @@ function NovaNavigationMenu({
   return (
     <NavigationMenu
       viewport={false}
+      data-viewport={viewport}
       className={className}
       {...props}
     >

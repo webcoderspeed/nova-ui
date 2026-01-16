@@ -14,6 +14,7 @@ import { ComponentDocTemplate } from "@/components/docs/component-doc-template"
 import { cn } from "@/lib/utils"
 import * as React from "react"
 import Link from "next/link"
+import { Box, GraduationCap, Layout, Settings, FileText } from "lucide-react"
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -85,6 +86,7 @@ export default function NavigationMenuDocsV1() {
       badgeText="Navigation"
       title="Navigation Menu"
       description="A collection of links for navigating websites."
+      previewClassName="overflow-visible min-h-[500px] items-start pt-20"
       whenToUse={[
         "To provide a primary navigation structure for your application.",
         "When you need a responsive and accessible menu system.",
@@ -95,9 +97,9 @@ export default function NavigationMenuDocsV1() {
         { type: "info", content: "Triggers can accept `NovaButton` variants like `animation` and `rounded`." }
       ]}
       preview={
-        <NovaNavigationMenu>
+        <NovaNavigationMenu defaultValue="getting-started">
           <NovaNavigationMenuList>
-            <NovaNavigationMenuItem>
+            <NovaNavigationMenuItem value="getting-started">
               <NovaNavigationMenuTrigger>Getting started</NovaNavigationMenuTrigger>
               <NovaNavigationMenuContent>
                 <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
@@ -107,24 +109,24 @@ export default function NavigationMenuDocsV1() {
                         className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                         href="/"
                       >
+                        <Box className="h-6 w-6" />
                         <div className="mb-2 mt-4 text-lg font-medium">
-                          shadcn/ui
+                          Nova UI
                         </div>
                         <p className="text-sm leading-tight text-muted-foreground">
-                          Beautifully designed components built with Radix UI and
-                          Tailwind CSS.
+                          A comprehensive UI library for building modern web applications with speed and flexibility.
                         </p>
                       </a>
                     </NovaNavigationMenuLink>
                   </li>
                   <ListItem href="/docs" title="Introduction">
-                    Re-usable components built using Radix UI and Tailwind CSS.
+                    Explore the core concepts and design principles of Nova UI.
                   </ListItem>
                   <ListItem href="/docs/installation" title="Installation">
-                    How to install dependencies and structure your app.
+                    Step-by-step guide to adding Nova UI to your project.
                   </ListItem>
-                  <ListItem href="/docs/primitives/typography" title="Typography">
-                    Styles for headings, paragraphs, lists...etc
+                  <ListItem href="/docs/theming" title="Theming">
+                    Customize colors, typography, and styles to match your brand.
                   </ListItem>
                 </ul>
               </NovaNavigationMenuContent>
@@ -146,11 +148,11 @@ export default function NavigationMenuDocsV1() {
               </NovaNavigationMenuContent>
             </NovaNavigationMenuItem>
             <NovaNavigationMenuItem>
-              <Link href="/docs" legacyBehavior passHref>
-                <NovaNavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+              <NovaNavigationMenuLink asChild className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                <Link href="/docs">
                   Documentation
-                </NovaNavigationMenuLink>
-              </Link>
+                </Link>
+              </NovaNavigationMenuLink>
             </NovaNavigationMenuItem>
           </NovaNavigationMenuList>
         </NovaNavigationMenu>

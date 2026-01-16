@@ -19,17 +19,17 @@ export default function SkeletonDocsV1() {
         { type: "info", content: "Supports `default`, `card`, and `circle` shape variants." }
       ]}
       preview={
-        <div className="flex items-center space-x-4">
-          <NovaSkeleton variant="circle" className="h-12 w-12" />
+        <div className="flex items-center space-x-4 ">
+          <NovaSkeleton variant="circle" className="h-12 w-12 bg-accent-foreground" />
           <div className="space-y-2">
-            <NovaSkeleton className="h-4 w-[250px]" />
-            <NovaSkeleton className="h-4 w-[200px]" />
+            <NovaSkeleton className="h-4 w-[250px] bg-accent-foreground" />
+            <NovaSkeleton className="h-4 w-[200px] bg-accent-foreground" />
           </div>
         </div>
       }
       installCommand="npx nova-ui@latest add skeleton"
       importCode={`import { NovaSkeleton } from "@/components/nova/nova-skeleton"`}
-      usageCode={`<NovaSkeleton className="h-4 w-[250px]" />`}
+      usageCode={`<NovaSkeleton className="h-4 w-[250px] bg-accent-foreground" />`}
       props={[
         {
           name: "animation",
@@ -51,16 +51,16 @@ export default function SkeletonDocsV1() {
           code: `<div className="flex flex-col space-y-3">
   <NovaSkeleton variant="card" className="h-[125px] w-[250px] rounded-xl" />
   <div className="space-y-2">
-    <NovaSkeleton className="h-4 w-[250px]" />
-    <NovaSkeleton className="h-4 w-[200px]" />
+    <NovaSkeleton className="h-4 w-[250px] bg-accent-foreground" />
+    <NovaSkeleton className="h-4 w-[200px] bg-accent-foreground" />
   </div>
 </div>`,
           preview: (
             <div className="flex flex-col space-y-3">
               <NovaSkeleton variant="card" className="h-[125px] w-[250px] rounded-xl" />
               <div className="space-y-2">
-                <NovaSkeleton className="h-4 w-[250px]" />
-                <NovaSkeleton className="h-4 w-[200px]" />
+                <NovaSkeleton className="h-4 w-[250px] bg-accent-foreground" />
+                <NovaSkeleton className="h-4 w-[200px] bg-accent-foreground" />
               </div>
             </div>
           )
@@ -68,17 +68,17 @@ export default function SkeletonDocsV1() {
         {
           title: "Shimmer Animation",
           description: "A skeleton with a shimmer animation.",
-          code: `<NovaSkeleton animation="shimmer" className="h-4 w-[250px]" />`,
+          code: `<NovaSkeleton animation="shimmer" className="h-4 w-[250px] bg-accent-foreground" />`,
           preview: (
-            <NovaSkeleton animation="shimmer" className="h-4 w-[250px]" />
+            <NovaSkeleton animation="shimmer" className="h-4 w-[250px] bg-accent-foreground" />
           )
         },
         {
           title: "Wave Animation",
           description: "A skeleton with a wave animation.",
-          code: `<NovaSkeleton animation="wave" className="h-4 w-[250px]" />`,
+          code: `<NovaSkeleton animation="wave" className="h-4 w-[250px] bg-accent-foreground" />`,
           preview: (
-            <NovaSkeleton animation="wave" className="h-4 w-[250px]" />
+            <NovaSkeleton animation="wave" className="h-4 w-[250px] bg-accent-foreground" />
           )
         }
       ]}

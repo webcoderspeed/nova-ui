@@ -55,6 +55,7 @@ interface ComponentDocProps {
   relatedComponents?: { name: string; href: string }[];
   sourceLink?: string;
   badgeText?: string;
+  previewClassName?: string;
 }
 
 function HintBlock({ hint }: { hint: HintItem }) {
@@ -122,6 +123,7 @@ export function ComponentDocTemplate({
   badgeText,
   whenToUse,
   hints,
+  previewClassName,
 }: ComponentDocProps) {
   return (
     <div className="space-y-12 pb-20 max-w-5xl mx-auto">
@@ -212,7 +214,7 @@ export function ComponentDocTemplate({
             value="preview"
             className="mt-0 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
-            <PreviewContainer className="min-h-[350px]">
+            <PreviewContainer className={cn("min-h-[350px]", previewClassName)}>
               {preview}
             </PreviewContainer>
           </NovaTabsContent>

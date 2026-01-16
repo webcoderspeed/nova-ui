@@ -33,7 +33,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 const novaSidebarVariants = cva("transition-all duration-300", {
   variants: {
     effect: {
-      default: "",
+      default: "bg-sidebar",
       glass: "bg-sidebar/80 backdrop-blur-md border-sidebar-border/50",
       solid: "bg-sidebar border-sidebar-border",
     },
