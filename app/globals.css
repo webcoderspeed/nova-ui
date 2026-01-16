@@ -1,0 +1,300 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Theme classes now target html element for proper specificity */
+/* Acefone Light Theme */
+html.acefone-light {
+  --background: 223 88% 97%;
+  --foreground: 224 89% 14%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 232 66% 46%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 223 27% 34%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --muted: 225 14% 57%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --ternary: 224 89% 14%;
+  --ternary-foreground: 225 14% 57%;
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 231 78% 89%;
+  --input: 231 78% 89%;
+  --ring: 232 66% 46%;
+  --chart-1: 12 76% 61%;
+  --chart-2: 173 58% 39%;
+  --chart-3: 197 37% 24%;
+  --chart-4: 43 74% 66%;
+  --chart-5: 27 87% 67%;
+  --radius: 0.5rem;
+  --sidebar: 0 0% 98%;
+  --sidebar-foreground: 240 5.3% 26.1%;
+  --sidebar-primary: 240 5.9% 10%;
+  --sidebar-primary-foreground: 0 0% 98%;
+  --sidebar-accent: 240 4.8% 95.9%;
+  --sidebar-accent-foreground: 240 5.9% 10%;
+  --sidebar-border: 220 13% 91%;
+  --sidebar-ring: 217.2 91.2% 59.8%;
+  --call-answered: 142 100% 34%;
+  --call-not-answered: 0 79% 47%;
+}
+
+/* Acefone Dark Theme */
+html.acefone-dark {
+  --background: 224 89% 6%;
+  --foreground: 210 40% 98%;
+  --card: 224 80% 8%;
+  --card-foreground: 210 40% 98%;
+  --popover: 224 80% 8%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 232 66% 56%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 223 27% 24%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --ternary: 225 14% 57%;
+  --ternary-foreground: 225 14% 57%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 232 66% 56%;
+  --chart-1: 220 70% 50%;
+  --chart-2: 160 60% 45%;
+  --chart-3: 30 80% 55%;
+  --chart-4: 280 65% 60%;
+  --chart-5: 340 75% 55%;
+  --radius: 0.5rem;
+  --sidebar: 224 80% 8%;
+  --sidebar-foreground: 240 4.8% 95.9%;
+  --sidebar-primary: 232 66% 56%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 240 3.7% 15.9%;
+  --sidebar-accent-foreground: 240 4.8% 95.9%;
+  --sidebar-border: 240 3.7% 15.9%;
+  --sidebar-ring: 232 66% 56%;
+  --call-answered: 142 100% 34%;
+  --call-not-answered: 0 79% 47%;
+}
+
+/* Smartflo Light Theme */
+html.smartflo-light {
+  --background: 30 80% 97%;
+  --foreground: 20 80% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 80% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 80% 10%;
+  --primary: 21 91% 55%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 20 30% 30%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 30 20% 85%;
+  --muted-foreground: 20 10% 40%;
+  --ternary: 20 80% 15%;
+  --ternary-foreground: 30 20% 60%;
+  --accent: 30 40% 94%;
+  --accent-foreground: 20 80% 15%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 30 50% 88%;
+  --input: 30 50% 88%;
+  --ring: 21 91% 55%;
+  --chart-1: 21 91% 55%;
+  --chart-2: 173 58% 39%;
+  --chart-3: 197 37% 24%;
+  --chart-4: 43 74% 66%;
+  --chart-5: 27 87% 67%;
+  --radius: 0.5rem;
+  --sidebar: 30 50% 97%;
+  --sidebar-foreground: 20 80% 15%;
+  --sidebar-primary: 21 91% 55%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 30 40% 94%;
+  --sidebar-accent-foreground: 20 80% 15%;
+  --sidebar-border: 30 40% 90%;
+  --sidebar-ring: 21 91% 55%;
+  --call-answered: 142 100% 34%;
+  --call-not-answered: 0 79% 47%;
+}
+
+/* Smartflo Dark Theme */
+html.smartflo-dark {
+  --background: 20 50% 6%;
+  --foreground: 30 40% 95%;
+  --card: 20 45% 9%;
+  --card-foreground: 30 40% 95%;
+  --popover: 20 45% 9%;
+  --popover-foreground: 30 40% 95%;
+  --primary: 21 91% 55%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 20 30% 20%;
+  --secondary-foreground: 30 40% 95%;
+  --muted: 20 25% 15%;
+  --muted-foreground: 30 20% 60%;
+  --ternary: 30 20% 60%;
+  --ternary-foreground: 30 20% 60%;
+  --accent: 20 30% 15%;
+  --accent-foreground: 30 40% 95%;
+  --destructive: 0 62.8% 40%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 20 25% 18%;
+  --input: 20 25% 18%;
+  --ring: 21 91% 55%;
+  --chart-1: 21 91% 55%;
+  --chart-2: 160 60% 45%;
+  --chart-3: 30 80% 55%;
+  --chart-4: 280 65% 60%;
+  --chart-5: 340 75% 55%;
+  --radius: 0.5rem;
+  --sidebar: 20 45% 9%;
+  --sidebar-foreground: 30 40% 95%;
+  --sidebar-primary: 21 91% 55%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 20 30% 15%;
+  --sidebar-accent-foreground: 30 40% 95%;
+  --sidebar-border: 20 25% 18%;
+  --sidebar-ring: 21 91% 55%;
+  --call-answered: 142 100% 34%;
+  --call-not-answered: 0 79% 47%;
+}
+
+/* Default fallback - uses Acefone Dark as default */
+:root {
+  --background: 224 89% 6%;
+  --foreground: 210 40% 98%;
+  --card: 224 80% 8%;
+  --card-foreground: 210 40% 98%;
+  --popover: 224 80% 8%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 232 66% 56%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 223 27% 24%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --ternary: 225 14% 57%;
+  --ternary-foreground: 225 14% 57%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 232 66% 56%;
+  --chart-1: 220 70% 50%;
+  --chart-2: 160 60% 45%;
+  --chart-3: 30 80% 55%;
+  --chart-4: 280 65% 60%;
+  --chart-5: 340 75% 55%;
+  --radius: 0.5rem;
+  --sidebar: 224 80% 8%;
+  --sidebar-foreground: 240 4.8% 95.9%;
+  --sidebar-primary: 232 66% 56%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 240 3.7% 15.9%;
+  --sidebar-accent-foreground: 240 4.8% 95.9%;
+  --sidebar-border: 240 3.7% 15.9%;
+  --sidebar-ring: 232 66% 56%;
+  --call-answered: 142 100% 34%;
+  --call-not-answered: 0 79% 47%;
+}
+
+@theme inline {
+  --font-sans: "Geist", "Geist Fallback";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-ternary: hsl(var(--ternary));
+  --color-ternary-foreground: hsl(var(--ternary-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+  --color-call-answered: hsl(var(--call-answered));
+  --color-call-not-answered: hsl(var(--call-not-answered));
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: hsl(var(--sidebar));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Custom scrollbar styling that matches theme primary color */
+  /* Webkit browsers (Chrome, Safari, Edge) */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.4);
+    border-radius: 5px;
+    border: 2px solid hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.6);
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background: hsl(var(--primary) / 0.8);
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: hsl(var(--background));
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--primary) / 0.4) hsl(var(--background));
+  }
+}
