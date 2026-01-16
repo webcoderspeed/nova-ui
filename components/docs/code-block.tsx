@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useState } from "react"
 import { Check, Copy } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { NovaButton } from "../nova"
 
 interface CodeBlockProps {
   code: string
@@ -35,7 +35,7 @@ export function CodeBlock({ code, language = "tsx", filename, showLineNumbers = 
         </div>
       )}
       <div className="relative">
-        <Button
+        <NovaButton
           variant="ghost"
           size="icon"
           className="absolute right-2 top-2 h-8 w-8 opacity-0 transition-opacity group-hover:opacity-100"
@@ -43,7 +43,7 @@ export function CodeBlock({ code, language = "tsx", filename, showLineNumbers = 
         >
           {copied ? <Check className="h-4 w-4 text-primary" /> : <Copy className="h-4 w-4" />}
           <span className="sr-only">Copy code</span>
-        </Button>
+        </NovaButton>
         <pre className="overflow-x-auto p-4">
           <code className="font-mono text-sm">
             {showLineNumbers ? (

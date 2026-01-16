@@ -70,15 +70,17 @@ function NovaAlert({
   }
 
   return (
-    <Alert className={cn(novaAlertVariants({ status, animation }), "relative", className)} {...props}>
-      {showIcon && (icon || StatusIcon) && (
-        <div className="shrink-0">{icon || (StatusIcon && <StatusIcon className="h-4 w-4" />)}</div>
-      )}
-      <div className="flex-1">
-        {title && <AlertTitle>{title}</AlertTitle>}
-        {description && <AlertDescription>{description}</AlertDescription>}
-        {children}
-        {action && <div className="mt-3">{action}</div>}
+    <Alert className={cn(novaAlertVariants({ status, animation }), "relative block", className)} {...props}>
+      <div className="flex gap-4">
+        {showIcon && (icon || StatusIcon) && (
+          <div className="shrink-0">{icon || (StatusIcon && <StatusIcon className="h-4 w-4" />)}</div>
+        )}
+        <div className="flex-1 space-y-1">
+          {title && <AlertTitle className="mb-1">{title}</AlertTitle>}
+          {description && <AlertDescription>{description}</AlertDescription>}
+          {children}
+          {action && <div className="mt-3">{action}</div>}
+        </div>
       </div>
       {dismissible && (
         <button

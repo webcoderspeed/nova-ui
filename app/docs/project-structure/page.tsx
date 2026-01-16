@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { CodeBlock } from "@/components/docs/code-block"
-import { Card, CardContent } from "@/components/ui/card"
+import { NovaCard, NovaCardContent } from "@/components/nova/nova-card"
 import { Folder, File, FileCode, FileJson, Palette, Settings, Box, Layers } from "lucide-react"
 
 export default function ProjectStructurePage() {
@@ -31,8 +31,8 @@ export default function ProjectStructurePage() {
       {/* Directory Structure */}
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold">Directory Structure</h2>
-        <Card className="bg-card/50 border-border">
-          <CardContent className="p-6">
+        <NovaCard className="bg-card/50 border-border">
+          <NovaCardContent className="p-6">
             <div className="font-mono text-sm space-y-1">
               <TreeItem icon={<Folder className="h-4 w-4 text-primary" />} name="your-project/" isFolder />
               <TreeItem icon={<Folder className="h-4 w-4 text-blue-400" />} name="components/" isFolder level={1} />
@@ -126,8 +126,8 @@ export default function ProjectStructurePage() {
                 desc="shadcn/ui configuration"
               />
             </div>
-          </CardContent>
-        </Card>
+          </NovaCardContent>
+        </NovaCard>
       </section>
 
       {/* Component Anatomy */}
@@ -138,8 +138,8 @@ export default function ProjectStructurePage() {
         </p>
 
         <div className="grid gap-4 md:grid-cols-2">
-          <Card className="bg-card/50 border-border">
-            <CardContent className="p-6 space-y-3">
+          <NovaCard className="bg-card/50 border-border">
+            <NovaCardContent className="p-6 space-y-3">
               <div className="flex items-center gap-2">
                 <Box className="h-5 w-5 text-primary" />
                 <h3 className="font-semibold">Base Components</h3>
@@ -162,11 +162,11 @@ export function Button({ ... }) {
 }`}
                 language="tsx"
               />
-            </CardContent>
-          </Card>
+            </NovaCardContent>
+          </NovaCard>
 
-          <Card className="bg-card/50 border-border">
-            <CardContent className="p-6 space-y-3">
+          <NovaCard className="bg-card/50 border-border">
+            <NovaCardContent className="p-6 space-y-3">
               <div className="flex items-center gap-2">
                 <Layers className="h-5 w-5 text-purple-400" />
                 <h3 className="font-semibold">Nova Components</h3>
@@ -189,8 +189,8 @@ export function NovaButton({
 }`}
                 language="tsx"
               />
-            </CardContent>
-          </Card>
+            </NovaCardContent>
+          </NovaCard>
         </div>
       </section>
 
@@ -288,12 +288,12 @@ import { cn } from "@/lib/utils"`}
             },
             { title: "Keep variants in one place", desc: "Define all variants using cva() at the component level" },
           ].map((practice, i) => (
-            <Card key={i} className="bg-card/50 border-border">
-              <CardContent className="p-4">
+            <NovaCard key={i} className="bg-card/50 border-border">
+              <NovaCardContent className="p-4">
                 <h3 className="font-medium">{practice.title}</h3>
                 <p className="text-sm text-muted-foreground">{practice.desc}</p>
-              </CardContent>
-            </Card>
+              </NovaCardContent>
+            </NovaCard>
           ))}
         </div>
       </section>

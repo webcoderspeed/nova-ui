@@ -40,4 +40,9 @@ function NovaInputOTP({ className, variant, size, ...props }: NovaInputOTPProps)
   )
 }
 
-export { NovaInputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator }
+export {
+  NovaInputOTP,
+  InputOTPGroup as NovaInputOTPGroup,
+  InputOTPSlot as NovaInputOTPSlot,
+  InputOTPSeparator as NovaInputOTPSeparator,
+}

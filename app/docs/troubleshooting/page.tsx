@@ -1,7 +1,7 @@
 import { CodeBlock } from "@/components/docs/code-block"
-import { Card, CardContent } from "@/components/ui/card"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Badge } from "@/components/ui/badge"
+import { NovaCard, NovaCardContent } from "@/components/nova/nova-card"
+import { NovaAccordion, NovaAccordionContent, NovaAccordionItem, NovaAccordionTrigger } from "@/components/nova/nova-accordion"
+import { NovaBadge } from "@/components/nova/nova-badge"
 import { AlertTriangle, MessageCircle, Github, BookOpen } from "lucide-react"
 
 const faqs = [
@@ -106,86 +106,86 @@ export default function TroubleshootingPage() {
       {/* Common Issues */}
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold">Common Issues</h2>
-        <Accordion type="single" collapsible className="w-full">
+        <NovaAccordion type="single" collapsible className="w-full">
           {faqs.map((faq, index) => (
-            <AccordionItem key={index} value={`item-${index}`} className="border-border">
-              <AccordionTrigger className="text-left hover:no-underline">
+            <NovaAccordionItem key={index} value={`item-${index}`} className="border-border">
+              <NovaAccordionTrigger className="text-left hover:no-underline">
                 <span className="flex items-center gap-2">
                   <AlertTriangle className="h-4 w-4 text-amber-500" />
                   {faq.question}
                 </span>
-              </AccordionTrigger>
-              <AccordionContent className="space-y-4">
+              </NovaAccordionTrigger>
+              <NovaAccordionContent className="space-y-4">
                 <p className="text-muted-foreground">{faq.answer}</p>
                 {faq.code && <CodeBlock code={faq.code} language="tsx" />}
-              </AccordionContent>
-            </AccordionItem>
+              </NovaAccordionContent>
+            </NovaAccordionItem>
           ))}
-        </Accordion>
+        </NovaAccordion>
       </section>
 
       {/* Get Help */}
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold">Get Help</h2>
         <div className="grid gap-4 sm:grid-cols-3">
-          <Card className="bg-card/50 border-border hover:border-primary/50 transition-colors">
-            <CardContent className="p-6">
+          <NovaCard className="bg-card/50 border-border hover:border-primary/50 transition-colors">
+            <NovaCardContent className="p-6">
               <Github className="h-8 w-8 text-foreground mb-3" />
               <h3 className="font-semibold">GitHub Issues</h3>
               <p className="text-sm text-muted-foreground mt-1">Report bugs or request features</p>
               <a href="#" className="text-sm text-primary hover:underline mt-2 inline-block">
                 Open an issue →
               </a>
-            </CardContent>
-          </Card>
-          <Card className="bg-card/50 border-border hover:border-primary/50 transition-colors">
-            <CardContent className="p-6">
+            </NovaCardContent>
+          </NovaCard>
+          <NovaCard className="bg-card/50 border-border hover:border-primary/50 transition-colors">
+            <NovaCardContent className="p-6">
               <MessageCircle className="h-8 w-8 text-foreground mb-3" />
               <h3 className="font-semibold">Discord Community</h3>
               <p className="text-sm text-muted-foreground mt-1">Chat with other developers</p>
               <a href="#" className="text-sm text-primary hover:underline mt-2 inline-block">
                 Join Discord →
               </a>
-            </CardContent>
-          </Card>
-          <Card className="bg-card/50 border-border hover:border-primary/50 transition-colors">
-            <CardContent className="p-6">
+            </NovaCardContent>
+          </NovaCard>
+          <NovaCard className="bg-card/50 border-border hover:border-primary/50 transition-colors">
+            <NovaCardContent className="p-6">
               <BookOpen className="h-8 w-8 text-foreground mb-3" />
               <h3 className="font-semibold">Documentation</h3>
               <p className="text-sm text-muted-foreground mt-1">Read the full docs</p>
               <a href="/docs" className="text-sm text-primary hover:underline mt-2 inline-block">
                 View docs →
               </a>
-            </CardContent>
-          </Card>
+            </NovaCardContent>
+          </NovaCard>
         </div>
       </section>
 
       {/* Version Info */}
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold">Version Information</h2>
-        <Card className="bg-card/50 border-border">
-          <CardContent className="p-6">
+        <NovaCard className="bg-card/50 border-border">
+          <NovaCardContent className="p-6">
             <div className="flex flex-wrap gap-4">
               <div className="flex items-center gap-2">
                 <span className="text-sm text-muted-foreground">Nova.UI</span>
-                <Badge variant="secondary">v1.0.0</Badge>
+                <NovaBadge variant="secondary">v1.0.0</NovaBadge> 
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-muted-foreground">React</span>
-                <Badge variant="outline">18.x / 19.x</Badge>
+                <NovaBadge variant="outline">18.x / 19.x</NovaBadge> 
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-muted-foreground">Next.js</span>
-                <Badge variant="outline">14.x / 15.x</Badge>
+                <NovaBadge variant="outline">14.x / 15.x</NovaBadge> 
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-muted-foreground">Tailwind</span>
-                <Badge variant="outline">3.x / 4.x</Badge>
+                <NovaBadge variant="outline">3.x / 4.x</NovaBadge> 
               </div>
             </div>
-          </CardContent>
-        </Card>
+          </NovaCardContent>
+        </NovaCard>
       </section>
     </div>
   )

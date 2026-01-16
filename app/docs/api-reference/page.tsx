@@ -1,10 +1,10 @@
 "use client"
 
 import { CodeBlock } from "@/components/docs/code-block"
-import { Card } from "@/components/ui/card"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Badge } from "@/components/ui/badge"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { NovaCard } from "@/components/nova/nova-card"
+import { NovaTable, NovaTableBody, NovaTableCell, NovaTableHead, NovaTableHeader, NovaTableRow } from "@/components/nova/nova-table"
+import { NovaBadge } from "@/components/nova/nova-badge"
+import { NovaTabs, NovaTabsContent, NovaTabsList, NovaTabsTrigger } from "@/components/nova/nova-tabs"
 
 export default function ApiReferencePage() {
   return (
@@ -25,7 +25,7 @@ export default function ApiReferencePage() {
           <div className="space-y-2">
             <h3 className="text-lg font-medium flex items-center gap-2">
               <code className="text-primary">cn()</code>
-              <Badge variant="secondary">lib/utils</Badge>
+              <NovaBadge variant="secondary">lib/utils</NovaBadge>
             </h3>
             <p className="text-muted-foreground">
               Combines class names using clsx and tailwind-merge for conflict resolution.
@@ -61,7 +61,7 @@ cn("px-4", "px-6")
           <div className="space-y-2">
             <h3 className="text-lg font-medium flex items-center gap-2">
               <code className="text-primary">useMobile()</code>
-              <Badge variant="secondary">hooks/use-mobile</Badge>
+              <NovaBadge variant="secondary">hooks/use-mobile</NovaBadge>
             </h3>
             <p className="text-muted-foreground">
               Returns true if the viewport is below the mobile breakpoint (768px).
@@ -81,7 +81,7 @@ function MyComponent() {
           <div className="space-y-2">
             <h3 className="text-lg font-medium flex items-center gap-2">
               <code className="text-primary">useToast()</code>
-              <Badge variant="secondary">hooks/use-toast</Badge>
+              <NovaBadge variant="secondary">hooks/use-toast</NovaBadge>
             </h3>
             <p className="text-muted-foreground">Hook for displaying toast notifications.</p>
             <CodeBlock
@@ -111,132 +111,134 @@ function MyComponent() {
         <h2 className="text-2xl font-semibold">Nova Component Props</h2>
         <p className="text-muted-foreground">Extended props for Nova.UI enhanced components:</p>
 
-        <Tabs defaultValue="button" className="w-full">
-          <TabsList>
-            <TabsTrigger value="button">NovaButton</TabsTrigger>
-            <TabsTrigger value="input">NovaInput</TabsTrigger>
-            <TabsTrigger value="card">NovaCard</TabsTrigger>
-            <TabsTrigger value="badge">NovaBadge</TabsTrigger>
-          </TabsList>
+        <NovaTabs defaultValue="button" className="w-full">
+          <NovaTabsList>
+            <NovaTabsTrigger value="button">NovaButton</NovaTabsTrigger>
+            <NovaTabsTrigger value="input">NovaInput</NovaTabsTrigger>
+            <NovaTabsTrigger value="card">NovaCard</NovaTabsTrigger>
+            <NovaTabsTrigger value="badge">NovaBadge</NovaTabsTrigger>
+          </NovaTabsList>
 
-          <TabsContent value="button" className="mt-4">
-            <Card className="bg-card/50 border-border overflow-hidden">
-              <Table>
-                <TableHeader>
-                  <TableRow className="border-border">
-                    <TableHead>Prop</TableHead>
-                    <TableHead>Type</TableHead>
-                    <TableHead>Default</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  <TableRow className="border-border">
-                    <TableCell className="font-mono">loading</TableCell>
-                    <TableCell className="font-mono text-muted-foreground">boolean</TableCell>
-                    <TableCell className="font-mono text-muted-foreground">false</TableCell>
-                  </TableRow>
-                  <TableRow className="border-border">
-                    <TableCell className="font-mono">animate</TableCell>
-                    <TableCell className="font-mono text-muted-foreground">boolean</TableCell>
-                    <TableCell className="font-mono text-muted-foreground">true</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </Card>
-          </TabsContent>
+          <NovaTabsContent value="button" className="mt-4"> 
+            <NovaCard className="bg-card/50 border-border overflow-hidden">
+              <NovaTable>
+                <NovaTableHeader>
+                  <NovaTableRow className="border-border">
+                    <NovaTableHead>Prop</NovaTableHead>
+                    <NovaTableHead>Type</NovaTableHead>
+                    <NovaTableHead>Default</NovaTableHead>
+                  </NovaTableRow>
+                </NovaTableHeader>
+                <NovaTableBody>
+                  <NovaTableRow className="border-border">
+                    <NovaTableCell className="font-mono">loading</NovaTableCell>
+                    <NovaTableCell className="font-mono text-muted-foreground">boolean</NovaTableCell>
+                    <NovaTableCell className="font-mono text-muted-foreground">false</NovaTableCell>
+                  </NovaTableRow>
+                  <NovaTableRow className="border-border">
+                    <NovaTableCell className="font-mono">animate</NovaTableCell>
+                    <NovaTableCell className="font-mono text-muted-foreground">boolean</NovaTableCell>
+                    <NovaTableCell className="font-mono text-muted-foreground">true</NovaTableCell>
+                  </NovaTableRow>
+                </NovaTableBody>
+              </NovaTable>
+            </NovaCard>
+          </NovaTabsContent>  
 
-          <TabsContent value="input" className="mt-4">
-            <Card className="bg-card/50 border-border overflow-hidden">
-              <Table>
-                <TableHeader>
-                  <TableRow className="border-border">
-                    <TableHead>Prop</TableHead>
-                    <TableHead>Type</TableHead>
-                    <TableHead>Default</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  <TableRow className="border-border">
-                    <TableCell className="font-mono">floatingLabel</TableCell>
-                    <TableCell className="font-mono text-muted-foreground">string</TableCell>
-                    <TableCell className="font-mono text-muted-foreground">-</TableCell>
-                  </TableRow>
-                  <TableRow className="border-border">
-                    <TableCell className="font-mono">error</TableCell>
-                    <TableCell className="font-mono text-muted-foreground">string</TableCell>
-                    <TableCell className="font-mono text-muted-foreground">-</TableCell>
-                  </TableRow>
-                  <TableRow className="border-border">
-                    <TableCell className="font-mono">icon</TableCell>
-                    <TableCell className="font-mono text-muted-foreground">ReactNode</TableCell>
-                    <TableCell className="font-mono text-muted-foreground">-</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </Card>
-          </TabsContent>
+          <NovaTabsContent value="input" className="mt-4">
+            <NovaCard className="bg-card/50 border-border overflow-hidden">
+              <NovaTable>
+                <NovaTableHeader>
+                  <NovaTableRow className="border-border">
+                    <NovaTableHead>Prop</NovaTableHead>
+                    <NovaTableHead>Type</NovaTableHead>
+                    <NovaTableHead>Default</NovaTableHead>
+                  </NovaTableRow>
+                </NovaTableHeader>
+                <NovaTableBody>
+                  <NovaTableRow className="border-border">
+                    <NovaTableCell className="font-mono">floatingLabel</NovaTableCell>
+                    <NovaTableCell className="font-mono text-muted-foreground">string</NovaTableCell>
+                    <NovaTableCell className="font-mono text-muted-foreground">-</NovaTableCell>
+                  </NovaTableRow>
+                  <NovaTableRow className="border-border">
+                    <NovaTableCell className="font-mono">error</NovaTableCell>
+                    <NovaTableCell className="font-mono text-muted-foreground">string</NovaTableCell>
+                    <NovaTableCell className="font-mono text-muted-foreground">-</NovaTableCell>
+                  </NovaTableRow>
+                  <NovaTableRow className="border-border">
+                    <NovaTableCell className="font-mono">icon</NovaTableCell>
+                    <NovaTableCell className="font-mono text-muted-foreground">ReactNode</NovaTableCell>
+                    <NovaTableCell className="font-mono text-muted-foreground">-</NovaTableCell>
+                  </NovaTableRow>
+                </NovaTableBody>
+              </NovaTable>
+            </NovaCard>
+          </NovaTabsContent>
 
-          <TabsContent value="card" className="mt-4">
-            <Card className="bg-card/50 border-border overflow-hidden">
-              <Table>
-                <TableHeader>
-                  <TableRow className="border-border">
-                    <TableHead>Prop</TableHead>
-                    <TableHead>Type</TableHead>
-                    <TableHead>Default</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  <TableRow className="border-border">
-                    <TableCell className="font-mono">variant</TableCell>
-                    <TableCell className="font-mono text-muted-foreground">
+
+
+          <NovaTabsContent value="card" className="mt-4">
+            <NovaCard className="bg-card/50 border-border overflow-hidden">
+              <NovaTable>
+                <NovaTableHeader>
+                  <NovaTableRow className="border-border">
+                    <NovaTableHead>Prop</NovaTableHead>
+                    <NovaTableHead>Type</NovaTableHead>
+                    <NovaTableHead>Default</NovaTableHead>
+                  </NovaTableRow>
+                </NovaTableHeader>
+                <NovaTableBody>
+                  <NovaTableRow className="border-border">
+                    <NovaTableCell className="font-mono">variant</NovaTableCell>
+                    <NovaTableCell className="font-mono text-muted-foreground">
                       &quot;default&quot; | &quot;glass&quot; | &quot;gradient&quot;
-                    </TableCell>
-                    <TableCell className="font-mono text-muted-foreground">&quot;default&quot;</TableCell>
-                  </TableRow>
-                  <TableRow className="border-border">
-                    <TableCell className="font-mono">hover</TableCell>
-                    <TableCell className="font-mono text-muted-foreground">
+                    </NovaTableCell>
+                    <NovaTableCell className="font-mono text-muted-foreground">&quot;default&quot;</NovaTableCell>
+                  </NovaTableRow>
+                  <NovaTableRow className="border-border">
+                    <NovaTableCell className="font-mono">hover</NovaTableCell>
+                    <NovaTableCell className="font-mono text-muted-foreground">
                       &quot;none&quot; | &quot;lift&quot; | &quot;glow&quot; | &quot;scale&quot;
-                    </TableCell>
-                    <TableCell className="font-mono text-muted-foreground">&quot;none&quot;</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </Card>
-          </TabsContent>
+                    </NovaTableCell>
+                    <NovaTableCell className="font-mono text-muted-foreground">&quot;none&quot;</NovaTableCell>
+                  </NovaTableRow>
+                </NovaTableBody>
+              </NovaTable>
+            </NovaCard>
+          </NovaTabsContent>
 
-          <TabsContent value="badge" className="mt-4">
-            <Card className="bg-card/50 border-border overflow-hidden">
-              <Table>
-                <TableHeader>
-                  <TableRow className="border-border">
-                    <TableHead>Prop</TableHead>
-                    <TableHead>Type</TableHead>
-                    <TableHead>Default</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  <TableRow className="border-border">
-                    <TableCell className="font-mono">shimmer</TableCell>
-                    <TableCell className="font-mono text-muted-foreground">boolean</TableCell>
-                    <TableCell className="font-mono text-muted-foreground">false</TableCell>
-                  </TableRow>
-                  <TableRow className="border-border">
-                    <TableCell className="font-mono">pulse</TableCell>
-                    <TableCell className="font-mono text-muted-foreground">boolean</TableCell>
-                    <TableCell className="font-mono text-muted-foreground">false</TableCell>
-                  </TableRow>
-                  <TableRow className="border-border">
-                    <TableCell className="font-mono">glow</TableCell>
-                    <TableCell className="font-mono text-muted-foreground">boolean</TableCell>
-                    <TableCell className="font-mono text-muted-foreground">false</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </Card>
-          </TabsContent>
-        </Tabs>
+          <NovaTabsContent value="badge" className="mt-4">
+            <NovaCard className="bg-card/50 border-border overflow-hidden">
+              <NovaTable>
+                <NovaTableHeader>
+                  <NovaTableRow className="border-border">
+                    <NovaTableHead>Prop</NovaTableHead>
+                    <NovaTableHead>Type</NovaTableHead>
+                    <NovaTableHead>Default</NovaTableHead>
+                  </NovaTableRow>
+                </NovaTableHeader>
+                <NovaTableBody>
+                  <NovaTableRow className="border-border">
+                    <NovaTableCell className="font-mono">shimmer</NovaTableCell>
+                    <NovaTableCell className="font-mono text-muted-foreground">boolean</NovaTableCell>
+                    <NovaTableCell className="font-mono text-muted-foreground">false</NovaTableCell>
+                  </NovaTableRow>
+                  <NovaTableRow className="border-border">
+                    <NovaTableCell className="font-mono">pulse</NovaTableCell>
+                    <NovaTableCell className="font-mono text-muted-foreground">boolean</NovaTableCell>
+                    <NovaTableCell className="font-mono text-muted-foreground">false</NovaTableCell>
+                  </NovaTableRow>
+                  <NovaTableRow className="border-border">
+                    <NovaTableCell className="font-mono">glow</NovaTableCell>
+                    <NovaTableCell className="font-mono text-muted-foreground">boolean</NovaTableCell>
+                    <NovaTableCell className="font-mono text-muted-foreground">false</NovaTableCell>
+                  </NovaTableRow>
+                </NovaTableBody>
+              </NovaTable>
+            </NovaCard>
+          </NovaTabsContent>
+        </NovaTabs>
       </section>
 
       {/* TypeScript */}

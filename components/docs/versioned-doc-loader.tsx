@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useVersion, type Version } from "@/components/version-provider"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { NovaAlert } from "@/components/nova/nova-alert"
 import { AlertTriangle } from "lucide-react"
 
 interface VersionedDocLoaderProps {
@@ -26,14 +26,12 @@ export function VersionedDocLoader({ versions, componentName }: VersionedDocLoad
 
     return (
       <div className="space-y-6">
-        <Alert variant="destructive">
-          <AlertTriangle className="h-4 w-4" />
-          <AlertTitle>Version Not Available</AlertTitle>
-          <AlertDescription>
-            Documentation for {componentName} in v{version} is not available. Showing v{latestAvailable} documentation
-            instead.
-          </AlertDescription>
-        </Alert>
+        <NovaAlert
+          status="error"
+          icon={<AlertTriangle className="h-4 w-4" />}
+          title="Version Not Available"
+          description={`Documentation for ${componentName} in v${version} is not available. Showing v${latestAvailable} documentation instead.`}
+        />
         {FallbackComponent && <FallbackComponent />}
       </div>
     )

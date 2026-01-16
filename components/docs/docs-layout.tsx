@@ -3,9 +3,10 @@
 import type { ReactNode } from "react"
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { ScrollArea } from "@/components/ui/scroll-area"
+import { usePathname } from "next/navigation"
+import { NovaButton } from "@/components/nova/nova-button"
+import { NovaInput } from "@/components/nova/nova-input"
+import { NovaScrollArea } from "@/components/nova/nova-scroll-area"
 import {
   Search,
   Menu,
@@ -223,9 +224,9 @@ export function DocsLayout({ children }: { children: ReactNode }) {
       <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="flex h-14 items-center justify-between px-4 lg:px-6">
           <div className="flex items-center gap-4">
-            <button className="lg:hidden" onClick={() => setSidebarOpen(!sidebarOpen)} aria-label="Toggle sidebar">
+            <NovaButton variant="ghost" size="icon" className="lg:hidden" onClick={() => setSidebarOpen(!sidebarOpen)} aria-label="Toggle sidebar">
               {sidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </button>
+            </NovaButton>
             <Link href="/" className="flex items-center gap-2">
               <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary">
                 <span className="text-xs font-bold text-primary-foreground">N</span>
@@ -239,7 +240,7 @@ export function DocsLayout({ children }: { children: ReactNode }) {
           <div className="flex items-center gap-2">
             <div className="relative hidden w-64 md:block">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <Input
+              <NovaInput
                 type="search"
                 placeholder="Search documentation..."
                 className="h-9 bg-secondary pl-9 text-sm"
@@ -250,17 +251,17 @@ export function DocsLayout({ children }: { children: ReactNode }) {
                 ⌘K
               </kbd>
             </div>
-            <Button variant="ghost" size="icon" className="h-9 w-9 md:hidden">
+            <NovaButton variant="ghost" size="icon" className="h-9 w-9 md:hidden">
               <Search className="h-4 w-4" />
-            </Button>
-            <Button variant="ghost" size="sm" className="hidden h-9 text-muted-foreground sm:flex">
+            </NovaButton>
+            <NovaButton variant="ghost" size="sm" className="hidden h-9 text-muted-foreground sm:flex">
               v1.0.0
-            </Button>
-            <Button variant="ghost" size="icon" asChild className="h-9 w-9">
+            </NovaButton>
+            <NovaButton variant="ghost" size="icon" asChild className="h-9 w-9">
               <a href="https://github.com" target="_blank" rel="noopener noreferrer">
                 <Github className="h-4 w-4" />
               </a>
-            </Button>
+            </NovaButton>
           </div>
         </div>
       </header>
@@ -272,7 +273,7 @@ export function DocsLayout({ children }: { children: ReactNode }) {
             sidebarOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
-          <ScrollArea className="h-full py-4">
+          <NovaScrollArea className="h-full py-4">
             <nav className="flex flex-col gap-1 px-4" role="navigation" aria-label="Documentation">
               {navItems.map((item) => (
                 <NavItem
@@ -294,7 +295,7 @@ export function DocsLayout({ children }: { children: ReactNode }) {
                 </a>
               </div>
             </nav>
-          </ScrollArea>
+          </NovaScrollArea>
         </aside>
 
         {/* Backdrop for mobile */}

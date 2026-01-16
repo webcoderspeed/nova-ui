@@ -1,7 +1,7 @@
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { NovaButton } from "@/components/nova/nova-button"
+import { NovaCard, NovaCardDescription, NovaCardHeader, NovaCardTitle } from "@/components/nova/nova-card"
+import { NovaBadge } from "@/components/nova/nova-badge"
 import { ArrowRight, Sparkles, Zap, Palette, Globe, Code, Box } from "lucide-react"
 
 export default function DocsPage() {
@@ -9,10 +9,10 @@ export default function DocsPage() {
     <div className="space-y-12">
       {/* Hero */}
       <div className="space-y-6">
-        <Badge className="bg-primary/10 text-primary hover:bg-primary/20 border-0">
+        <NovaBadge className="bg-primary/10 text-primary hover:bg-primary/20 border-0">
           <Sparkles className="h-3 w-3 mr-1" />
           Documentation
-        </Badge>
+        </NovaBadge>
         <h1 className="text-4xl font-bold tracking-tight lg:text-5xl">
           Build beautiful apps with <span className="text-primary">Nova.UI</span>
         </h1>
@@ -21,80 +21,80 @@ export default function DocsPage() {
           capabilities, and RTL compatibility.
         </p>
         <div className="flex flex-wrap gap-3">
-          <Button asChild size="lg" className="rounded-full">
+          <NovaButton asChild size="lg" className="rounded-full">
             <Link href="/docs/installation">
               Get Started
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
-          </Button>
-          <Button asChild variant="outline" size="lg" className="rounded-full bg-transparent">
+          </NovaButton>
+          <NovaButton asChild variant="outline" size="lg" className="rounded-full bg-transparent">
             <Link href="/docs/components">Browse Components</Link>
-          </Button>
+          </NovaButton>
         </div>
       </div>
 
       {/* Features */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <Card className="border-border/50 bg-card/50 backdrop-blur">
-          <CardHeader>
+        <NovaCard className="border-border/50 bg-card/50 backdrop-blur">
+          <NovaCardHeader>
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 mb-2">
               <Zap className="h-5 w-5 text-primary" />
             </div>
-            <CardTitle className="text-lg">Framer Motion & GSAP</CardTitle>
-            <CardDescription>
+            <NovaCardTitle className="text-lg">Framer Motion & GSAP</NovaCardTitle>
+            <NovaCardDescription>
               Pre-built animations and transitions for smooth, professional interactions.
-            </CardDescription>
-          </CardHeader>
-        </Card>
-        <Card className="border-border/50 bg-card/50 backdrop-blur">
-          <CardHeader>
+            </NovaCardDescription>
+          </NovaCardHeader>
+        </NovaCard>
+        <NovaCard className="border-border/50 bg-card/50 backdrop-blur">
+          <NovaCardHeader>
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 mb-2">
               <Code className="h-5 w-5 text-primary" />
             </div>
-            <CardTitle className="text-lg">TypeScript First</CardTitle>
-            <CardDescription>
+            <NovaCardTitle className="text-lg">TypeScript First</NovaCardTitle>
+            <NovaCardDescription>
               Full type safety with comprehensive TypeScript interfaces for all components.
-            </CardDescription>
-          </CardHeader>
-        </Card>
-        <Card className="border-border/50 bg-card/50 backdrop-blur">
-          <CardHeader>
+            </NovaCardDescription>
+          </NovaCardHeader>
+        </NovaCard>
+        <NovaCard className="border-border/50 bg-card/50 backdrop-blur">
+          <NovaCardHeader>
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 mb-2">
               <Globe className="h-5 w-5 text-primary" />
             </div>
-            <CardTitle className="text-lg">i18n & RTL Ready</CardTitle>
-            <CardDescription>Built-in support for internationalization and right-to-left languages.</CardDescription>
-          </CardHeader>
-        </Card>
-        <Card className="border-border/50 bg-card/50 backdrop-blur">
-          <CardHeader>
+            <NovaCardTitle className="text-lg">i18n & RTL Ready</NovaCardTitle>
+            <NovaCardDescription>Built-in support for internationalization and right-to-left languages.</NovaCardDescription>
+          </NovaCardHeader>
+        </NovaCard>
+        <NovaCard className="border-border/50 bg-card/50 backdrop-blur">
+          <NovaCardHeader>
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 mb-2">
               <Palette className="h-5 w-5 text-primary" />
             </div>
-            <CardTitle className="text-lg">Customizable Themes</CardTitle>
-            <CardDescription>Tailwind CSS powered theming with CSS variables for easy customization.</CardDescription>
-          </CardHeader>
-        </Card>
-        <Card className="border-border/50 bg-card/50 backdrop-blur">
-          <CardHeader>
+            <NovaCardTitle className="text-lg">Customizable Themes</NovaCardTitle>
+            <NovaCardDescription>Tailwind CSS powered theming with CSS variables for easy customization.</NovaCardDescription>
+          </NovaCardHeader>
+        </NovaCard>
+        <NovaCard className="border-border/50 bg-card/50 backdrop-blur">
+          <NovaCardHeader>
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 mb-2">
               <Box className="h-5 w-5 text-primary" />
             </div>
-            <CardTitle className="text-lg">45+ Components</CardTitle>
-            <CardDescription>Comprehensive component library with enhanced variants and features.</CardDescription>
-          </CardHeader>
-        </Card>
-        <Card className="border-border/50 bg-card/50 backdrop-blur">
-          <CardHeader>
+            <NovaCardTitle className="text-lg">45+ Components</NovaCardTitle>
+            <NovaCardDescription>Comprehensive component library with enhanced variants and features.</NovaCardDescription>
+          </NovaCardHeader>
+        </NovaCard>
+        <NovaCard className="border-border/50 bg-card/50 backdrop-blur">
+          <NovaCardHeader>
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 mb-2">
               <Sparkles className="h-5 w-5 text-primary" />
             </div>
-            <CardTitle className="text-lg">Nova.UI Extras</CardTitle>
-            <CardDescription>
+            <NovaCardTitle className="text-lg">Nova.UI Extras</NovaCardTitle>
+            <NovaCardDescription>
               Enhanced components with loading states, animations, and advanced features.
-            </CardDescription>
-          </CardHeader>
-        </Card>
+            </NovaCardDescription>
+          </NovaCardHeader>
+        </NovaCard>
       </div>
 
       {/* Quick Links */}

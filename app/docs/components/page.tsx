@@ -1,6 +1,6 @@
 import Link from "next/link"
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { NovaCard, NovaCardDescription, NovaCardHeader, NovaCardTitle } from "@/components/nova/nova-card"
+import { NovaBadge } from "@/components/nova/nova-badge"
 import { ChevronRight, Box } from "lucide-react"
 
 const components = [
@@ -282,13 +282,13 @@ export default function ComponentsPage() {
       {/* Category Badges */}
       <div className="flex flex-wrap gap-2">
         {categories.map((category) => (
-          <Badge
+          <NovaBadge
             key={category}
             variant={category === "All" ? "default" : "outline"}
             className="cursor-pointer hover:bg-accent"
           >
             {category}
-          </Badge>
+          </NovaBadge>
         ))}
       </div>
 
@@ -296,17 +296,17 @@ export default function ComponentsPage() {
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {components.map((component) => (
           <Link key={component.name} href={component.href}>
-            <Card className="h-full border-border/50 hover:border-primary/50 hover:bg-accent/50 transition-all duration-200">
-              <CardHeader className="pb-3">
+            <NovaCard className="h-full border-border/50 hover:border-primary/50 hover:bg-accent/50 transition-all duration-200">
+              <NovaCardHeader className="pb-3">
                 <div className="flex items-center justify-between">
-                  <CardTitle className="text-base">{component.name}</CardTitle>
-                  <Badge variant="secondary" className="text-[10px]">
+                  <NovaCardTitle className="text-base">{component.name}</NovaCardTitle>
+                  <NovaBadge variant="secondary" className="text-[10px]">
                     {component.category}
-                  </Badge>
+                  </NovaBadge>
                 </div>
-                <CardDescription className="text-sm line-clamp-2">{component.description}</CardDescription>
-              </CardHeader>
-            </Card>
+                <NovaCardDescription className="text-sm line-clamp-2">{component.description}</NovaCardDescription>
+              </NovaCardHeader>
+            </NovaCard>
           </Link>
         ))}
       </div>

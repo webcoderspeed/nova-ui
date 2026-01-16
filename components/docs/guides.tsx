@@ -1,7 +1,17 @@
 "use client"
 import { CodeBlock } from "./code-block"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  NovaTabs,
+  NovaTabsContent,
+  NovaTabsList,
+  NovaTabsTrigger,
+} from "@/components/nova/nova-tabs"
+import {
+  NovaCard,
+  NovaCardContent,
+  NovaCardHeader,
+  NovaCardTitle,
+} from "@/components/nova/nova-card"
 
 export function Guides() {
   return (
@@ -11,28 +21,28 @@ export function Guides() {
         <p className="text-muted-foreground">Step-by-step walkthroughs for common use cases and integrations.</p>
       </div>
 
-      <Tabs defaultValue="themes" className="w-full">
-        <TabsList className="mb-6 h-auto flex-wrap justify-start bg-secondary p-1">
-          <TabsTrigger value="themes" className="data-[state=active]:bg-background">
+      <NovaTabs defaultValue="themes" className="w-full">
+        <NovaTabsList className="mb-6 h-auto flex-wrap justify-start bg-secondary p-1">
+          <NovaTabsTrigger value="themes" className="data-[state=active]:bg-background">
             Custom Themes
-          </TabsTrigger>
-          <TabsTrigger value="i18n" className="data-[state=active]:bg-background">
+          </NovaTabsTrigger>
+          <NovaTabsTrigger value="i18n" className="data-[state=active]:bg-background">
             i18n & RTL
-          </TabsTrigger>
-          <TabsTrigger value="animations" className="data-[state=active]:bg-background">
+          </NovaTabsTrigger>
+          <NovaTabsTrigger value="animations" className="data-[state=active]:bg-background">
             Animations
-          </TabsTrigger>
-          <TabsTrigger value="validation" className="data-[state=active]:bg-background">
+          </NovaTabsTrigger>
+          <NovaTabsTrigger value="validation" className="data-[state=active]:bg-background">
             Form Validation
-          </TabsTrigger>
-        </TabsList>
+          </NovaTabsTrigger>
+        </NovaTabsList>
 
-        <TabsContent value="themes" data-section="custom-themes" id="custom-themes" className="scroll-mt-20">
-          <Card className="bg-card">
-            <CardHeader>
-              <CardTitle>Creating a Custom Theme</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
+        <NovaTabsContent value="themes" data-section="custom-themes" id="custom-themes" className="scroll-mt-20">
+          <NovaCard className="bg-card">
+            <NovaCardHeader>
+              <NovaCardTitle>Creating a Custom Theme</NovaCardTitle>
+            </NovaCardHeader>
+            <NovaCardContent className="space-y-4">
               <p className="text-muted-foreground">
                 Nova.UI uses CSS custom properties for theming, making it easy to customize colors, spacing, and more.
               </p>
@@ -60,16 +70,16 @@ export function Guides() {
               <p className="text-sm text-muted-foreground">
                 Apply your theme by adding the class to a parent element or the root.
               </p>
-            </CardContent>
-          </Card>
-        </TabsContent>
+            </NovaCardContent>
+          </NovaCard>
+        </NovaTabsContent>
 
-        <TabsContent value="i18n" data-section="i18n-rtl" id="i18n-rtl" className="scroll-mt-20">
-          <Card className="bg-card">
-            <CardHeader>
-              <CardTitle>Internationalization & RTL Support</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
+        <NovaTabsContent value="i18n" data-section="i18n-rtl" id="i18n-rtl" className="scroll-mt-20">
+          <NovaCard className="bg-card">
+            <NovaCardHeader>
+              <NovaCardTitle>Internationalization & RTL Support</NovaCardTitle>
+            </NovaCardHeader>
+            <NovaCardContent className="space-y-4">
               <p className="text-muted-foreground">
                 Nova.UI includes built-in support for multiple languages and right-to-left text direction.
               </p>
@@ -100,16 +110,16 @@ export function MyComponent() {
                 filename="lib/i18n.ts"
                 showLineNumbers
               />
-            </CardContent>
-          </Card>
-        </TabsContent>
+            </NovaCardContent>
+          </NovaCard>
+        </NovaTabsContent>
 
-        <TabsContent value="animations" data-section="animations" id="animations" className="scroll-mt-20">
-          <Card className="bg-card">
-            <CardHeader>
-              <CardTitle>Integrating Animations</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
+        <NovaTabsContent value="animations" data-section="animations" id="animations" className="scroll-mt-20">
+          <NovaCard className="bg-card">
+            <NovaCardHeader>
+              <NovaCardTitle>Integrating Animations</NovaCardTitle>
+            </NovaCardHeader>
+            <NovaCardContent className="space-y-4">
               <p className="text-muted-foreground">
                 Combine Framer Motion for React animations and GSAP for complex sequences.
               </p>
@@ -154,16 +164,16 @@ export function ScrollReveal({ children }) {
                 filename="components/animations.tsx"
                 showLineNumbers
               />
-            </CardContent>
-          </Card>
-        </TabsContent>
+            </NovaCardContent>
+          </NovaCard>
+        </NovaTabsContent>
 
-        <TabsContent value="validation" data-section="form-validation" id="form-validation" className="scroll-mt-20">
-          <Card className="bg-card">
-            <CardHeader>
-              <CardTitle>Form Validation with Zod</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
+        <NovaTabsContent value="validation" data-section="form-validation" id="form-validation" className="scroll-mt-20">
+          <NovaCard className="bg-card">
+            <NovaCardHeader>
+              <NovaCardTitle>Form Validation with Zod</NovaCardTitle>
+            </NovaCardHeader>
+            <NovaCardContent className="space-y-4">
               <p className="text-muted-foreground">
                 Nova.UI forms integrate seamlessly with Zod for type-safe validation.
               </p>
@@ -199,10 +209,10 @@ export function LoginForm() {
                 filename="components/login-form.tsx"
                 showLineNumbers
               />
-            </CardContent>
-          </Card>
-        </TabsContent>
-      </Tabs>
+            </NovaCardContent>
+          </NovaCard>
+        </NovaTabsContent>
+      </NovaTabs>
     </section>
   )
 }

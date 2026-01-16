@@ -1,72 +1,159 @@
 "use client"
 
+import { NovaAlert } from "@/components/nova/nova-alert"
+import { NovaButton } from "@/components/nova/nova-button"
 import { ComponentDocTemplate } from "@/components/docs/component-doc-template"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { AlertCircle, Terminal } from "lucide-react"
+import { Terminal } from "lucide-react"
 
 export default function AlertDocsV1() {
   return (
     <ComponentDocTemplate
       badgeText="v1.0.0"
       title="Alert"
-      description="Displays a callout for user attention. Basic version with default and destructive variants."
+      description="Displays a callout for user attention. Enhanced with status variants, animations, and dismissal capabilities."
+      whenToUse={[
+        "To display success, warning, error, or info messages.",
+        "When you need a persistent feedback message that doesn't block user interaction.",
+        "For highlighting important information relevant to the page content."
+      ]}
+      hints={[
+        {
+          type: "info",
+          title: "Nova Enhancement",
+          content: "NovaAlert extends the base UI Alert with built-in status variants (success, warning, error, info) and optional animations, reducing the need for manual class composition."
+        }
+      ]}
       preview={
-        <Alert>
-          <Terminal className="h-4 w-4" />
-          <AlertTitle>Heads up!</AlertTitle>
-          <AlertDescription>You can add components to your app using the CLI.</AlertDescription>
-        </Alert>
+        <div className="flex flex-col gap-4 w-full max-w-lg">
+          <NovaAlert 
+            status="info" 
+            title="Update Available" 
+            description="A new version of Nova UI is available. Update now to get the latest features."
+            action={<NovaButton variant="outline" size="sm" className="bg-background">Update</NovaButton>}
+          />
+        </div>
       }
-      installCommand="./add-submodule.sh https://github.com/nova-ui/nova-ui.git nova-ui v1.0.0"
-      importCode={`import { Alert, AlertDescription, AlertTitle } from "@/nova-ui/alert"`}
-      usageCode={`import { Alert, AlertDescription, AlertTitle } from "@/nova-ui/alert"
-import { Terminal } from 'lucide-react'
+      installCommand="npx nova-ui@latest add alert"
+      importCode={`import { NovaAlert } from "@/components/nova/nova-alert"`}
+      usageCode={`import { NovaAlert } from "@/components/nova/nova-alert"
+import { NovaButton } from "@/components/nova/nova-button"
 
-export function MyComponent() {
+export function AlertDemo() {
   return (
-    <Alert>
-      <Terminal className="h-4 w-4" />
-      <AlertTitle>Heads up!</AlertTitle>
-      <AlertDescription>
-        You can add components using the CLI.
-      </AlertDescription>
-    </Alert>
+    <NovaAlert 
+      status="info" 
+      title="Update Available" 
+      description="A new version of Nova UI is available."
+      action={<NovaButton variant="outline" size="sm">Update</NovaButton>}
+    />
   )
 }`}
       props={[
         {
-          name: "variant",
-          type: '"default" | "destructive"',
+          name: "status",
+          type: '"default" | "success" | "warning" | "error" | "info"',
           default: '"default"',
-          description: "The visual style variant",
+          description: "Visual style variant indicating the nature of the message.",
         },
-        { name: "className", type: "string", description: "Additional CSS classes" },
+        {
+          name: "title",
+          type: "string",
+          description: "The title of the alert.",
+        },
+        {
+          name: "description",
+          type: "string",
+          description: "The content/description of the alert.",
+        },
+        {
+          name: "icon",
+          type: "ReactNode",
+          description: "Optional custom icon to override the default status icon.",
+        },
+        {
+          name: "showIcon",
+          type: "boolean",
+          default: "true",
+          description: "Whether to show the status icon.",
+        },
+        {
+          name: "dismissible",
+          type: "boolean",
+          default: "false",
+          description: "If true, shows a close button that dismisses the alert.",
+        },
+        {
+          name: "animation",
+          type: '"none" | "fade" | "slide"',
+          default: '"fade"',
+          description: "Entry animation style.",
+        },
+        {
+          name: "action",
+          type: "ReactNode",
+          description: "Optional action element (button, link) to display at the bottom.",
+        },
       ]}
       examples={[
         {
-          title: "Destructive",
-          description: "For errors or critical warnings.",
-          code: `<Alert variant="destructive">
-  <AlertCircle className="h-4 w-4" />
-  <AlertTitle>Error</AlertTitle>
-  <AlertDescription>
-    Your session has expired.
-  </AlertDescription>
-</Alert>`,
+          title: "Status Variants",
+          description: "Standard status indicators for common feedback scenarios.",
+          code: `<div className="space-y-4">
+  <NovaAlert status="success" title="Success" description="Your changes have been saved successfully." />
+  <NovaAlert status="warning" title="Warning" description="Your account is about to expire." />
+  <NovaAlert status="error" title="Error" description="Failed to save changes. Please try again." />
+  <NovaAlert status="info" title="Info" description="Scheduled maintenance is planned for tonight." />
+</div>`,
           preview: (
-            <Alert variant="destructive">
-              <AlertCircle className="h-4 w-4" />
-              <AlertTitle>Error</AlertTitle>
-              <AlertDescription>Your session has expired. Please log in again.</AlertDescription>
-            </Alert>
+            <div className="space-y-4 w-full">
+              <NovaAlert status="success" title="Success" description="Your changes have been saved successfully." />
+              <NovaAlert status="warning" title="Warning" description="Your account is about to expire." />
+              <NovaAlert status="error" title="Error" description="Failed to save changes. Please try again." />
+              <NovaAlert status="info" title="Info" description="Scheduled maintenance is planned for tonight." />
+            </div>
+          ),
+        },
+        {
+          title: "Dismissible",
+          description: "Alerts can be dismissed by the user.",
+          code: `<NovaAlert 
+  status="info" 
+  title="Dismissible Alert" 
+  description="Click the X icon to dismiss this alert." 
+  dismissible 
+/>`,
+          preview: (
+            <NovaAlert 
+              status="info" 
+              title="Dismissible Alert" 
+              description="Click the X icon to dismiss this alert." 
+              dismissible 
+            />
+          ),
+        },
+        {
+          title: "Custom Icon",
+          description: "Override the default icon with your own.",
+          code: `<NovaAlert 
+  icon={<Terminal className="h-4 w-4" />} 
+  title="Custom Icon" 
+  description="This alert uses a terminal icon." 
+/>`,
+          preview: (
+            <NovaAlert 
+              icon={<Terminal className="h-4 w-4" />} 
+              title="Custom Icon" 
+              description="This alert uses a terminal icon." 
+            />
           ),
         },
       ]}
       relatedComponents={[
-        { name: "Alert Dialog", href: "/docs/components/alert-dialog" },
-        { name: "Card", href: "/docs/components/card" },
+        { name: "Toast", href: "/docs/components/toast" },
+        { name: "Sonner", href: "/docs/components/sonner" },
+        { name: "Dialog", href: "/docs/components/dialog" },
       ]}
-      sourceLink="https://github.com/nova-ui/nova-ui/tree/v1.0.0"
+      sourceLink="https://github.com/nova-ui/nova-ui/tree/main/components/nova/nova-alert.tsx"
     />
   )
 }

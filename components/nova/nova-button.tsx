@@ -49,11 +49,25 @@ function NovaButton({
   rightIcon,
   disabled,
   animate,
+  asChild = false,
   ...props
 }: NovaButtonProps) {
   const [ripples, setRipples] = React.useState<{ x: number; y: number; id: number }[]>([])
 
   const finalAnimation = animate === false ? "none" : animation
+
+  if (asChild) {
+    return (
+      <Button
+        className={cn(novaButtonVariants({ animation: finalAnimation, rounded }), className)}
+        asChild
+        disabled={disabled || loading}
+        {...props}
+      >
+        {children}
+      </Button>
+    )
+  }
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (finalAnimation === "ripple") {

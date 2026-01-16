@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { NovaCard, NovaCardContent, NovaCardDescription, NovaCardHeader, NovaCardTitle } from "@/components/nova/nova-card"
 import { Layers, Palette, Sparkles, FileCode, ArrowRight } from "lucide-react"
 
 const concepts = [
@@ -47,25 +47,25 @@ export default function CoreConceptsPage() {
           const Icon = concept.icon
           return (
             <Link key={concept.href} href={concept.href}>
-              <Card className="h-full bg-card/50 border-border hover:border-primary/50 hover:bg-card/80 transition-all duration-200 group">
-                <CardHeader>
+              <NovaCard className="h-full bg-card/50 border-border hover:border-primary/50 hover:bg-card/80 transition-all duration-200 group">
+                <NovaCardHeader>
                   <div className="flex items-center gap-3">
                     <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
                       <Icon className="h-5 w-5 text-primary" />
                     </div>
-                    <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                    <NovaCardTitle className="text-lg group-hover:text-primary transition-colors">
                       {concept.title}
-                    </CardTitle>
+                    </NovaCardTitle>
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-sm">{concept.description}</CardDescription>
+                </NovaCardHeader>
+                <NovaCardContent>
+                  <NovaCardDescription className="text-sm">{concept.description}</NovaCardDescription>
                   <div className="mt-4 flex items-center text-sm text-primary">
                     Learn more
                     <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </div>
-                </CardContent>
-              </Card>
+                </NovaCardContent>
+              </NovaCard>
             </Link>
           )
         })}

@@ -1,5 +1,5 @@
 import { CodeBlock } from "./code-block"
-import { Card, CardContent } from "@/components/ui/card"
+import { NovaCard, NovaCardContent } from "@/components/nova/nova-card"
 import { Boxes, GitBranch, Palette, Globe, Zap, Shield } from "lucide-react"
 
 const technologies = [
@@ -47,8 +47,8 @@ export function CoreConcepts() {
       <div data-section="architecture" id="architecture" className="mb-10 scroll-mt-20">
         <h3 className="mb-4 text-xl font-semibold text-foreground">Architecture</h3>
         <div className="mb-6 grid gap-4 sm:grid-cols-2">
-          <Card className="bg-card">
-            <CardContent className="flex items-start gap-4 p-5">
+          <NovaCard className="bg-card">
+            <NovaCardContent className="flex items-start gap-4 p-5">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
                 <Boxes className="h-5 w-5 text-primary" />
               </div>
@@ -58,10 +58,10 @@ export function CoreConcepts() {
                   Each component is self-contained and can be used independently. Import only what you need.
                 </p>
               </div>
-            </CardContent>
-          </Card>
-          <Card className="bg-card">
-            <CardContent className="flex items-start gap-4 p-5">
+            </NovaCardContent>
+          </NovaCard>
+          <NovaCard className="bg-card">
+            <NovaCardContent className="flex items-start gap-4 p-5">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
                 <GitBranch className="h-5 w-5 text-primary" />
               </div>
@@ -71,8 +71,8 @@ export function CoreConcepts() {
                   Full source code access with controlled updates. Fork and customize as needed.
                 </p>
               </div>
-            </CardContent>
-          </Card>
+            </NovaCardContent>
+          </NovaCard>
         </div>
 
         <CodeBlock
@@ -98,15 +98,15 @@ export function CoreConcepts() {
           {technologies.map((tech) => {
             const Icon = tech.icon
             return (
-              <Card key={tech.name} className="bg-card transition-colors hover:bg-secondary/50">
-                <CardContent className="p-4">
+              <NovaCard key={tech.name} className="bg-card transition-colors hover:bg-secondary/50">
+                <NovaCardContent className="p-4">
                   <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">
                     <Icon className="h-4 w-4 text-primary" />
                   </div>
                   <h4 className="mb-1 font-semibold text-foreground">{tech.name}</h4>
                   <p className="text-sm text-muted-foreground">{tech.description}</p>
-                </CardContent>
-              </Card>
+                </NovaCardContent>
+              </NovaCard>
             )
           })}
         </div>

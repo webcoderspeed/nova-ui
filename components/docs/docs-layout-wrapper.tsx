@@ -4,17 +4,17 @@ import type { ReactNode } from "react"
 import { useState, useEffect, useMemo } from "react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { ScrollArea } from "@/components/ui/scroll-area"
+import { NovaButton } from "@/components/nova/nova-button"
+import { NovaScrollArea } from "@/components/nova/nova-scroll-area"
 import {
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-} from "@/components/ui/command"
+  NovaCommandDialog,
+  NovaCommandEmpty,
+  NovaCommandGroup,
+  NovaCommandInput,
+  NovaCommandItem,
+  NovaCommandList,
+  NovaCommandSeparator,
+} from "@/components/nova/nova-command"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { VersionToggle } from "@/components/version-toggle"
 import { useVersion, type Version } from "@/components/version-provider"
@@ -307,17 +307,17 @@ export function DocsLayoutWrapper({ children }: { children: ReactNode }) {
 
   return (
     <div className="min-h-screen bg-background">
-      <CommandDialog open={searchOpen} onOpenChange={setSearchOpen}>
-        <CommandInput placeholder="Search documentation..." />
-        <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
+      <NovaCommandDialog open={searchOpen} onOpenChange={setSearchOpen}>
+        <NovaCommandInput placeholder="Search documentation..." />
+        <NovaCommandList>
+          <NovaCommandEmpty>No results found.</NovaCommandEmpty>
           {Object.entries(groupedItems).map(([group, items], idx) => (
             <div key={group}>
-              <CommandGroup heading={group}>
+              <NovaCommandGroup heading={group}>
                 {items.map((item) => {
                   const Icon = item.icon
                   return (
-                    <CommandItem
+                    <NovaCommandItem
                       key={item.href}
                       value={item.title}
                       onSelect={() => runCommand(() => router.push(item.href))}
@@ -325,15 +325,15 @@ export function DocsLayoutWrapper({ children }: { children: ReactNode }) {
                     >
                       <Icon className="mr-2 h-4 w-4 text-muted-foreground" />
                       <span>{item.title}</span>
-                    </CommandItem>
+                    </NovaCommandItem>
                   )
                 })}
-              </CommandGroup>
-              {idx < Object.keys(groupedItems).length - 1 && <CommandSeparator />}
+              </NovaCommandGroup>
+              {idx < Object.keys(groupedItems).length - 1 && <NovaCommandSeparator />}
             </div>
           ))}
-        </CommandList>
-      </CommandDialog>
+        </NovaCommandList>
+      </NovaCommandDialog>
 
       {/* Header */}
       <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -361,15 +361,15 @@ export function DocsLayoutWrapper({ children }: { children: ReactNode }) {
                 ⌘K
               </kbd>
             </button>
-            <Button variant="ghost" size="icon" className="h-9 w-9 md:hidden" onClick={() => setSearchOpen(true)}>
+            <NovaButton variant="ghost" size="icon" className="h-9 w-9 md:hidden" onClick={() => setSearchOpen(true)}>
               <Search className="h-4 w-4" />
-            </Button>
+            </NovaButton>
             <ThemeToggle />
-            <Button variant="ghost" size="icon" asChild className="h-9 w-9">
+            <NovaButton variant="ghost" size="icon" asChild className="h-9 w-9">
               <a href="https://github.com" target="_blank" rel="noopener noreferrer">
                 <Github className="h-4 w-4" />
               </a>
-            </Button>
+            </NovaButton>
           </div>
         </div>
       </header>
@@ -381,7 +381,7 @@ export function DocsLayoutWrapper({ children }: { children: ReactNode }) {
             sidebarOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
-          <ScrollArea className="h-full">
+          <NovaScrollArea className="h-full">
             <nav className="flex flex-col gap-1 p-4" role="navigation" aria-label="Documentation">
               {navItems.map((item, index) => (
                 <NavItem
@@ -404,7 +404,7 @@ export function DocsLayoutWrapper({ children }: { children: ReactNode }) {
                 </a>
               </div>
             </nav>
-          </ScrollArea>
+          </NovaScrollArea>
         </aside>
 
         {/* Backdrop for mobile */}

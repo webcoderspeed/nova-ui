@@ -1,102 +1,49 @@
 "use client"
 
 import { ComponentDoc } from "./component-doc"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Switch } from "@/components/ui/switch"
-import { Slider } from "@/components/ui/slider"
-import { Progress } from "@/components/ui/progress"
-import { Badge } from "@/components/ui/badge"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
-import { AspectRatio } from "@/components/ui/aspect-ratio"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import { Calendar } from "@/components/ui/calendar"
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command"
-import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from "@/components/ui/context-menu"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
-import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp"
-import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarTrigger } from "@/components/ui/menubar"
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu"
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Separator } from "@/components/ui/separator"
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
-import { Skeleton } from "@/components/ui/skeleton"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Textarea } from "@/components/ui/textarea"
-import { Toggle } from "@/components/ui/toggle"
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+  NovaAccordion, NovaAccordionContent, NovaAccordionItem, NovaAccordionTrigger,
+  NovaAlert,
+  NovaAlertDialog, NovaAlertDialogAction, NovaAlertDialogCancel, NovaAlertDialogContent, NovaAlertDialogDescription, NovaAlertDialogFooter, NovaAlertDialogHeader, NovaAlertDialogTitle, NovaAlertDialogTrigger,
+  NovaAspectRatio,
+  NovaAvatar,
+  NovaBadge,
+  NovaBreadcrumb, NovaBreadcrumbItem, NovaBreadcrumbLink, NovaBreadcrumbList, NovaBreadcrumbPage, NovaBreadcrumbSeparator,
+  NovaButton,
+  NovaCalendar,
+  NovaCard, NovaCardContent, NovaCardDescription, NovaCardFooter, NovaCardHeader, NovaCardTitle,
+  NovaCheckbox,
+  NovaCollapsible, NovaCollapsibleContent, NovaCollapsibleTrigger,
+  NovaCommand, NovaCommandEmpty, NovaCommandGroup, NovaCommandInput, NovaCommandItem, NovaCommandList,
+  NovaContextMenu, NovaContextMenuContent, NovaContextMenuItem, NovaContextMenuTrigger,
+  NovaDialog,
+  NovaDrawer, NovaDrawerClose, NovaDrawerContent, NovaDrawerDescription, NovaDrawerFooter, NovaDrawerHeader, NovaDrawerTitle, NovaDrawerTrigger,
+  NovaDropdownMenu, NovaDropdownMenuContent, NovaDropdownMenuItem, NovaDropdownMenuLabel, NovaDropdownMenuSeparator, NovaDropdownMenuTrigger,
+  NovaHoverCard, NovaHoverCardContent, NovaHoverCardTrigger,
+  NovaInput,
+  NovaInputOTP, NovaInputOTPGroup, NovaInputOTPSlot,
+  NovaLabel,
+  NovaMenubar, NovaMenubarContent, NovaMenubarItem, NovaMenubarMenu, NovaMenubarTrigger,
+  NovaNavigationMenu, NovaNavigationMenuContent, NovaNavigationMenuItem, NovaNavigationMenuLink, NovaNavigationMenuList, NovaNavigationMenuTrigger,
+  NovaPagination, NovaPaginationContent, NovaPaginationItem, NovaPaginationLink, NovaPaginationNext, NovaPaginationPrevious,
+  NovaPopover, NovaPopoverContent, NovaPopoverTrigger,
+  NovaProgress,
+  NovaRadioGroup, NovaRadioGroupItem,
+  NovaResizableHandle, NovaResizablePanel, NovaResizablePanelGroup,
+  NovaScrollArea,
+  NovaSelect,
+  NovaSeparator,
+  NovaSheet, NovaSheetContent, NovaSheetDescription, NovaSheetHeader, NovaSheetTitle, NovaSheetTrigger,
+  NovaSkeleton,
+  NovaSlider,
+  NovaSwitch,
+  NovaTable, NovaTableBody, NovaTableCell, NovaTableHead, NovaTableHeader, NovaTableRow,
+  NovaTabs, NovaTabsContent, NovaTabsList, NovaTabsTrigger,
+  NovaTextarea,
+  NovaToggle,
+  NovaToggleGroup, NovaToggleGroupItem,
+  NovaTooltip,
+} from "@/components"
 import {
   AlertCircle,
   Bold,
@@ -135,38 +82,38 @@ export function AllComponentsDocs() {
         title="Accordion"
         description="A vertically stacked set of interactive headings that each reveal an associated section of content."
         preview={
-          <Accordion type="single" collapsible className="w-full max-w-md">
-            <AccordionItem value="item-1">
-              <AccordionTrigger>Is it accessible?</AccordionTrigger>
-              <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-2">
-              <AccordionTrigger>Is it styled?</AccordionTrigger>
-              <AccordionContent>
+          <NovaAccordion type="single" collapsible className="w-full max-w-md">
+            <NovaAccordionItem value="item-1">
+              <NovaAccordionTrigger>Is it accessible?</NovaAccordionTrigger>
+              <NovaAccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</NovaAccordionContent>
+            </NovaAccordionItem>
+            <NovaAccordionItem value="item-2">
+              <NovaAccordionTrigger>Is it styled?</NovaAccordionTrigger>
+              <NovaAccordionContent>
                 Yes. It comes with default styles that matches the other components aesthetic.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-3">
-              <AccordionTrigger>Is it animated?</AccordionTrigger>
-              <AccordionContent>Yes. It&apos;s animated by default with smooth transitions.</AccordionContent>
-            </AccordionItem>
-          </Accordion>
+              </NovaAccordionContent>
+            </NovaAccordionItem>
+            <NovaAccordionItem value="item-3">
+              <NovaAccordionTrigger>Is it animated?</NovaAccordionTrigger>
+              <NovaAccordionContent>Yes. It&apos;s animated by default with smooth transitions.</NovaAccordionContent>
+            </NovaAccordionItem>
+          </NovaAccordion>
         }
         code={`import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
+  NovaAccordion,
+  NovaAccordionContent,
+  NovaAccordionItem,
+  NovaAccordionTrigger,
+} from "@/components"
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Is it accessible?</AccordionTrigger>
-    <AccordionContent>
+<NovaAccordion type="single" collapsible>
+  <NovaAccordionItem value="item-1">
+    <NovaAccordionTrigger>Is it accessible?</NovaAccordionTrigger>
+    <NovaAccordionContent>
       Yes. It adheres to the WAI-ARIA design pattern.
-    </AccordionContent>
-  </AccordionItem>
-</Accordion>`}
+    </NovaAccordionContent>
+  </NovaAccordionItem>
+</NovaAccordion>`}
         props={[
           { name: "type", type: '"single" | "multiple"', default: '"single"', description: "Type of accordion" },
           { name: "collapsible", type: "boolean", default: "false", description: "Allow closing all items" },
@@ -181,35 +128,36 @@ export function AllComponentsDocs() {
         description="Displays a callout for user attention with different variants."
         preview={
           <div className="flex flex-col gap-4 w-full max-w-md">
-            <Alert>
-              <Terminal className="h-4 w-4" />
-              <AlertTitle>Heads up!</AlertTitle>
-              <AlertDescription>You can add components to your app using the cli.</AlertDescription>
-            </Alert>
-            <Alert variant="destructive">
-              <AlertCircle className="h-4 w-4" />
-              <AlertTitle>Error</AlertTitle>
-              <AlertDescription>Your session has expired. Please log in again.</AlertDescription>
-            </Alert>
+            <NovaAlert
+              icon={<Terminal className="h-4 w-4" />}
+              title="Heads up!"
+              description="You can add components to your app using the cli."
+            />
+            <NovaAlert
+              status="error"
+              icon={<AlertCircle className="h-4 w-4" />}
+              title="Error"
+              description="Your session has expired. Please log in again."
+            />
           </div>
         }
-        code={`import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+        code={`import { NovaAlert } from "@/components"
 import { Terminal } from 'lucide-react'
 
-<Alert>
-  <Terminal className="h-4 w-4" />
-  <AlertTitle>Heads up!</AlertTitle>
-  <AlertDescription>
-    You can add components to your app using the cli.
-  </AlertDescription>
-</Alert>`}
+<NovaAlert
+  icon={<Terminal className="h-4 w-4" />}
+  title="Heads up!"
+  description="You can add components to your app using the cli."
+/>`}
         props={[
           {
-            name: "variant",
-            type: '"default" | "destructive"',
+            name: "status",
+            type: '"default" | "success" | "warning" | "error" | "info"',
             default: '"default"',
-            description: "Visual style variant",
+            description: "Status variant",
           },
+          { name: "title", type: "string", description: "Alert title" },
+          { name: "description", type: "string", description: "Alert description" },
         ]}
       />
 
@@ -219,53 +167,54 @@ import { Terminal } from 'lucide-react'
         title="Alert Dialog"
         description="A modal dialog that interrupts the user with important content and expects a response."
         preview={
-          <AlertDialog>
-            <AlertDialogTrigger asChild>
-              <Button variant="outline">Delete Account</Button>
-            </AlertDialogTrigger>
-            <AlertDialogContent>
-              <AlertDialogHeader>
-                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                <AlertDialogDescription>
+          <NovaAlertDialog>
+            <NovaAlertDialogTrigger asChild>
+              <NovaButton variant="outline">Delete Account</NovaButton>
+            </NovaAlertDialogTrigger>
+            <NovaAlertDialogContent>
+              <NovaAlertDialogHeader>
+                <NovaAlertDialogTitle>Are you absolutely sure?</NovaAlertDialogTitle>
+                <NovaAlertDialogDescription>
                   This action cannot be undone. This will permanently delete your account.
-                </AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction>Continue</AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
+                </NovaAlertDialogDescription>
+              </NovaAlertDialogHeader>
+              <NovaAlertDialogFooter>
+                <NovaAlertDialogCancel>Cancel</NovaAlertDialogCancel>
+                <NovaAlertDialogAction>Continue</NovaAlertDialogAction>
+              </NovaAlertDialogFooter>
+            </NovaAlertDialogContent>
+          </NovaAlertDialog>
         }
         code={`import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
+  NovaAlertDialog,
+  NovaAlertDialogAction,
+  NovaAlertDialogCancel,
+  NovaAlertDialogContent,
+  NovaAlertDialogDescription,
+  NovaAlertDialogFooter,
+  NovaAlertDialogHeader,
+  NovaAlertDialogTitle,
+  NovaAlertDialogTrigger,
+  NovaButton,
+} from "@/components"
 
-<AlertDialog>
-  <AlertDialogTrigger asChild>
-    <Button variant="outline">Delete Account</Button>
-  </AlertDialogTrigger>
-  <AlertDialogContent>
-    <AlertDialogHeader>
-      <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-      <AlertDialogDescription>
+<NovaAlertDialog>
+  <NovaAlertDialogTrigger asChild>
+    <NovaButton variant="outline">Delete Account</NovaButton>
+  </NovaAlertDialogTrigger>
+  <NovaAlertDialogContent>
+    <NovaAlertDialogHeader>
+      <NovaAlertDialogTitle>Are you absolutely sure?</NovaAlertDialogTitle>
+      <NovaAlertDialogDescription>
         This action cannot be undone.
-      </AlertDialogDescription>
-    </AlertDialogHeader>
-    <AlertDialogFooter>
-      <AlertDialogCancel>Cancel</AlertDialogCancel>
-      <AlertDialogAction>Continue</AlertDialogAction>
-    </AlertDialogFooter>
-  </AlertDialogContent>
-</AlertDialog>`}
+      </NovaAlertDialogDescription>
+    </NovaAlertDialogHeader>
+    <NovaAlertDialogFooter>
+      <NovaAlertDialogCancel>Cancel</NovaAlertDialogCancel>
+      <NovaAlertDialogAction>Continue</NovaAlertDialogAction>
+    </NovaAlertDialogFooter>
+  </NovaAlertDialogContent>
+</NovaAlertDialog>`}
       />
 
       {/* Aspect Ratio */}
@@ -275,16 +224,16 @@ import { Terminal } from 'lucide-react'
         description="Displays content within a desired ratio, useful for images and videos."
         preview={
           <div className="w-[300px]">
-            <AspectRatio ratio={16 / 9} className="bg-muted rounded-md overflow-hidden">
+            <NovaAspectRatio ratio={16 / 9} className="bg-muted rounded-md overflow-hidden">
               <img src="/majestic-mountain-vista.png" alt="Landscape" className="h-full w-full object-cover" />
-            </AspectRatio>
+            </NovaAspectRatio>
           </div>
         }
-        code={`import { AspectRatio } from "@/components/ui/aspect-ratio"
+        code={`import { NovaAspectRatio } from "@/components"
 
-<AspectRatio ratio={16 / 9}>
+<NovaAspectRatio ratio={16 / 9}>
   <img src="..." alt="Image" className="object-cover" />
-</AspectRatio>`}
+</NovaAspectRatio>`}
         props={[{ name: "ratio", type: "number", default: "1", description: "The desired aspect ratio" }]}
       />
 
@@ -295,25 +244,28 @@ import { Terminal } from 'lucide-react'
         description="An image element with a fallback for representing the user."
         preview={
           <div className="flex gap-4">
-            <Avatar>
-              <AvatarImage src="/portrait-woman.png" alt="User" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-            <Avatar>
-              <AvatarImage src="/thoughtful-man.png" alt="User" />
-              <AvatarFallback>JD</AvatarFallback>
-            </Avatar>
-            <Avatar>
-              <AvatarFallback>AB</AvatarFallback>
-            </Avatar>
+            <NovaAvatar
+              src="/portrait-woman.png"
+              alt="User"
+              fallback="CN"
+            />
+            <NovaAvatar
+              src="/thoughtful-man.png"
+              alt="User"
+              fallback="JD"
+            />
+            <NovaAvatar
+              fallback="AB"
+            />
           </div>
         }
-        code={`import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+        code={`import { NovaAvatar } from "@/components"
 
-<Avatar>
-  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-  <AvatarFallback>CN</AvatarFallback>
-</Avatar>`}
+<NovaAvatar
+  src="https://github.com/shadcn.png"
+  alt="@shadcn"
+  fallback="CN"
+/>`}
       />
 
       {/* Badge */}
@@ -323,18 +275,18 @@ import { Terminal } from 'lucide-react'
         description="Displays a badge or a component that looks like a badge."
         preview={
           <div className="flex gap-2 flex-wrap">
-            <Badge>Default</Badge>
-            <Badge variant="secondary">Secondary</Badge>
-            <Badge variant="destructive">Destructive</Badge>
-            <Badge variant="outline">Outline</Badge>
+            <NovaBadge>Default</NovaBadge>
+            <NovaBadge variant="secondary">Secondary</NovaBadge>
+            <NovaBadge variant="destructive">Destructive</NovaBadge>
+            <NovaBadge variant="outline">Outline</NovaBadge>
           </div>
         }
-        code={`import { Badge } from "@/components/ui/badge"
+        code={`import { NovaBadge } from "@/components"
 
-<Badge>Default</Badge>
-<Badge variant="secondary">Secondary</Badge>
-<Badge variant="destructive">Destructive</Badge>
-<Badge variant="outline">Outline</Badge>`}
+<NovaBadge>Default</NovaBadge>
+<NovaBadge variant="secondary">Secondary</NovaBadge>
+<NovaBadge variant="destructive">Destructive</NovaBadge>
+<NovaBadge variant="outline">Outline</NovaBadge>`}
         props={[
           {
             name: "variant",
@@ -351,67 +303,74 @@ import { Terminal } from 'lucide-react'
         title="Breadcrumb"
         description="Displays the path to the current resource using a hierarchy of links."
         preview={
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="#">Home</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbLink href="#">Components</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
+          <NovaBreadcrumb>
+            <NovaBreadcrumbList>
+              <NovaBreadcrumbItem>
+                <NovaBreadcrumbLink href="#">Home</NovaBreadcrumbLink>
+              </NovaBreadcrumbItem>
+              <NovaBreadcrumbSeparator />
+              <NovaBreadcrumbItem>
+                <NovaBreadcrumbLink href="#">Components</NovaBreadcrumbLink>
+              </NovaBreadcrumbItem>
+              <NovaBreadcrumbSeparator />
+              <NovaBreadcrumbItem>
+                <NovaBreadcrumbPage>Breadcrumb</NovaBreadcrumbPage>
+              </NovaBreadcrumbItem>
+            </NovaBreadcrumbList>
+          </NovaBreadcrumb>
         }
         code={`import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
+  NovaBreadcrumb,
+  NovaBreadcrumbItem,
+  NovaBreadcrumbLink,
+  NovaBreadcrumbList,
+  NovaBreadcrumbPage,
+  NovaBreadcrumbSeparator,
+} from "@/components"
 
-<Breadcrumb>
-  <BreadcrumbList>
-    <BreadcrumbItem>
-      <BreadcrumbLink href="/">Home</BreadcrumbLink>
-    </BreadcrumbItem>
-    <BreadcrumbSeparator />
-    <BreadcrumbItem>
-      <BreadcrumbPage>Current</BreadcrumbPage>
-    </BreadcrumbItem>
-  </BreadcrumbList>
-</Breadcrumb>`}
+<NovaBreadcrumb>
+  <NovaBreadcrumbList>
+    <NovaBreadcrumbItem>
+      <NovaBreadcrumbLink href="/">Home</NovaBreadcrumbLink>
+    </NovaBreadcrumbItem>
+    <NovaBreadcrumbSeparator />
+    <NovaBreadcrumbItem>
+      <NovaBreadcrumbPage>Current</NovaBreadcrumbPage>
+    </NovaBreadcrumbItem>
+  </NovaBreadcrumbList>
+</NovaBreadcrumb>`}
       />
 
       {/* Button */}
       <ComponentDoc
         id="button"
         title="Button"
-        description="Displays a button or a component that looks like a button."
+        description="Displays a button or a component that looks like a button. Enhanced with animations and loading states."
         preview={
-          <div className="flex gap-2 flex-wrap">
-            <Button>Default</Button>
-            <Button variant="secondary">Secondary</Button>
-            <Button variant="destructive">Destructive</Button>
-            <Button variant="outline">Outline</Button>
-            <Button variant="ghost">Ghost</Button>
-            <Button variant="link">Link</Button>
+          <div className="flex gap-2 flex-wrap items-center">
+            <NovaButton>Default</NovaButton>
+            <NovaButton variant="secondary">Secondary</NovaButton>
+            <NovaButton variant="destructive">Destructive</NovaButton>
+            <NovaButton variant="outline">Outline</NovaButton>
+            <NovaButton variant="ghost">Ghost</NovaButton>
+            <NovaButton variant="link">Link</NovaButton>
+            <NovaButton animation="pulse">Pulse</NovaButton>
+            <NovaButton animation="bounce">Bounce</NovaButton>
+            <NovaButton animation="shine">Shine</NovaButton>
+            <NovaButton animation="glow">Glow</NovaButton>
+            <NovaButton animation="ripple">Ripple</NovaButton>
+            <NovaButton rounded="full">Rounded</NovaButton>
+            <NovaButton loading>Loading</NovaButton>
           </div>
         }
-        code={`import { Button } from "@/components/ui/button"
+        code={`import { NovaButton } from "@/components"
 
-<Button>Default</Button>
-<Button variant="secondary">Secondary</Button>
-<Button variant="destructive">Destructive</Button>
-<Button variant="outline">Outline</Button>
-<Button variant="ghost">Ghost</Button>
-<Button variant="link">Link</Button>`}
+<NovaButton>Default</NovaButton>
+<NovaButton variant="secondary">Secondary</NovaButton>
+<NovaButton animation="shine">Shine Effect</NovaButton>
+<NovaButton animation="ripple">Ripple Effect</NovaButton>
+<NovaButton rounded="full">Rounded</NovaButton>
+<NovaButton loading>Loading</NovaButton>`}
         props={[
           {
             name: "variant",
@@ -425,6 +384,39 @@ import { Terminal } from 'lucide-react'
             default: '"default"',
             description: "Button size",
           },
+          {
+            name: "animation",
+            type: '"none" | "pulse" | "bounce" | "shine" | "glow" | "scale" | "ripple"',
+            default: '"scale"',
+            description: "Animation effect on hover/click",
+          },
+          {
+            name: "rounded",
+            type: '"default" | "full" | "none"',
+            default: '"default"',
+            description: "Border radius style",
+          },
+          {
+            name: "loading",
+            type: "boolean",
+            default: "false",
+            description: "Shows loading spinner",
+          },
+          {
+            name: "loadingText",
+            type: "string",
+            description: "Text to show when loading",
+          },
+          {
+            name: "leftIcon",
+            type: "ReactNode",
+            description: "Icon to display on the left",
+          },
+          {
+            name: "rightIcon",
+            type: "ReactNode",
+            description: "Icon to display on the right",
+          },
           { name: "asChild", type: "boolean", default: "false", description: "Merge props onto child element" },
         ]}
         variants={[
@@ -432,12 +424,12 @@ import { Terminal } from 'lucide-react'
             name: "Sizes",
             preview: (
               <div className="flex gap-2 items-center">
-                <Button size="sm">Small</Button>
-                <Button>Default</Button>
-                <Button size="lg">Large</Button>
-                <Button size="icon">
+                <NovaButton size="sm">Small</NovaButton>
+                <NovaButton>Default</NovaButton>
+                <NovaButton size="lg">Large</NovaButton>
+                <NovaButton size="icon">
                   <Settings className="h-4 w-4" />
-                </Button>
+                </NovaButton>
               </div>
             ),
           },
@@ -445,12 +437,12 @@ import { Terminal } from 'lucide-react'
             name: "With Icons",
             preview: (
               <div className="flex gap-2">
-                <Button>
+                <NovaButton>
                   <Mail className="mr-2 h-4 w-4" /> Login with Email
-                </Button>
-                <Button variant="outline">
+                </NovaButton>
+                <NovaButton variant="outline">
                   <Copy className="mr-2 h-4 w-4" /> Copy
-                </Button>
+                </NovaButton>
               </div>
             ),
           },
@@ -462,13 +454,13 @@ import { Terminal } from 'lucide-react'
         id="calendar"
         title="Calendar"
         description="A date field component that allows users to enter and edit date."
-        preview={<Calendar mode="single" selected={date} onSelect={setDate} className="rounded-md border" />}
-        code={`import { Calendar } from "@/components/ui/calendar"
+        preview={<NovaCalendar mode="single" selected={date} onSelect={setDate} className="rounded-md border" />}
+        code={`import { NovaCalendar } from "@/components"
 import { useState } from "react"
 
 const [date, setDate] = useState<Date | undefined>(new Date())
 
-<Calendar
+<NovaCalendar
   mode="single"
   selected={date}
   onSelect={setDate}
@@ -487,40 +479,40 @@ const [date, setDate] = useState<Date | undefined>(new Date())
         title="Card"
         description="Displays a card with header, content, and footer."
         preview={
-          <Card className="w-[350px]">
-            <CardHeader>
-              <CardTitle>Card Title</CardTitle>
-              <CardDescription>Card Description</CardDescription>
-            </CardHeader>
-            <CardContent>
+          <NovaCard className="w-[350px]">
+            <NovaCardHeader>
+              <NovaCardTitle>Card Title</NovaCardTitle>
+              <NovaCardDescription>Card Description</NovaCardDescription>
+            </NovaCardHeader>
+            <NovaCardContent>
               <p>Card Content - Display any content here.</p>
-            </CardContent>
-            <CardFooter>
-              <Button className="w-full">Action</Button>
-            </CardFooter>
-          </Card>
+            </NovaCardContent>
+            <NovaCardFooter>
+              <NovaButton className="w-full">Action</NovaButton>
+            </NovaCardFooter>
+          </NovaCard>
         }
         code={`import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+  NovaCard,
+  NovaCardContent,
+  NovaCardDescription,
+  NovaCardFooter,
+  NovaCardHeader,
+  NovaCardTitle,
+} from "@/components"
 
-<Card>
-  <CardHeader>
-    <CardTitle>Card Title</CardTitle>
-    <CardDescription>Card Description</CardDescription>
-  </CardHeader>
-  <CardContent>
+<NovaCard>
+  <NovaCardHeader>
+    <NovaCardTitle>Card Title</NovaCardTitle>
+    <NovaCardDescription>Card Description</NovaCardDescription>
+  </NovaCardHeader>
+  <NovaCardContent>
     <p>Card Content</p>
-  </CardContent>
-  <CardFooter>
-    <Button>Action</Button>
-  </CardFooter>
-</Card>`}
+  </NovaCardContent>
+  <NovaCardFooter>
+    <NovaButton>Action</NovaButton>
+  </NovaCardFooter>
+</NovaCard>`}
       />
 
       {/* Checkbox */}
@@ -531,21 +523,21 @@ const [date, setDate] = useState<Date | undefined>(new Date())
         preview={
           <div className="flex flex-col gap-4">
             <div className="flex items-center space-x-2">
-              <Checkbox id="terms" />
-              <Label htmlFor="terms">Accept terms and conditions</Label>
+              <NovaCheckbox id="terms" />
+              <NovaLabel htmlFor="terms">Accept terms and conditions</NovaLabel>
             </div>
             <div className="flex items-center space-x-2">
-              <Checkbox id="disabled" disabled />
-              <Label htmlFor="disabled">Disabled</Label>
+              <NovaCheckbox id="disabled" disabled />
+              <NovaLabel htmlFor="disabled">Disabled</NovaLabel>
             </div>
           </div>
         }
-        code={`import { Checkbox } from "@/components/ui/checkbox"
-import { Label } from "@/components/ui/label"
+        code={`import { NovaCheckbox } from "@/components"
+import { NovaLabel } from "@/components"
 
 <div className="flex items-center space-x-2">
-  <Checkbox id="terms" />
-  <Label htmlFor="terms">Accept terms and conditions</Label>
+  <NovaCheckbox id="terms" />
+  <NovaLabel htmlFor="terms">Accept terms and conditions</NovaLabel>
 </div>`}
         props={[
           { name: "checked", type: "boolean", description: "Controlled checked state" },
@@ -560,34 +552,34 @@ import { Label } from "@/components/ui/label"
         title="Collapsible"
         description="An interactive component which expands/collapses a panel."
         preview={
-          <Collapsible open={collapsibleOpen} onOpenChange={setCollapsibleOpen} className="w-[350px] space-y-2">
+          <NovaCollapsible open={collapsibleOpen} onOpenChange={setCollapsibleOpen} className="w-[350px] space-y-2">
             <div className="flex items-center justify-between space-x-4 px-4">
               <h4 className="text-sm font-semibold">@peduarte starred 3 repositories</h4>
-              <CollapsibleTrigger asChild>
-                <Button variant="ghost" size="sm">
+              <NovaCollapsibleTrigger asChild>
+                <NovaButton variant="ghost" size="sm">
                   <ChevronsUpDown className="h-4 w-4" />
-                </Button>
-              </CollapsibleTrigger>
+                </NovaButton>
+              </NovaCollapsibleTrigger>
             </div>
             <div className="rounded-md border px-4 py-3 font-mono text-sm">@radix-ui/primitives</div>
-            <CollapsibleContent className="space-y-2">
+            <NovaCollapsibleContent className="space-y-2">
               <div className="rounded-md border px-4 py-3 font-mono text-sm">@radix-ui/colors</div>
               <div className="rounded-md border px-4 py-3 font-mono text-sm">@stitches/react</div>
-            </CollapsibleContent>
-          </Collapsible>
+            </NovaCollapsibleContent>
+          </NovaCollapsible>
         }
         code={`import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible"
+  NovaCollapsible,
+  NovaCollapsibleContent,
+  NovaCollapsibleTrigger,
+} from "@/components"
 
-<Collapsible open={isOpen} onOpenChange={setIsOpen}>
-  <CollapsibleTrigger>Toggle</CollapsibleTrigger>
-  <CollapsibleContent>
+<NovaCollapsible open={isOpen} onOpenChange={setIsOpen}>
+  <NovaCollapsibleTrigger>Toggle</NovaCollapsibleTrigger>
+  <NovaCollapsibleContent>
     Content that collapses
-  </CollapsibleContent>
-</Collapsible>`}
+  </NovaCollapsibleContent>
+</NovaCollapsible>`}
       />
 
       {/* Command */}
@@ -596,42 +588,42 @@ import { Label } from "@/components/ui/label"
         title="Command"
         description="Fast, composable, unstyled command menu for React."
         preview={
-          <Command className="rounded-lg border shadow-md w-[300px]">
-            <CommandInput placeholder="Type a command or search..." />
-            <CommandList>
-              <CommandEmpty>No results found.</CommandEmpty>
-              <CommandGroup heading="Suggestions">
-                <CommandItem>
+          <NovaCommand className="rounded-lg border shadow-md w-[300px]">
+            <NovaCommandInput placeholder="Type a command or search..." />
+            <NovaCommandList>
+              <NovaCommandEmpty>No results found.</NovaCommandEmpty>
+              <NovaCommandGroup heading="Suggestions">
+                <NovaCommandItem>
                   <CalendarIcon className="mr-2 h-4 w-4" />
                   <span>Calendar</span>
-                </CommandItem>
-                <CommandItem>
+                </NovaCommandItem>
+                <NovaCommandItem>
                   <Settings className="mr-2 h-4 w-4" />
                   <span>Settings</span>
-                </CommandItem>
-              </CommandGroup>
-            </CommandList>
-          </Command>
+                </NovaCommandItem>
+              </NovaCommandGroup>
+            </NovaCommandList>
+          </NovaCommand>
         }
         code={`import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command"
+  NovaCommand,
+  NovaCommandEmpty,
+  NovaCommandGroup,
+  NovaCommandInput,
+  NovaCommandItem,
+  NovaCommandList,
+} from "@/components"
 
-<Command>
-  <CommandInput placeholder="Search..." />
-  <CommandList>
-    <CommandEmpty>No results.</CommandEmpty>
-    <CommandGroup heading="Suggestions">
-      <CommandItem>Calendar</CommandItem>
-      <CommandItem>Settings</CommandItem>
-    </CommandGroup>
-  </CommandList>
-</Command>`}
+<NovaCommand>
+  <NovaCommandInput placeholder="Search..." />
+  <NovaCommandList>
+    <NovaCommandEmpty>No results.</NovaCommandEmpty>
+    <NovaCommandGroup heading="Suggestions">
+      <NovaCommandItem>Calendar</NovaCommandItem>
+      <NovaCommandItem>Settings</NovaCommandItem>
+    </NovaCommandGroup>
+  </NovaCommandList>
+</NovaCommand>`}
       />
 
       {/* Context Menu */}
@@ -640,31 +632,31 @@ import { Label } from "@/components/ui/label"
         title="Context Menu"
         description="Displays a menu to the user triggered by a right-click."
         preview={
-          <ContextMenu>
-            <ContextMenuTrigger className="flex h-[100px] w-[200px] items-center justify-center rounded-md border border-dashed text-sm">
+          <NovaContextMenu>
+            <NovaContextMenuTrigger className="flex h-[100px] w-[200px] items-center justify-center rounded-md border border-dashed text-sm">
               Right click here
-            </ContextMenuTrigger>
-            <ContextMenuContent className="w-64">
-              <ContextMenuItem>Back</ContextMenuItem>
-              <ContextMenuItem>Forward</ContextMenuItem>
-              <ContextMenuItem>Reload</ContextMenuItem>
-            </ContextMenuContent>
-          </ContextMenu>
+            </NovaContextMenuTrigger>
+            <NovaContextMenuContent className="w-64">
+              <NovaContextMenuItem>Back</NovaContextMenuItem>
+              <NovaContextMenuItem>Forward</NovaContextMenuItem>
+              <NovaContextMenuItem>Reload</NovaContextMenuItem>
+            </NovaContextMenuContent>
+          </NovaContextMenu>
         }
         code={`import {
-  ContextMenu,
-  ContextMenuContent,
-  ContextMenuItem,
-  ContextMenuTrigger,
-} from "@/components/ui/context-menu"
+  NovaContextMenu,
+  NovaContextMenuContent,
+  NovaContextMenuItem,
+  NovaContextMenuTrigger,
+} from "@/components"
 
-<ContextMenu>
-  <ContextMenuTrigger>Right click me</ContextMenuTrigger>
-  <ContextMenuContent>
-    <ContextMenuItem>Profile</ContextMenuItem>
-    <ContextMenuItem>Settings</ContextMenuItem>
-  </ContextMenuContent>
-</ContextMenu>`}
+<NovaContextMenu>
+  <NovaContextMenuTrigger>Right click me</NovaContextMenuTrigger>
+  <NovaContextMenuContent>
+    <NovaContextMenuItem>Profile</NovaContextMenuItem>
+    <NovaContextMenuItem>Settings</NovaContextMenuItem>
+  </NovaContextMenuContent>
+</NovaContextMenu>`}
       />
 
       {/* Dialog */}
@@ -673,50 +665,39 @@ import { Label } from "@/components/ui/label"
         title="Dialog"
         description="A window overlaid on the primary window, rendering content on top."
         preview={
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button variant="outline">Open Dialog</Button>
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>Edit Profile</DialogTitle>
-                <DialogDescription>Make changes to your profile here.</DialogDescription>
-              </DialogHeader>
-              <div className="grid gap-4 py-4">
-                <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="name" className="text-right">
-                    Name
-                  </Label>
-                  <Input id="name" defaultValue="Pedro Duarte" className="col-span-3" />
-                </div>
+          <NovaDialog
+            trigger={<NovaButton variant="outline">Open Dialog</NovaButton>}
+            title="Edit Profile"
+            description="Make changes to your profile here."
+            footer={<NovaButton type="submit">Save changes</NovaButton>}
+          >
+            <div className="grid gap-4 py-4">
+              <div className="grid grid-cols-4 items-center gap-4">
+                <NovaLabel htmlFor="name" className="text-right">
+                  Name
+                </NovaLabel>
+                <NovaInput id="name" defaultValue="Pedro Duarte" className="col-span-3" />
               </div>
-              <DialogFooter>
-                <Button type="submit">Save changes</Button>
-              </DialogFooter>
-            </DialogContent>
-          </Dialog>
+            </div>
+          </NovaDialog>
         }
-        code={`import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
+        code={`import { NovaDialog, NovaButton, NovaInput, NovaLabel } from "@/components"
 
-<Dialog>
-  <DialogTrigger asChild>
-    <Button>Open</Button>
-  </DialogTrigger>
-  <DialogContent>
-    <DialogHeader>
-      <DialogTitle>Title</DialogTitle>
-      <DialogDescription>Description</DialogDescription>
-    </DialogHeader>
-    {/* Content */}
-  </DialogContent>
-</Dialog>`}
+<NovaDialog
+  trigger={<NovaButton variant="outline">Open Dialog</NovaButton>}
+  title="Edit Profile"
+  description="Make changes to your profile here."
+  footer={<NovaButton type="submit">Save changes</NovaButton>}
+>
+  <div className="grid gap-4 py-4">
+    <div className="grid grid-cols-4 items-center gap-4">
+      <NovaLabel htmlFor="name" className="text-right">
+        Name
+      </NovaLabel>
+      <NovaInput id="name" defaultValue="Pedro Duarte" className="col-span-3" />
+    </div>
+  </div>
+</NovaDialog>`}
       />
 
       {/* Drawer */}
@@ -725,50 +706,50 @@ import { Label } from "@/components/ui/label"
         title="Drawer"
         description="A panel that slides out from the edge of the screen."
         preview={
-          <Drawer>
-            <DrawerTrigger asChild>
-              <Button variant="outline">Open Drawer</Button>
-            </DrawerTrigger>
-            <DrawerContent>
-              <DrawerHeader>
-                <DrawerTitle>Move Goal</DrawerTitle>
-                <DrawerDescription>Set your daily activity goal.</DrawerDescription>
-              </DrawerHeader>
+          <NovaDrawer>
+            <NovaDrawerTrigger asChild>
+              <NovaButton variant="outline">Open Drawer</NovaButton>
+            </NovaDrawerTrigger>
+            <NovaDrawerContent>
+              <NovaDrawerHeader>
+                <NovaDrawerTitle>Move Goal</NovaDrawerTitle>
+                <NovaDrawerDescription>Set your daily activity goal.</NovaDrawerDescription>
+              </NovaDrawerHeader>
               <div className="p-4">
                 <p>Drawer content goes here.</p>
               </div>
-              <DrawerFooter>
-                <Button>Submit</Button>
-                <DrawerClose asChild>
-                  <Button variant="outline">Cancel</Button>
-                </DrawerClose>
-              </DrawerFooter>
-            </DrawerContent>
-          </Drawer>
+              <NovaDrawerFooter>
+                <NovaButton>Submit</NovaButton>
+                <NovaDrawerClose asChild>
+                  <NovaButton variant="outline">Cancel</NovaButton>
+                </NovaDrawerClose>
+              </NovaDrawerFooter>
+            </NovaDrawerContent>
+          </NovaDrawer>
         }
         code={`import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer"
+  NovaDrawer,
+  NovaDrawerClose,
+  NovaDrawerContent,
+  NovaDrawerDescription,
+  NovaDrawerFooter,
+  NovaDrawerHeader,
+  NovaDrawerTitle,
+  NovaDrawerTrigger,
+} from "@/components"
 
-<Drawer>
-  <DrawerTrigger>Open</DrawerTrigger>
-  <DrawerContent>
-    <DrawerHeader>
-      <DrawerTitle>Title</DrawerTitle>
-    </DrawerHeader>
+<NovaDrawer>
+  <NovaDrawerTrigger>Open</NovaDrawerTrigger>
+  <NovaDrawerContent>
+    <NovaDrawerHeader>
+      <NovaDrawerTitle>Title</NovaDrawerTitle>
+    </NovaDrawerHeader>
     {/* Content */}
-    <DrawerFooter>
-      <DrawerClose>Close</DrawerClose>
-    </DrawerFooter>
-  </DrawerContent>
-</Drawer>`}
+    <NovaDrawerFooter>
+      <NovaDrawerClose>Close</NovaDrawerClose>
+    </NovaDrawerFooter>
+  </NovaDrawerContent>
+</NovaDrawer>`}
       />
 
       {/* Dropdown Menu */}
@@ -777,38 +758,38 @@ import { Label } from "@/components/ui/label"
         title="Dropdown Menu"
         description="Displays a menu to the user, triggered by a button."
         preview={
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline">
+          <NovaDropdownMenu>
+            <NovaDropdownMenuTrigger asChild>
+              <NovaButton variant="outline">
                 Open Menu <ChevronDown className="ml-2 h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>
+              </NovaButton>
+            </NovaDropdownMenuTrigger>
+            <NovaDropdownMenuContent className="w-56">
+              <NovaDropdownMenuLabel>My Account</NovaDropdownMenuLabel>
+              <NovaDropdownMenuSeparator />
+              <NovaDropdownMenuItem>
                 <User className="mr-2 h-4 w-4" /> Profile
-              </DropdownMenuItem>
-              <DropdownMenuItem>
+              </NovaDropdownMenuItem>
+              <NovaDropdownMenuItem>
                 <Settings className="mr-2 h-4 w-4" /> Settings
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+              </NovaDropdownMenuItem>
+            </NovaDropdownMenuContent>
+          </NovaDropdownMenu>
         }
         code={`import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+  NovaDropdownMenu,
+  NovaDropdownMenuContent,
+  NovaDropdownMenuItem,
+  NovaDropdownMenuTrigger,
+} from "@/components"
 
-<DropdownMenu>
-  <DropdownMenuTrigger>Open</DropdownMenuTrigger>
-  <DropdownMenuContent>
-    <DropdownMenuItem>Profile</DropdownMenuItem>
-    <DropdownMenuItem>Settings</DropdownMenuItem>
-  </DropdownMenuContent>
-</DropdownMenu>`}
+<NovaDropdownMenu>
+  <NovaDropdownMenuTrigger>Open</NovaDropdownMenuTrigger>
+  <NovaDropdownMenuContent>
+    <NovaDropdownMenuItem>Profile</NovaDropdownMenuItem>
+    <NovaDropdownMenuItem>Settings</NovaDropdownMenuItem>
+  </NovaDropdownMenuContent>
+</NovaDropdownMenu>`}
       />
 
       {/* Form - simplified */}
@@ -819,22 +800,22 @@ import { Label } from "@/components/ui/label"
         preview={
           <form className="w-full max-w-sm space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" placeholder="m@example.com" />
+              <NovaLabel htmlFor="email">Email</NovaLabel>
+              <NovaInput id="email" type="email" placeholder="m@example.com" />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
-              <Input id="password" type="password" />
+              <NovaLabel htmlFor="password">Password</NovaLabel>
+              <NovaInput id="password" type="password" />
             </div>
-            <Button type="submit" className="w-full">
+            <NovaButton type="submit" className="w-full">
               Submit
-            </Button>
+            </NovaButton>
           </form>
         }
         code={`import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
-import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form"
+import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components"
 
 const schema = z.object({
   email: z.string().email(),
@@ -851,7 +832,7 @@ const form = useForm({ resolver: zodResolver(schema) })
       <FormItem>
         <FormLabel>Email</FormLabel>
         <FormControl>
-          <Input {...field} />
+          <NovaInput {...field} />
         </FormControl>
       </FormItem>
     )}
@@ -865,36 +846,33 @@ const form = useForm({ resolver: zodResolver(schema) })
         title="Hover Card"
         description="For sighted users to preview content available behind a link."
         preview={
-          <HoverCard>
-            <HoverCardTrigger asChild>
-              <Button variant="link">@nextjs</Button>
-            </HoverCardTrigger>
-            <HoverCardContent className="w-80">
+          <NovaHoverCard>
+            <NovaHoverCardTrigger asChild>
+              <NovaButton variant="link">@nextjs</NovaButton>
+            </NovaHoverCardTrigger>
+            <NovaHoverCardContent className="w-80">
               <div className="flex justify-between space-x-4">
-                <Avatar>
-                  <AvatarImage src="/nextjs-logo.png" />
-                  <AvatarFallback>NX</AvatarFallback>
-                </Avatar>
+                <NovaAvatar src="/nextjs-logo.png" fallback="NX" />
                 <div className="space-y-1">
                   <h4 className="text-sm font-semibold">@nextjs</h4>
                   <p className="text-sm">The React Framework created and maintained by @vercel.</p>
                 </div>
               </div>
-            </HoverCardContent>
-          </HoverCard>
+            </NovaHoverCardContent>
+          </NovaHoverCard>
         }
         code={`import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card"
+  NovaHoverCard,
+  NovaHoverCardContent,
+  NovaHoverCardTrigger,
+} from "@/components"
 
-<HoverCard>
-  <HoverCardTrigger>Hover me</HoverCardTrigger>
-  <HoverCardContent>
+<NovaHoverCard>
+  <NovaHoverCardTrigger>Hover me</NovaHoverCardTrigger>
+  <NovaHoverCardContent>
     Content shown on hover
-  </HoverCardContent>
-</HoverCard>`}
+  </NovaHoverCardContent>
+</NovaHoverCard>`}
       />
 
       {/* Input */}
@@ -904,16 +882,16 @@ const form = useForm({ resolver: zodResolver(schema) })
         description="Displays a form input field or a component that looks like an input field."
         preview={
           <div className="flex flex-col gap-4 w-full max-w-sm">
-            <Input type="email" placeholder="Email" />
-            <Input type="password" placeholder="Password" />
-            <Input disabled placeholder="Disabled" />
+            <NovaInput type="email" placeholder="Email" />
+            <NovaInput type="password" placeholder="Password" />
+            <NovaInput disabled placeholder="Disabled" />
           </div>
         }
-        code={`import { Input } from "@/components/ui/input"
+        code={`import { NovaInput } from "@/components"
 
-<Input type="email" placeholder="Email" />
-<Input type="password" placeholder="Password" />
-<Input disabled placeholder="Disabled" />`}
+<NovaInput type="email" placeholder="Email" />
+<NovaInput type="password" placeholder="Password" />
+<NovaInput disabled placeholder="Disabled" />`}
         props={[
           { name: "type", type: "string", default: '"text"', description: "HTML input type" },
           { name: "placeholder", type: "string", description: "Placeholder text" },
@@ -927,33 +905,33 @@ const form = useForm({ resolver: zodResolver(schema) })
         title="Input OTP"
         description="Accessible one-time password component with copy paste functionality."
         preview={
-          <InputOTP maxLength={6}>
-            <InputOTPGroup>
-              <InputOTPSlot index={0} />
-              <InputOTPSlot index={1} />
-              <InputOTPSlot index={2} />
-              <InputOTPSlot index={3} />
-              <InputOTPSlot index={4} />
-              <InputOTPSlot index={5} />
-            </InputOTPGroup>
-          </InputOTP>
+          <NovaInputOTP maxLength={6}>
+            <NovaInputOTPGroup>
+              <NovaInputOTPSlot index={0} />
+              <NovaInputOTPSlot index={1} />
+              <NovaInputOTPSlot index={2} />
+              <NovaInputOTPSlot index={3} />
+              <NovaInputOTPSlot index={4} />
+              <NovaInputOTPSlot index={5} />
+            </NovaInputOTPGroup>
+          </NovaInputOTP>
         }
         code={`import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from "@/components/ui/input-otp"
+  NovaInputOTP,
+  NovaInputOTPGroup,
+  NovaInputOTPSlot,
+} from "@/components"
 
-<InputOTP maxLength={6}>
-  <InputOTPGroup>
-    <InputOTPSlot index={0} />
-    <InputOTPSlot index={1} />
-    <InputOTPSlot index={2} />
-    <InputOTPSlot index={3} />
-    <InputOTPSlot index={4} />
-    <InputOTPSlot index={5} />
-  </InputOTPGroup>
-</InputOTP>`}
+<NovaInputOTP maxLength={6}>
+  <NovaInputOTPGroup>
+    <NovaInputOTPSlot index={0} />
+    <NovaInputOTPSlot index={1} />
+    <NovaInputOTPSlot index={2} />
+    <NovaInputOTPSlot index={3} />
+    <NovaInputOTPSlot index={4} />
+    <NovaInputOTPSlot index={5} />
+  </NovaInputOTPGroup>
+</NovaInputOTP>`}
       />
 
       {/* Label */}
@@ -963,15 +941,15 @@ const form = useForm({ resolver: zodResolver(schema) })
         description="Renders an accessible label associated with controls."
         preview={
           <div className="grid w-full max-w-sm items-center gap-1.5">
-            <Label htmlFor="email-label">Email</Label>
-            <Input type="email" id="email-label" placeholder="Email" />
+            <NovaLabel htmlFor="email-label">Email</NovaLabel>
+            <NovaInput type="email" id="email-label" placeholder="Email" />
           </div>
         }
-        code={`import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
+        code={`import { NovaLabel } from "@/components"
+import { NovaInput } from "@/components"
 
-<Label htmlFor="email">Email</Label>
-<Input type="email" id="email" />`}
+<NovaLabel htmlFor="email">Email</NovaLabel>
+<NovaInput type="email" id="email" />`}
       />
 
       {/* Menubar */}
@@ -980,39 +958,39 @@ import { Input } from "@/components/ui/input"
         title="Menubar"
         description="A visually persistent menu common in desktop applications."
         preview={
-          <Menubar>
-            <MenubarMenu>
-              <MenubarTrigger>File</MenubarTrigger>
-              <MenubarContent>
-                <MenubarItem>New Tab</MenubarItem>
-                <MenubarItem>New Window</MenubarItem>
-              </MenubarContent>
-            </MenubarMenu>
-            <MenubarMenu>
-              <MenubarTrigger>Edit</MenubarTrigger>
-              <MenubarContent>
-                <MenubarItem>Undo</MenubarItem>
-                <MenubarItem>Redo</MenubarItem>
-              </MenubarContent>
-            </MenubarMenu>
-          </Menubar>
+          <NovaMenubar>
+            <NovaMenubarMenu>
+              <NovaMenubarTrigger>File</NovaMenubarTrigger>
+              <NovaMenubarContent>
+                <NovaMenubarItem>New Tab</NovaMenubarItem>
+                <NovaMenubarItem>New Window</NovaMenubarItem>
+              </NovaMenubarContent>
+            </NovaMenubarMenu>
+            <NovaMenubarMenu>
+              <NovaMenubarTrigger>Edit</NovaMenubarTrigger>
+              <NovaMenubarContent>
+                <NovaMenubarItem>Undo</NovaMenubarItem>
+                <NovaMenubarItem>Redo</NovaMenubarItem>
+              </NovaMenubarContent>
+            </NovaMenubarMenu>
+          </NovaMenubar>
         }
         code={`import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarTrigger,
-} from "@/components/ui/menubar"
+  NovaMenubar,
+  NovaMenubarContent,
+  NovaMenubarItem,
+  NovaMenubarMenu,
+  NovaMenubarTrigger,
+} from "@/components"
 
-<Menubar>
-  <MenubarMenu>
-    <MenubarTrigger>File</MenubarTrigger>
-    <MenubarContent>
-      <MenubarItem>New Tab</MenubarItem>
-    </MenubarContent>
-  </MenubarMenu>
-</Menubar>`}
+<NovaMenubar>
+  <NovaMenubarMenu>
+    <NovaMenubarTrigger>File</NovaMenubarTrigger>
+    <NovaMenubarContent>
+      <NovaMenubarItem>New Tab</NovaMenubarItem>
+    </NovaMenubarContent>
+  </NovaMenubarMenu>
+</NovaMenubar>`}
       />
 
       {/* Navigation Menu */}
@@ -1021,44 +999,44 @@ import { Input } from "@/components/ui/input"
         title="Navigation Menu"
         description="A collection of links for navigating websites."
         preview={
-          <NavigationMenu>
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
-                <NavigationMenuContent>
+          <NovaNavigationMenu>
+            <NovaNavigationMenuList>
+              <NovaNavigationMenuItem>
+                <NovaNavigationMenuTrigger>Getting started</NovaNavigationMenuTrigger>
+                <NovaNavigationMenuContent>
                   <div className="grid gap-3 p-4 w-[400px]">
-                    <NavigationMenuLink
+                    <NovaNavigationMenuLink
                       href="#"
                       className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent"
                     >
                       <div className="text-sm font-medium">Introduction</div>
                       <p className="text-sm text-muted-foreground">Build accessible components.</p>
-                    </NavigationMenuLink>
+                    </NovaNavigationMenuLink>
                   </div>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
+                </NovaNavigationMenuContent>
+              </NovaNavigationMenuItem>
+            </NovaNavigationMenuList>
+          </NovaNavigationMenu>
         }
         code={`import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu"
+  NovaNavigationMenu,
+  NovaNavigationMenuContent,
+  NovaNavigationMenuItem,
+  NovaNavigationMenuLink,
+  NovaNavigationMenuList,
+  NovaNavigationMenuTrigger,
+} from "@/components"
 
-<NavigationMenu>
-  <NavigationMenuList>
-    <NavigationMenuItem>
-      <NavigationMenuTrigger>Item</NavigationMenuTrigger>
-      <NavigationMenuContent>
-        <NavigationMenuLink>Link</NavigationMenuLink>
-      </NavigationMenuContent>
-    </NavigationMenuItem>
-  </NavigationMenuList>
-</NavigationMenu>`}
+<NovaNavigationMenu>
+  <NovaNavigationMenuList>
+    <NovaNavigationMenuItem>
+      <NovaNavigationMenuTrigger>Item</NovaNavigationMenuTrigger>
+      <NovaNavigationMenuContent>
+        <NovaNavigationMenuLink>Link</NovaNavigationMenuLink>
+      </NovaNavigationMenuContent>
+    </NovaNavigationMenuItem>
+  </NovaNavigationMenuList>
+</NovaNavigationMenu>`}
       />
 
       {/* Pagination */}
@@ -1067,50 +1045,50 @@ import { Input } from "@/components/ui/input"
         title="Pagination"
         description="Pagination with page navigation, next and previous links."
         preview={
-          <Pagination>
-            <PaginationContent>
-              <PaginationItem>
-                <PaginationPrevious href="#" />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">1</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#" isActive>
+          <NovaPagination>
+            <NovaPaginationContent>
+              <NovaPaginationItem>
+                <NovaPaginationPrevious href="#" />
+              </NovaPaginationItem>
+              <NovaPaginationItem>
+                <NovaPaginationLink href="#">1</NovaPaginationLink>
+              </NovaPaginationItem>
+              <NovaPaginationItem>
+                <NovaPaginationLink href="#" isActive>
                   2
-                </PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">3</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationNext href="#" />
-              </PaginationItem>
-            </PaginationContent>
-          </Pagination>
+                </NovaPaginationLink>
+              </NovaPaginationItem>
+              <NovaPaginationItem>
+                <NovaPaginationLink href="#">3</NovaPaginationLink>
+              </NovaPaginationItem>
+              <NovaPaginationItem>
+                <NovaPaginationNext href="#" />
+              </NovaPaginationItem>
+            </NovaPaginationContent>
+          </NovaPagination>
         }
         code={`import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination"
+  NovaPagination,
+  NovaPaginationContent,
+  NovaPaginationItem,
+  NovaPaginationLink,
+  NovaPaginationNext,
+  NovaPaginationPrevious,
+} from "@/components"
 
-<Pagination>
-  <PaginationContent>
-    <PaginationItem>
-      <PaginationPrevious href="#" />
-    </PaginationItem>
-    <PaginationItem>
-      <PaginationLink href="#">1</PaginationLink>
-    </PaginationItem>
-    <PaginationItem>
-      <PaginationNext href="#" />
-    </PaginationItem>
-  </PaginationContent>
-</Pagination>`}
+<NovaPagination>
+  <NovaPaginationContent>
+    <NovaPaginationItem>
+      <NovaPaginationPrevious href="#" />
+    </NovaPaginationItem>
+    <NovaPaginationItem>
+      <NovaPaginationLink href="#">1</NovaPaginationLink>
+    </NovaPaginationItem>
+    <NovaPaginationItem>
+      <NovaPaginationNext href="#" />
+    </NovaPaginationItem>
+  </NovaPaginationContent>
+</NovaPagination>`}
       />
 
       {/* Popover */}
@@ -1119,32 +1097,32 @@ import { Input } from "@/components/ui/input"
         title="Popover"
         description="Displays rich content in a portal, triggered by a button."
         preview={
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button variant="outline">Open Popover</Button>
-            </PopoverTrigger>
-            <PopoverContent className="w-80">
+          <NovaPopover>
+            <NovaPopoverTrigger asChild>
+              <NovaButton variant="outline">Open Popover</NovaButton>
+            </NovaPopoverTrigger>
+            <NovaPopoverContent className="w-80">
               <div className="grid gap-4">
                 <div className="space-y-2">
                   <h4 className="font-medium leading-none">Dimensions</h4>
                   <p className="text-sm text-muted-foreground">Set the dimensions for the layer.</p>
                 </div>
               </div>
-            </PopoverContent>
-          </Popover>
+            </NovaPopoverContent>
+          </NovaPopover>
         }
         code={`import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
+  NovaPopover,
+  NovaPopoverContent,
+  NovaPopoverTrigger,
+} from "@/components"
 
-<Popover>
-  <PopoverTrigger>Open</PopoverTrigger>
-  <PopoverContent>
+<NovaPopover>
+  <NovaPopoverTrigger>Open</NovaPopoverTrigger>
+  <NovaPopoverContent>
     Place content here
-  </PopoverContent>
-</Popover>`}
+  </NovaPopoverContent>
+</NovaPopover>`}
       />
 
       {/* Progress */}
@@ -1154,14 +1132,14 @@ import { Input } from "@/components/ui/input"
         description="Displays an indicator showing the completion progress of a task."
         preview={
           <div className="w-full max-w-md space-y-4">
-            <Progress value={33} />
-            <Progress value={66} />
-            <Progress value={100} />
+            <NovaProgress value={33} />
+            <NovaProgress value={66} />
+            <NovaProgress value={100} />
           </div>
         }
-        code={`import { Progress } from "@/components/ui/progress"
+        code={`import { NovaProgress } from "@/components"
 
-<Progress value={33} />`}
+<NovaProgress value={33} />`}
         props={[{ name: "value", type: "number", default: "0", description: "Progress value (0-100)" }]}
       />
 
@@ -1171,30 +1149,30 @@ import { Input } from "@/components/ui/input"
         title="Radio Group"
         description="A set of checkable buttons, known as radio buttons, where only one can be checked at a time."
         preview={
-          <RadioGroup defaultValue="comfortable">
+          <NovaRadioGroup defaultValue="comfortable">
             <div className="flex items-center space-x-2">
-              <RadioGroupItem value="default" id="r1" />
-              <Label htmlFor="r1">Default</Label>
+              <NovaRadioGroupItem value="default" id="r1" />
+              <NovaLabel htmlFor="r1">Default</NovaLabel>
             </div>
             <div className="flex items-center space-x-2">
-              <RadioGroupItem value="comfortable" id="r2" />
-              <Label htmlFor="r2">Comfortable</Label>
+              <NovaRadioGroupItem value="comfortable" id="r2" />
+              <NovaLabel htmlFor="r2">Comfortable</NovaLabel>
             </div>
             <div className="flex items-center space-x-2">
-              <RadioGroupItem value="compact" id="r3" />
-              <Label htmlFor="r3">Compact</Label>
+              <NovaRadioGroupItem value="compact" id="r3" />
+              <NovaLabel htmlFor="r3">Compact</NovaLabel>
             </div>
-          </RadioGroup>
+          </NovaRadioGroup>
         }
-        code={`import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Label } from "@/components/ui/label"
+        code={`import { NovaRadioGroup, NovaRadioGroupItem } from "@/components"
+import { NovaLabel } from "@/components"
 
-<RadioGroup defaultValue="option-one">
+<NovaRadioGroup defaultValue="option-one">
   <div className="flex items-center space-x-2">
-    <RadioGroupItem value="option-one" id="option-one" />
-    <Label htmlFor="option-one">Option One</Label>
+    <NovaRadioGroupItem value="option-one" id="option-one" />
+    <NovaLabel htmlFor="option-one">Option One</NovaLabel>
   </div>
-</RadioGroup>`}
+</NovaRadioGroup>`}
       />
 
       {/* Resizable */}
@@ -1203,31 +1181,31 @@ import { Label } from "@/components/ui/label"
         title="Resizable"
         description="Accessible resizable panel groups and layouts with keyboard support."
         preview={
-          <ResizablePanelGroup direction="horizontal" className="max-w-md rounded-lg border">
-            <ResizablePanel defaultSize={50}>
+          <NovaResizablePanelGroup direction="horizontal" className="max-w-md rounded-lg border">
+            <NovaResizablePanel defaultSize={50}>
               <div className="flex h-[100px] items-center justify-center p-6">
                 <span className="font-semibold">One</span>
               </div>
-            </ResizablePanel>
-            <ResizableHandle />
-            <ResizablePanel defaultSize={50}>
+            </NovaResizablePanel>
+            <NovaResizableHandle />
+            <NovaResizablePanel defaultSize={50}>
               <div className="flex h-[100px] items-center justify-center p-6">
                 <span className="font-semibold">Two</span>
               </div>
-            </ResizablePanel>
-          </ResizablePanelGroup>
+            </NovaResizablePanel>
+          </NovaResizablePanelGroup>
         }
         code={`import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "@/components/ui/resizable"
+  NovaResizableHandle,
+  NovaResizablePanel,
+  NovaResizablePanelGroup,
+} from "@/components"
 
-<ResizablePanelGroup direction="horizontal">
-  <ResizablePanel>One</ResizablePanel>
-  <ResizableHandle />
-  <ResizablePanel>Two</ResizablePanel>
-</ResizablePanelGroup>`}
+<NovaResizablePanelGroup direction="horizontal">
+  <NovaResizablePanel>One</NovaResizablePanel>
+  <NovaResizableHandle />
+  <NovaResizablePanel>Two</NovaResizablePanel>
+</NovaResizablePanelGroup>`}
       />
 
       {/* Scroll Area */}
@@ -1236,7 +1214,7 @@ import { Label } from "@/components/ui/label"
         title="Scroll Area"
         description="Augments native scroll functionality for custom, cross-browser styling."
         preview={
-          <ScrollArea className="h-[150px] w-[250px] rounded-md border p-4">
+          <NovaScrollArea className="h-[150px] w-[250px] rounded-md border p-4">
             <div className="space-y-4">
               {Array.from({ length: 10 }).map((_, i) => (
                 <div key={i} className="text-sm">
@@ -1244,13 +1222,13 @@ import { Label } from "@/components/ui/label"
                 </div>
               ))}
             </div>
-          </ScrollArea>
+          </NovaScrollArea>
         }
-        code={`import { ScrollArea } from "@/components/ui/scroll-area"
+        code={`import { NovaScrollArea } from "@/components"
 
-<ScrollArea className="h-[200px] w-[350px]">
+<NovaScrollArea className="h-[200px] w-[350px]">
   {/* Scrollable content */}
-</ScrollArea>`}
+</NovaScrollArea>`}
       />
 
       {/* Select */}
@@ -1259,33 +1237,25 @@ import { Label } from "@/components/ui/label"
         title="Select"
         description="Displays a list of options for the user to pick from, triggered by a button."
         preview={
-          <Select>
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Select a fruit" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="apple">Apple</SelectItem>
-              <SelectItem value="banana">Banana</SelectItem>
-              <SelectItem value="orange">Orange</SelectItem>
-            </SelectContent>
-          </Select>
+          <NovaSelect
+            className="w-[180px]"
+            placeholder="Select a fruit"
+            options={[
+              { value: "apple", label: "Apple" },
+              { value: "banana", label: "Banana" },
+              { value: "orange", label: "Orange" },
+            ]}
+            
+          />
         }
-        code={`import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
+        code={`import { NovaSelect } from "@/components"
 
-<Select>
-  <SelectTrigger>
-    <SelectValue placeholder="Select" />
-  </SelectTrigger>
-  <SelectContent>
-    <SelectItem value="apple">Apple</SelectItem>
-  </SelectContent>
-</Select>`}
+<NovaSelect
+  placeholder="Select"
+  options={[
+    { value: "apple", label: "Apple" },
+  ]}
+/>`}
       />
 
       {/* Separator */}
@@ -1299,20 +1269,20 @@ import { Label } from "@/components/ui/label"
               <h4 className="text-sm font-medium">Nova.UI</h4>
               <p className="text-sm text-muted-foreground">An open-source design system.</p>
             </div>
-            <Separator className="my-4" />
+            <NovaSeparator className="my-4" />
             <div className="flex h-5 items-center space-x-4 text-sm">
               <div>Docs</div>
-              <Separator orientation="vertical" />
+              <NovaSeparator orientation="vertical" />
               <div>Components</div>
-              <Separator orientation="vertical" />
+              <NovaSeparator orientation="vertical" />
               <div>GitHub</div>
             </div>
           </div>
         }
-        code={`import { Separator } from "@/components/ui/separator"
+        code={`import { NovaSeparator } from "@/components"
 
-<Separator />
-<Separator orientation="vertical" />`}
+<NovaSeparator />
+<NovaSeparator orientation="vertical" />`}
         props={[
           {
             name: "orientation",
@@ -1329,36 +1299,36 @@ import { Label } from "@/components/ui/label"
         title="Sheet"
         description="Extends the Dialog component to display content that complements the main content."
         preview={
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="outline">Open Sheet</Button>
-            </SheetTrigger>
-            <SheetContent>
-              <SheetHeader>
-                <SheetTitle>Edit Profile</SheetTitle>
-                <SheetDescription>Make changes to your profile here.</SheetDescription>
-              </SheetHeader>
+          <NovaSheet>
+            <NovaSheetTrigger asChild>
+              <NovaButton variant="outline">Open Sheet</NovaButton>
+            </NovaSheetTrigger>
+            <NovaSheetContent>
+              <NovaSheetHeader>
+                <NovaSheetTitle>Edit Profile</NovaSheetTitle>
+                <NovaSheetDescription>Make changes to your profile here.</NovaSheetDescription>
+              </NovaSheetHeader>
               <div className="py-4">Sheet content goes here.</div>
-            </SheetContent>
-          </Sheet>
+            </NovaSheetContent>
+          </NovaSheet>
         }
         code={`import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
+  NovaSheet,
+  NovaSheetContent,
+  NovaSheetDescription,
+  NovaSheetHeader,
+  NovaSheetTitle,
+  NovaSheetTrigger,
+} from "@/components"
 
-<Sheet>
-  <SheetTrigger>Open</SheetTrigger>
-  <SheetContent>
-    <SheetHeader>
-      <SheetTitle>Title</SheetTitle>
-    </SheetHeader>
-  </SheetContent>
-</Sheet>`}
+<NovaSheet>
+  <NovaSheetTrigger>Open</NovaSheetTrigger>
+  <NovaSheetContent>
+    <NovaSheetHeader>
+      <NovaSheetTitle>Title</NovaSheetTitle>
+    </NovaSheetHeader>
+  </NovaSheetContent>
+</NovaSheet>`}
       />
 
       {/* Skeleton */}
@@ -1368,17 +1338,17 @@ import { Label } from "@/components/ui/label"
         description="Use to show a placeholder while content is loading."
         preview={
           <div className="flex items-center space-x-4">
-            <Skeleton className="h-12 w-12 rounded-full" />
+            <NovaSkeleton className="h-12 w-12 rounded-full" />
             <div className="space-y-2">
-              <Skeleton className="h-4 w-[250px]" />
-              <Skeleton className="h-4 w-[200px]" />
+              <NovaSkeleton className="h-4 w-[250px]" />
+              <NovaSkeleton className="h-4 w-[200px]" />
             </div>
           </div>
         }
-        code={`import { Skeleton } from "@/components/ui/skeleton"
+        code={`import { NovaSkeleton } from "@/components"
 
-<Skeleton className="h-12 w-12 rounded-full" />
-<Skeleton className="h-4 w-[250px]" />`}
+<NovaSkeleton className="h-12 w-12 rounded-full" />
+<NovaSkeleton className="h-4 w-[250px]" />`}
       />
 
       {/* Slider */}
@@ -1388,13 +1358,13 @@ import { Label } from "@/components/ui/label"
         description="An input where the user selects a value from within a given range."
         preview={
           <div className="w-full max-w-sm space-y-4">
-            <Slider value={sliderValue} onValueChange={setSliderValue} max={100} step={1} />
+            <NovaSlider value={sliderValue} onValueChange={setSliderValue} max={100} step={1} />
             <p className="text-sm text-muted-foreground">Value: {sliderValue}</p>
           </div>
         }
-        code={`import { Slider } from "@/components/ui/slider"
+        code={`import { NovaSlider } from "@/components"
 
-<Slider defaultValue={[50]} max={100} step={1} />`}
+<NovaSlider defaultValue={[50]} max={100} step={1} />`}
         props={[
           { name: "value", type: "number[]", description: "Controlled value" },
           { name: "defaultValue", type: "number[]", description: "Default value" },
@@ -1410,7 +1380,7 @@ import { Label } from "@/components/ui/label"
         description="An opinionated toast component for React."
         preview={
           <div className="flex gap-2">
-            <Button
+            <NovaButton
               variant="outline"
               onClick={() =>
                 toast("Scheduled: Catch up", {
@@ -1419,17 +1389,17 @@ import { Label } from "@/components/ui/label"
               }
             >
               Show Toast with Description
-            </Button>
+            </NovaButton>
           </div>
         }
-        code={`import { Button } from "@/components/ui/button"
+        code={`import { NovaButton } from "@/components"
 import { toast } from "sonner"
 
-<Button onClick={() => toast("Scheduled: Catch up", {
+<NovaButton onClick={() => toast("Scheduled: Catch up", {
   description: "Friday, February 10, 2024 at 5:57 PM",
 })}>
   Show Toast
-</Button>`}
+</NovaButton>`}
       />
 
       {/* Switch */}
@@ -1440,21 +1410,21 @@ import { toast } from "sonner"
         preview={
           <div className="flex flex-col gap-4">
             <div className="flex items-center space-x-2">
-              <Switch id="airplane-mode" />
-              <Label htmlFor="airplane-mode">Airplane Mode</Label>
+              <NovaSwitch id="airplane-mode" />
+              <NovaLabel htmlFor="airplane-mode">Airplane Mode</NovaLabel>
             </div>
             <div className="flex items-center space-x-2">
-              <Switch id="disabled-switch" disabled />
-              <Label htmlFor="disabled-switch">Disabled</Label>
+              <NovaSwitch id="disabled-switch" disabled />
+              <NovaLabel htmlFor="disabled-switch">Disabled</NovaLabel>
             </div>
           </div>
         }
-        code={`import { Switch } from "@/components/ui/switch"
-import { Label } from "@/components/ui/label"
+        code={`import { NovaSwitch } from "@/components"
+import { NovaLabel } from "@/components"
 
 <div className="flex items-center space-x-2">
-  <Switch id="airplane-mode" />
-  <Label htmlFor="airplane-mode">Airplane Mode</Label>
+  <NovaSwitch id="airplane-mode" />
+  <NovaLabel htmlFor="airplane-mode">Airplane Mode</NovaLabel>
 </div>`}
         props={[
           { name: "checked", type: "boolean", description: "Controlled checked state" },
@@ -1469,49 +1439,49 @@ import { Label } from "@/components/ui/label"
         title="Table"
         description="A responsive table component."
         preview={
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead className="w-[100px]">Invoice</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead className="text-right">Amount</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              <TableRow>
-                <TableCell className="font-medium">INV001</TableCell>
-                <TableCell>Paid</TableCell>
-                <TableCell className="text-right">$250.00</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="font-medium">INV002</TableCell>
-                <TableCell>Pending</TableCell>
-                <TableCell className="text-right">$150.00</TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
+          <NovaTable>
+            <NovaTableHeader>
+              <NovaTableRow>
+                <NovaTableHead className="w-[100px]">Invoice</NovaTableHead>
+                <NovaTableHead>Status</NovaTableHead>
+                <NovaTableHead className="text-right">Amount</NovaTableHead>
+              </NovaTableRow>
+            </NovaTableHeader>
+            <NovaTableBody>
+              <NovaTableRow>
+                <NovaTableCell className="font-medium">INV001</NovaTableCell>
+                <NovaTableCell>Paid</NovaTableCell>
+                <NovaTableCell className="text-right">$250.00</NovaTableCell>
+              </NovaTableRow>
+              <NovaTableRow>
+                <NovaTableCell className="font-medium">INV002</NovaTableCell>
+                <NovaTableCell>Pending</NovaTableCell>
+                <NovaTableCell className="text-right">$150.00</NovaTableCell>
+              </NovaTableRow>
+            </NovaTableBody>
+          </NovaTable>
         }
         code={`import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
+  NovaTable,
+  NovaTableBody,
+  NovaTableCell,
+  NovaTableHead,
+  NovaTableHeader,
+  NovaTableRow,
+} from "@/components"
 
-<Table>
-  <TableHeader>
-    <TableRow>
-      <TableHead>Column</TableHead>
-    </TableRow>
-  </TableHeader>
-  <TableBody>
-    <TableRow>
-      <TableCell>Cell</TableCell>
-    </TableRow>
-  </TableBody>
-</Table>`}
+<NovaTable>
+  <NovaTableHeader>
+    <NovaTableRow>
+      <NovaTableHead>Column</NovaTableHead>
+    </NovaTableRow>
+  </NovaTableHeader>
+  <NovaTableBody>
+    <NovaTableRow>
+      <NovaTableCell>Cell</NovaTableCell>
+    </NovaTableRow>
+  </NovaTableBody>
+</NovaTable>`}
       />
 
       {/* Tabs */}
@@ -1520,29 +1490,29 @@ import { Label } from "@/components/ui/label"
         title="Tabs"
         description="A set of layered sections of content, displayed one at a time."
         preview={
-          <Tabs defaultValue="account" className="w-[400px]">
-            <TabsList>
-              <TabsTrigger value="account">Account</TabsTrigger>
-              <TabsTrigger value="password">Password</TabsTrigger>
-            </TabsList>
-            <TabsContent value="account" className="p-4 border rounded-b-lg">
+          <NovaTabs defaultValue="account" className="w-[400px]">
+            <NovaTabsList>
+              <NovaTabsTrigger value="account">Account</NovaTabsTrigger>
+              <NovaTabsTrigger value="password">Password</NovaTabsTrigger>
+            </NovaTabsList>
+            <NovaTabsContent value="account" className="p-4 border rounded-b-lg">
               Make changes to your account here.
-            </TabsContent>
-            <TabsContent value="password" className="p-4 border rounded-b-lg">
+            </NovaTabsContent>
+            <NovaTabsContent value="password" className="p-4 border rounded-b-lg">
               Change your password here.
-            </TabsContent>
-          </Tabs>
+            </NovaTabsContent>
+          </NovaTabs>
         }
-        code={`import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+        code={`import { NovaTabs, NovaTabsContent, NovaTabsList, NovaTabsTrigger } from "@/components"
 
-<Tabs defaultValue="account">
-  <TabsList>
-    <TabsTrigger value="account">Account</TabsTrigger>
-    <TabsTrigger value="password">Password</TabsTrigger>
-  </TabsList>
-  <TabsContent value="account">Account content</TabsContent>
-  <TabsContent value="password">Password content</TabsContent>
-</Tabs>`}
+<NovaTabs defaultValue="account">
+  <NovaTabsList>
+    <NovaTabsTrigger value="account">Account</NovaTabsTrigger>
+    <NovaTabsTrigger value="password">Password</NovaTabsTrigger>
+  </NovaTabsList>
+  <NovaTabsContent value="account">Account content</NovaTabsContent>
+  <NovaTabsContent value="password">Password content</NovaTabsContent>
+</NovaTabs>`}
       />
 
       {/* Textarea */}
@@ -1552,13 +1522,13 @@ import { Label } from "@/components/ui/label"
         description="Displays a form textarea or a component that looks like a textarea."
         preview={
           <div className="w-full max-w-sm space-y-4">
-            <Textarea placeholder="Type your message here." />
-            <Textarea placeholder="Disabled" disabled />
+            <NovaTextarea placeholder="Type your message here." />
+            <NovaTextarea placeholder="Disabled" disabled />
           </div>
         }
-        code={`import { Textarea } from "@/components/ui/textarea"
+        code={`import { NovaTextarea } from "@/components"
 
-<Textarea placeholder="Type your message here." />`}
+<NovaTextarea placeholder="Type your message here." />`}
         props={[
           { name: "placeholder", type: "string", description: "Placeholder text" },
           { name: "disabled", type: "boolean", default: "false", description: "Disable the textarea" },
@@ -1572,7 +1542,7 @@ import { Label } from "@/components/ui/label"
         description="A succinct message that is displayed temporarily."
         preview={
           <div className="flex gap-2">
-            <Button
+            <NovaButton
               variant="outline"
               onClick={() =>
                 toast("Scheduled: Catch up", {
@@ -1581,7 +1551,7 @@ import { Label } from "@/components/ui/label"
               }
             >
               Show Toast with Description
-            </Button>
+            </NovaButton>
           </div>
         }
         code={`import { useToast } from "@/hooks/use-toast"
@@ -1604,23 +1574,23 @@ toast("Event has been created", {
         description="A two-state button that can be either on or off."
         preview={
           <div className="flex gap-2">
-            <Toggle aria-label="Toggle italic">
+            <NovaToggle aria-label="Toggle italic">
               <Bold className="h-4 w-4" />
-            </Toggle>
-            <Toggle aria-label="Toggle italic">
+            </NovaToggle>
+            <NovaToggle aria-label="Toggle italic">
               <Italic className="h-4 w-4" />
-            </Toggle>
-            <Toggle aria-label="Toggle underline">
+            </NovaToggle>
+            <NovaToggle aria-label="Toggle underline">
               <Underline className="h-4 w-4" />
-            </Toggle>
+            </NovaToggle>
           </div>
         }
-        code={`import { Toggle } from "@/components/ui/toggle"
+        code={`import { NovaToggle } from "@/components"
 import { Bold } from 'lucide-react'
 
-<Toggle aria-label="Toggle bold">
+<NovaToggle aria-label="Toggle bold">
   <Bold className="h-4 w-4" />
-</Toggle>`}
+</NovaToggle>`}
         props={[
           {
             name: "variant",
@@ -1639,28 +1609,28 @@ import { Bold } from 'lucide-react'
         title="Toggle Group"
         description="A set of two-state buttons that can be toggled on or off."
         preview={
-          <ToggleGroup type="multiple">
-            <ToggleGroupItem value="bold" aria-label="Toggle bold">
+          <NovaToggleGroup type="multiple">
+            <NovaToggleGroupItem value="bold" aria-label="Toggle bold">
               <Bold className="h-4 w-4" />
-            </ToggleGroupItem>
-            <ToggleGroupItem value="italic" aria-label="Toggle italic">
+            </NovaToggleGroupItem>
+            <NovaToggleGroupItem value="italic" aria-label="Toggle italic">
               <Italic className="h-4 w-4" />
-            </ToggleGroupItem>
-            <ToggleGroupItem value="underline" aria-label="Toggle underline">
+            </NovaToggleGroupItem>
+            <NovaToggleGroupItem value="underline" aria-label="Toggle underline">
               <Underline className="h-4 w-4" />
-            </ToggleGroupItem>
-          </ToggleGroup>
+            </NovaToggleGroupItem>
+          </NovaToggleGroup>
         }
-        code={`import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+        code={`import { NovaToggleGroup, NovaToggleGroupItem } from "@/components"
 
-<ToggleGroup type="multiple">
-  <ToggleGroupItem value="bold">
+<NovaToggleGroup type="multiple">
+  <NovaToggleGroupItem value="bold">
     <Bold className="h-4 w-4" />
-  </ToggleGroupItem>
-  <ToggleGroupItem value="italic">
+  </NovaToggleGroupItem>
+  <NovaToggleGroupItem value="italic">
     <Italic className="h-4 w-4" />
-  </ToggleGroupItem>
-</ToggleGroup>`}
+  </NovaToggleGroupItem>
+</NovaToggleGroup>`}
         props={[
           { name: "type", type: '"single" | "multiple"', required: true, description: "Selection mode" },
           { name: "value", type: "string | string[]", description: "Controlled value" },
@@ -1673,32 +1643,15 @@ import { Bold } from 'lucide-react'
         title="Tooltip"
         description="A popup that displays information related to an element when the element receives focus or is hovered."
         preview={
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button variant="outline">Hover me</Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Add to library</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+          <NovaTooltip content={<p>Add to library</p>}>
+            <NovaButton variant="outline">Hover me</NovaButton>
+          </NovaTooltip>
         }
-        code={`import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
+        code={`import { NovaTooltip, NovaButton } from "@/components"
 
-<TooltipProvider>
-  <Tooltip>
-    <TooltipTrigger>Hover</TooltipTrigger>
-    <TooltipContent>
-      <p>Tooltip content</p>
-    </TooltipContent>
-  </Tooltip>
-</TooltipProvider>`}
+<NovaTooltip content={<p>Tooltip content</p>}>
+  <NovaButton variant="outline">Hover</NovaButton>
+</NovaTooltip>`}
         props={[
           { name: "delayDuration", type: "number", default: "200", description: "Delay before showing (ms)" },
           {

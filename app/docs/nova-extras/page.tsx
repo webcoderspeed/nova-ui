@@ -1,6 +1,6 @@
 import Link from "next/link"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { NovaCard, NovaCardContent, NovaCardDescription, NovaCardHeader, NovaCardTitle } from "@/components/nova/nova-card"
+import { NovaBadge } from "@/components/nova/nova-badge"
 import { Sparkles, Zap, Layers, MousePointer, Box, ArrowRight } from "lucide-react"
 
 const novaComponents = [
@@ -47,9 +47,9 @@ export default function NovaExtrasPage() {
       <div className="space-y-4">
         <div className="flex items-center gap-2">
           <p className="text-sm font-medium text-primary">Nova.UI Extras</p>
-          <Badge variant="secondary" className="text-xs">
+          <NovaBadge variant="secondary" className="text-xs">
             Enhanced
-          </Badge>
+          </NovaBadge>
         </div>
         <h1 className="text-4xl font-bold tracking-tight">Nova.UI Extras</h1>
         <p className="text-lg text-muted-foreground">
@@ -63,31 +63,31 @@ export default function NovaExtrasPage() {
           const Icon = component.icon
           return (
             <Link key={component.href} href={component.href}>
-              <Card className="h-full bg-card/50 border-border hover:border-primary/50 hover:bg-card/80 transition-all duration-200 group">
-                <CardHeader>
+              <NovaCard className="h-full bg-card/50 border-border hover:border-primary/50 hover:bg-card/80 transition-all duration-200 group">
+                <NovaCardHeader>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary/20 to-primary/5">
                         <Icon className="h-5 w-5 text-primary" />
                       </div>
-                      <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                      <NovaCardTitle className="text-lg group-hover:text-primary transition-colors">
                         {component.title}
-                      </CardTitle>
+                      </NovaCardTitle>
                     </div>
                     <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-primary" />
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="mb-3">{component.description}</CardDescription>
+                </NovaCardHeader>
+                <NovaCardContent>
+                  <NovaCardDescription className="mb-3">{component.description}</NovaCardDescription>
                   <div className="flex flex-wrap gap-2">
                     {component.features.map((feature) => (
-                      <Badge key={feature} variant="outline" className="text-xs">
+                      <NovaBadge key={feature} variant="outline" className="text-xs">
                         {feature}
-                      </Badge>
+                      </NovaBadge>
                     ))}
                   </div>
-                </CardContent>
-              </Card>
+                </NovaCardContent>
+              </NovaCard>
             </Link>
           )
         })}

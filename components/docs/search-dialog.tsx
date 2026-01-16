@@ -3,15 +3,23 @@
 import * as React from "react"
 import { useRouter } from "next/navigation"
 import {
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-} from "@/components/ui/command"
-import { Box, Sparkles, BookOpen, Compass, Code, Layers } from "lucide-react"
+  NovaCommandDialog,
+  NovaCommandEmpty,
+  NovaCommandGroup,
+  NovaCommandInput,
+  NovaCommandItem,
+  NovaCommandList,
+  NovaCommandSeparator,
+} from "@/components/nova/nova-command"
+import {
+  Search,
+  Box,
+  Sparkles,
+  BookOpen,
+  Compass,
+  Code,
+  Layers,
+} from "lucide-react"
 
 const searchItems = [
   // Getting Started
@@ -152,15 +160,15 @@ export function SearchDialog() {
   }, [])
 
   return (
-    <CommandDialog open={open} onOpenChange={setOpen}>
-      <CommandInput placeholder="Search documentation..." />
-      <CommandList>
-        <CommandEmpty>No results found.</CommandEmpty>
+    <NovaCommandDialog open={open} onOpenChange={setOpen}>
+      <NovaCommandInput placeholder="Search documentation..." />
+      <NovaCommandList>
+        <NovaCommandEmpty>No results found.</NovaCommandEmpty>
         {searchItems.map((group) => (
           <React.Fragment key={group.group}>
-            <CommandGroup heading={group.group}>
+            <NovaCommandGroup heading={group.group}>
               {group.items.map((item) => (
-                <CommandItem
+                <NovaCommandItem
                   key={item.href}
                   value={`${item.title} ${item.keywords.join(" ")}`}
                   onSelect={() => runCommand(() => router.push(item.href))}
@@ -168,14 +176,14 @@ export function SearchDialog() {
                 >
                   <group.icon className="mr-2 h-4 w-4 text-muted-foreground" />
                   <span>{item.title}</span>
-                </CommandItem>
+                </NovaCommandItem>
               ))}
-            </CommandGroup>
-            <CommandSeparator />
+            </NovaCommandGroup>
+            <NovaCommandSeparator />
           </React.Fragment>
         ))}
-      </CommandList>
-    </CommandDialog>
+      </NovaCommandList>
+    </NovaCommandDialog>
   )
 }
 
@@ -202,30 +210,49 @@ export function SearchButton({ className }: { className?: string }) {
 
   return (
     <>
-      <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Search documentation..." />
-        <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
+      <button
+        onClick={() => setOpen(true)}
+        className="group flex items-center justify-between rounded-md border border-input bg-background px-4 py-2 text-sm text-muted-foreground ring-offset-background hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 lg:w-64"
+      >
+        <span className="flex items-center gap-2">
+          <Search className="h-4 w-4" />
+          <span>Search documentation...</span>
+        </span>
+        <kbd className="pointer-events-none hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
+          <span className="text-xs">⌘</span>K
+        </kbd>
+      </button>
+
+      <NovaCommandDialog open={open} onOpenChange={setOpen}>
+        <NovaCommandInput placeholder="Type a command or search..." />
+        <NovaCommandList>
+          <NovaCommandEmpty>No results found.</NovaCommandEmpty>
           {searchItems.map((group) => (
-            <React.Fragment key={group.group}>
-              <CommandGroup heading={group.group}>
-                {group.items.map((item) => (
-                  <CommandItem
-                    key={item.href}
-                    value={`${item.title} ${item.keywords.join(" ")}`}
-                    onSelect={() => runCommand(() => router.push(item.href))}
-                    className="cursor-pointer"
-                  >
-                    <group.icon className="mr-2 h-4 w-4 text-muted-foreground" />
-                    <span>{item.title}</span>
-                  </CommandItem>
-                ))}
-              </CommandGroup>
-              <CommandSeparator />
-            </React.Fragment>
+            <NovaCommandGroup key={group.group} heading={group.group}>
+              {group.items.map((item) => (
+                <NovaCommandItem
+                  key={item.href}
+                  value={item.title}
+                  onSelect={() => {
+                    runCommand(() => router.push(item.href))
+                  }}
+                  className="flex items-center gap-2"
+                >
+                  <div className="flex h-6 w-6 items-center justify-center rounded-md border bg-background/50">
+                    {group.icon && <group.icon className="h-3 w-3" />}
+                  </div>
+                  <span>{item.title}</span>
+                  {item.keywords && (
+                    <span className="ml-auto hidden text-xs text-muted-foreground sm:inline-block">
+                      {item.keywords[0]}
+                    </span>
+                  )}
+                </NovaCommandItem>
+              ))}
+            </NovaCommandGroup>
           ))}
-        </CommandList>
-      </CommandDialog>
+        </NovaCommandList>
+      </NovaCommandDialog>
     </>
   )
 }

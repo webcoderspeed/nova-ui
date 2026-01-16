@@ -2,8 +2,19 @@
 
 import type { ReactNode } from "react"
 import { CodeBlock } from "./code-block"
-import { Badge } from "@/components/ui/badge"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import {
+  NovaBadge,
+  NovaTable,
+  NovaTableBody,
+  NovaTableCell,
+  NovaTableHead,
+  NovaTableHeader,
+  NovaTableRow,
+  NovaTabs,
+  NovaTabsContent,
+  NovaTabsList,
+  NovaTabsTrigger,
+} from "@/components"
 
 interface ComponentDocProps {
   id: string
@@ -44,26 +55,26 @@ export function ComponentDoc({
       <div className="flex items-center gap-3 mb-2">
         <h3 className="text-xl font-semibold">{title}</h3>
         {isNova && (
-          <Badge variant="secondary" className="bg-primary/10 text-primary">
+          <NovaBadge variant="secondary" className="bg-primary/10 text-primary">
             Nova.UI
-          </Badge>
+          </NovaBadge>
         )}
         {badgeText && (
-          <Badge variant="outline" className="text-muted-foreground">
+          <NovaBadge variant="outline" className="text-muted-foreground">
             {badgeText}
-          </Badge>
+          </NovaBadge>
         )}
       </div>
       <p className="text-muted-foreground mb-6">{description}</p>
 
-      <Tabs defaultValue="preview" className="w-full">
-        <TabsList className="mb-4">
-          <TabsTrigger value="preview">Preview</TabsTrigger>
-          <TabsTrigger value="code">Code</TabsTrigger>
-          {props && <TabsTrigger value="props">Props</TabsTrigger>}
-        </TabsList>
+      <NovaTabs defaultValue="preview" className="w-full">
+        <NovaTabsList className="mb-4">
+          <NovaTabsTrigger value="preview">Preview</NovaTabsTrigger>
+          <NovaTabsTrigger value="code">Code</NovaTabsTrigger>
+          {props && <NovaTabsTrigger value="props">Props</NovaTabsTrigger>}
+        </NovaTabsList>
 
-        <TabsContent value="preview">
+        <NovaTabsContent value="preview">
           <div className="rounded-lg border border-border bg-card p-6 flex items-center justify-center min-h-[120px]">
             <div className="flex flex-wrap gap-4 items-center justify-center">{preview}</div>
           </div>
@@ -80,9 +91,9 @@ export function ComponentDoc({
               </div>
             </div>
           )}
-        </TabsContent>
+        </NovaTabsContent>
 
-        <TabsContent value="code">
+        <NovaTabsContent value="code">
           <CodeBlock code={code} language="tsx" filename={`${id}.tsx`} />
           {usage && (
             <div className="mt-4">
@@ -90,40 +101,40 @@ export function ComponentDoc({
               <CodeBlock code={usage} language="tsx" />
             </div>
           )}
-        </TabsContent>
+        </NovaTabsContent>
 
         {props && (
-          <TabsContent value="props">
+          <NovaTabsContent value="props">
             <div className="rounded-lg border border-border overflow-hidden">
-              <table className="w-full text-sm">
-                <thead className="bg-secondary/50">
-                  <tr>
-                    <th className="text-left px-4 py-2 font-medium">Prop</th>
-                    <th className="text-left px-4 py-2 font-medium">Type</th>
-                    <th className="text-left px-4 py-2 font-medium hidden sm:table-cell">Default</th>
-                    <th className="text-left px-4 py-2 font-medium hidden md:table-cell">Description</th>
-                  </tr>
-                </thead>
-                <tbody>
+              <NovaTable>
+                <NovaTableHeader>
+                  <NovaTableRow>
+                    <NovaTableHead className="w-[150px]">Prop</NovaTableHead>
+                    <NovaTableHead className="w-[150px]">Type</NovaTableHead>
+                    <NovaTableHead className="w-[150px] hidden sm:table-cell">Default</NovaTableHead>
+                    <NovaTableHead className="hidden md:table-cell">Description</NovaTableHead>
+                  </NovaTableRow>
+                </NovaTableHeader>
+                <NovaTableBody>
                   {props.map((prop, i) => (
-                    <tr key={i} className="border-t border-border">
-                      <td className="px-4 py-2 font-mono text-xs">
+                    <NovaTableRow key={i}>
+                      <NovaTableCell className="font-mono text-xs">
                         {prop.name}
                         {prop.required && <span className="text-destructive ml-1">*</span>}
-                      </td>
-                      <td className="px-4 py-2 font-mono text-xs text-primary">{prop.type}</td>
-                      <td className="px-4 py-2 font-mono text-xs text-muted-foreground hidden sm:table-cell">
+                      </NovaTableCell>
+                      <NovaTableCell className="font-mono text-xs text-primary">{prop.type}</NovaTableCell>
+                      <NovaTableCell className="font-mono text-xs text-muted-foreground hidden sm:table-cell">
                         {prop.default || "-"}
-                      </td>
-                      <td className="px-4 py-2 text-muted-foreground hidden md:table-cell">{prop.description}</td>
-                    </tr>
+                      </NovaTableCell>
+                      <NovaTableCell className="text-muted-foreground hidden md:table-cell">{prop.description}</NovaTableCell>
+                    </NovaTableRow>
                   ))}
-                </tbody>
-              </table>
+                </NovaTableBody>
+              </NovaTable>
             </div>
-          </TabsContent>
+          </NovaTabsContent>
         )}
-      </Tabs>
+      </NovaTabs>
     </section>
   )
 }

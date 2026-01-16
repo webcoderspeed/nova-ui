@@ -23,7 +23,6 @@ import { NovaTooltip } from "@/components/nova/nova-tooltip"
 import { NovaSelect } from "@/components/nova/nova-select"
 import { NovaSlider } from "@/components/nova/nova-slider"
 import { NovaTextarea } from "@/components/nova/nova-textarea"
-import { Button } from "@/components/ui/button"
 import { Mail, Star, Home, Settings, User } from "lucide-react"
 
 export function NovaExtras() {
@@ -241,14 +240,14 @@ export function NovaExtras() {
         preview={
           <div className="flex gap-3">
             <NovaDialog
-              trigger={<Button variant="outline">Default Dialog</Button>}
+              trigger={<NovaButton variant="outline">Default Dialog</NovaButton>}
               title="Dialog Title"
               description="This is a description of the dialog."
             >
               <p>Dialog content goes here.</p>
             </NovaDialog>
             <NovaDialog
-              trigger={<Button variant="outline">Slide Animation</Button>}
+              trigger={<NovaButton variant="outline">Slide Animation</NovaButton>}
               title="Slide In"
               animation="slide"
               size="lg"
@@ -260,7 +259,7 @@ export function NovaExtras() {
         code={`import { NovaDialog, NovaConfirmDialog } from "@/components/nova/nova-dialog"
 
 <NovaDialog
-  trigger={<Button>Open</Button>}
+  trigger={<NovaButton>Open</NovaButton>}
   title="Title"
   description="Description"
 >
@@ -268,7 +267,7 @@ export function NovaExtras() {
 </NovaDialog>
 
 <NovaConfirmDialog
-  trigger={<Button>Delete</Button>}
+  trigger={<NovaButton>Delete</NovaButton>}
   title="Are you sure?"
   destructive
   onConfirm={() => {}}
@@ -365,7 +364,7 @@ export function NovaExtras() {
               status="info"
               title="Info"
               description="New features available."
-              action={<Button size="sm">Learn More</Button>}
+              action={<NovaButton size="sm">Learn More</NovaButton>}
             />
           </div>
         }
@@ -380,7 +379,7 @@ export function NovaExtras() {
 <NovaAlert 
   status="error" 
   title="Error" 
-  action={<Button>Retry</Button>} 
+  action={<NovaButton>Retry</NovaButton>} 
 />`}
         props={[
           {
@@ -628,27 +627,27 @@ export function NovaExtras() {
         preview={
           <div className="flex gap-4">
             <NovaTooltip content="Default tooltip">
-              <Button variant="outline">Hover me</Button>
+              <NovaButton variant="outline">Hover me</NovaButton>
             </NovaTooltip>
             <NovaTooltip content="Light variant" variant="light">
-              <Button variant="outline">Light</Button>
+              <NovaButton variant="outline">Light</NovaButton>
             </NovaTooltip>
             <NovaTooltip content="Dark variant" variant="dark">
-              <Button variant="outline">Dark</Button>
+              <NovaButton variant="outline">Dark</NovaButton>
             </NovaTooltip>
             <NovaTooltip content="Large tooltip with more content" size="lg" side="bottom">
-              <Button variant="outline">Large</Button>
+              <NovaButton variant="outline">Large</NovaButton>
             </NovaTooltip>
           </div>
         }
         code={`import { NovaTooltip } from "@/components/nova/nova-tooltip"
 
 <NovaTooltip content="Tooltip text">
-  <Button>Hover me</Button>
+  <NovaButton>Hover me</NovaButton>
 </NovaTooltip>
 
 <NovaTooltip content="Dark" variant="dark" side="bottom">
-  <Button>Dark</Button>
+  <NovaButton>Dark</NovaButton>
 </NovaTooltip>`}
         props={[
           { name: "content", type: "ReactNode", required: true, description: "Tooltip content" },

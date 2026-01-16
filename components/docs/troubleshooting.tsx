@@ -1,5 +1,15 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import {
+  NovaCard,
+  NovaCardContent,
+  NovaCardHeader,
+  NovaCardTitle,
+} from "@/components/nova/nova-card"
+import {
+  NovaAccordion,
+  NovaAccordionContent,
+  NovaAccordionItem,
+  NovaAccordionTrigger,
+} from "@/components/nova/nova-accordion"
 import { CodeBlock } from "./code-block"
 import { MessageSquare, Github, BookOpen } from "lucide-react"
 
@@ -91,50 +101,50 @@ export function Troubleshooting() {
       </div>
 
       {/* Common Issues */}
-      <Card data-section="common-issues" id="common-issues" className="mb-8 scroll-mt-20 bg-card">
-        <CardHeader>
-          <CardTitle>Common Issues</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Accordion type="single" collapsible className="w-full">
+      <NovaCard data-section="common-issues" id="common-issues" className="mb-8 scroll-mt-20 bg-card">
+        <NovaCardHeader>
+          <NovaCardTitle>Common Issues</NovaCardTitle>
+        </NovaCardHeader>
+        <NovaCardContent>
+          <NovaAccordion type="single" collapsible className="w-full">
             {commonIssues.map((issue, index) => (
-              <AccordionItem key={index} value={`issue-${index}`}>
-                <AccordionTrigger className="text-left">{issue.question}</AccordionTrigger>
-                <AccordionContent className="space-y-4">
+              <NovaAccordionItem key={index} value={`issue-${index}`}>
+                <NovaAccordionTrigger className="text-left">{issue.question}</NovaAccordionTrigger>
+                <NovaAccordionContent className="space-y-4">
                   <p className="text-muted-foreground">{issue.answer}</p>
                   {issue.code && <CodeBlock code={issue.code} language="tsx" />}
-                </AccordionContent>
-              </AccordionItem>
+                </NovaAccordionContent>
+              </NovaAccordionItem>
             ))}
-          </Accordion>
-        </CardContent>
-      </Card>
+          </NovaAccordion>
+        </NovaCardContent>
+      </NovaCard>
 
       {/* FAQ */}
-      <Card data-section="faq" id="faq" className="mb-8 scroll-mt-20 bg-card">
-        <CardHeader>
-          <CardTitle>Frequently Asked Questions</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Accordion type="single" collapsible className="w-full">
+      <NovaCard data-section="faq" id="faq" className="mb-8 scroll-mt-20 bg-card">
+        <NovaCardHeader>
+          <NovaCardTitle>Frequently Asked Questions</NovaCardTitle>
+        </NovaCardHeader>
+        <NovaCardContent>
+          <NovaAccordion type="single" collapsible className="w-full">
             {faqs.map((faq, index) => (
-              <AccordionItem key={index} value={`faq-${index}`}>
-                <AccordionTrigger className="text-left">{faq.question}</AccordionTrigger>
-                <AccordionContent>
+              <NovaAccordionItem key={index} value={`faq-${index}`}>
+                <NovaAccordionTrigger className="text-left">{faq.question}</NovaAccordionTrigger>
+                <NovaAccordionContent>
                   <p className="text-muted-foreground">{faq.answer}</p>
-                </AccordionContent>
-              </AccordionItem>
+                </NovaAccordionContent>
+              </NovaAccordionItem>
             ))}
-          </Accordion>
-        </CardContent>
-      </Card>
+          </NovaAccordion>
+        </NovaCardContent>
+      </NovaCard>
 
       {/* Community Support */}
-      <Card className="bg-card">
-        <CardHeader>
-          <CardTitle>Need More Help?</CardTitle>
-        </CardHeader>
-        <CardContent>
+      <NovaCard className="bg-card">
+        <NovaCardHeader>
+          <NovaCardTitle>Need More Help?</NovaCardTitle>
+        </NovaCardHeader>
+        <NovaCardContent>
           <p className="mb-6 text-muted-foreground">
             Connect with the Nova.UI community for support, feature requests, and discussions.
           </p>
@@ -172,8 +182,8 @@ export function Troubleshooting() {
               </div>
             </a>
           </div>
-        </CardContent>
-      </Card>
+        </NovaCardContent>
+      </NovaCard>
     </section>
   )
 }

@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { NovaCard, NovaCardContent, NovaCardDescription, NovaCardHeader, NovaCardTitle } from "@/components/nova/nova-card"
 import { Globe, Moon, Palette, FileCheck, Accessibility, ArrowRight } from "lucide-react"
 
 const guides = [
@@ -51,23 +51,23 @@ export default function GuidesPage() {
           const Icon = guide.icon
           return (
             <Link key={guide.href} href={guide.href}>
-              <Card className="h-full bg-card/50 border-border hover:border-primary/50 hover:bg-card/80 transition-all duration-200 group">
-                <CardHeader>
+              <NovaCard className="h-full bg-card/50 border-border hover:border-primary/50 hover:bg-card/80 transition-all duration-200 group">
+                <NovaCardHeader>
                   <div className="flex items-center gap-3">
                     <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
                       <Icon className="h-5 w-5 text-primary" />
                     </div>
-                    <CardTitle className="text-lg group-hover:text-primary transition-colors">{guide.title}</CardTitle>
+                    <NovaCardTitle className="text-lg group-hover:text-primary transition-colors">{guide.title}</NovaCardTitle>
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-sm">{guide.description}</CardDescription>
+                </NovaCardHeader>
+                <NovaCardContent>
+                  <NovaCardDescription className="text-sm">{guide.description}</NovaCardDescription>
                   <div className="mt-4 flex items-center text-sm text-primary">
                     Read guide
                     <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </div>
-                </CardContent>
-              </Card>
+                </NovaCardContent>
+              </NovaCard>
             </Link>
           )
         })}

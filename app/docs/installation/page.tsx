@@ -2,10 +2,10 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { NovaButton } from "@/components/nova/nova-button"
+import { NovaTabs, NovaTabsContent, NovaTabsList, NovaTabsTrigger } from "@/components/nova/nova-tabs"
+import { NovaCard, NovaCardContent } from "@/components/nova/nova-card"
+import { NovaBadge } from "@/components/nova/nova-badge"
 import {
   Check,
   Copy,
@@ -33,14 +33,14 @@ function CodeBlock({ code, language = "bash" }: { code: string; language?: strin
       <pre className="overflow-x-auto rounded-xl bg-zinc-950 p-4 text-sm">
         <code className="text-zinc-100 font-mono whitespace-pre-wrap">{code}</code>
       </pre>
-      <Button
+      <NovaButton
         size="icon"
         variant="ghost"
         onClick={handleCopy}
         className="absolute right-2 top-2 h-8 w-8 opacity-0 transition-opacity group-hover:opacity-100 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800"
       >
         {copied ? <Check className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
-      </Button>
+      </NovaButton>
     </div>
   )
 }
@@ -69,8 +69,8 @@ export default function InstallationPage() {
       {/* Prerequisites */}
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold">Prerequisites</h2>
-        <Card className="border-border/50">
-          <CardContent className="pt-6">
+        <NovaCard className="border-border/50">
+          <NovaCardContent className="pt-6">
             <ul className="space-y-3">
               <li className="flex items-center gap-3">
                 <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10">
@@ -103,36 +103,36 @@ export default function InstallationPage() {
                 <span>TypeScript (recommended)</span>
               </li>
             </ul>
-          </CardContent>
-        </Card>
+          </NovaCardContent>
+        </NovaCard>
       </section>
 
       {/* Installation Methods */}
       <section className="space-y-6">
         <h2 className="text-2xl font-semibold">Adding Nova.UI</h2>
 
-        <Tabs defaultValue="submodule" className="w-full">
-          <TabsList className="w-full justify-start rounded-lg bg-muted p-1">
-            <TabsTrigger value="submodule" className="rounded-md gap-2">
+        <NovaTabs defaultValue="submodule" className="w-full">
+          <NovaTabsList className="w-full justify-start rounded-lg bg-muted p-1">
+            <NovaTabsTrigger value="submodule" className="rounded-md gap-2">
               <GitBranch className="h-4 w-4" />
               Git Submodule (Recommended)
-            </TabsTrigger>
-            <TabsTrigger value="script" className="rounded-md gap-2">
+            </NovaTabsTrigger>
+            <NovaTabsTrigger value="script" className="rounded-md gap-2">
               <Terminal className="h-4 w-4" />
               Automated Script
-            </TabsTrigger>
-            <TabsTrigger value="manual" className="rounded-md gap-2">
+            </NovaTabsTrigger>
+            <NovaTabsTrigger value="manual" className="rounded-md gap-2">
               <Package className="h-4 w-4" />
               Manual
-            </TabsTrigger>
-          </TabsList>
+            </NovaTabsTrigger>
+          </NovaTabsList>
 
           {/* Git Submodule Method */}
-          <TabsContent value="submodule" className="mt-6 space-y-6">
+          <NovaTabsContent value="submodule" className="mt-6 space-y-6">
             {/* Step 1 */}
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <Badge className="h-7 w-7 rounded-full p-0 flex items-center justify-center">1</Badge>
+                <NovaBadge className="h-7 w-7 rounded-full p-0 flex items-center justify-center">1</NovaBadge>
                 <h3 className="text-lg font-medium">Download the setup script</h3>
               </div>
               <p className="text-sm text-muted-foreground">First, download the Nova.UI submodule setup script:</p>
@@ -145,15 +145,15 @@ chmod +x add-submodule.sh`}
             {/* Step 2 */}
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <Badge className="h-7 w-7 rounded-full p-0 flex items-center justify-center">2</Badge>
+                <NovaBadge className="h-7 w-7 rounded-full p-0 flex items-center justify-center">2</NovaBadge>
                 <h3 className="text-lg font-medium">Run the setup script</h3>
               </div>
               <p className="text-sm text-muted-foreground">
                 Execute the script with the Nova.UI repository URL and your desired path:
               </p>
               <CodeBlock code={`./add-submodule.sh https://bitbucket.org/acefone/nova-ui.git src/nova-ui v1.0.0`} />
-              <Card className="border-amber-500/30 bg-amber-500/5">
-                <CardContent className="pt-4">
+              <NovaCard className="border-amber-500/30 bg-amber-500/5">
+                <NovaCardContent className="pt-4">
                   <p className="text-sm text-amber-200">
                     <strong>Script Parameters:</strong>
                   </p>
@@ -172,14 +172,14 @@ chmod +x add-submodule.sh`}
                       <code className="rounded bg-muted px-1.5 py-0.5 text-xs">main</code>)
                     </li>
                   </ul>
-                </CardContent>
-              </Card>
+                </NovaCardContent>
+              </NovaCard>
             </div>
 
             {/* Step 3 */}
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <Badge className="h-7 w-7 rounded-full p-0 flex items-center justify-center">3</Badge>
+                <NovaBadge className="h-7 w-7 rounded-full p-0 flex items-center justify-center">3</NovaBadge>
                 <h3 className="text-lg font-medium">Configure path alias</h3>
               </div>
               <p className="text-sm text-muted-foreground">
@@ -203,7 +203,7 @@ chmod +x add-submodule.sh`}
             {/* Step 4 - Import */}
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <Badge className="h-7 w-7 rounded-full p-0 flex items-center justify-center">4</Badge>
+                <NovaBadge className="h-7 w-7 rounded-full p-0 flex items-center justify-center">4</NovaBadge>
                 <h3 className="text-lg font-medium">Import and use</h3>
               </div>
               <p className="text-sm text-muted-foreground">
@@ -231,10 +231,10 @@ export function MyComponent() {
                 language="tsx"
               />
             </div>
-          </TabsContent>
+          </NovaTabsContent>
 
           {/* Automated Script Method */}
-          <TabsContent value="script" className="mt-6 space-y-6">
+          <NovaTabsContent value="script" className="mt-6 space-y-6">
             <div className="space-y-4">
               <p className="text-muted-foreground">
                 Use this complete bash script to automate the entire Nova.UI submodule setup process:
@@ -346,8 +346,8 @@ echo "✅ Done. Submodule ready at $SUBMODULE_PATH"`}
             </div>
 
             {/* What the script does */}
-            <Card className="border-border/50">
-              <CardContent className="pt-6">
+            <NovaCard className="border-border/50">
+              <NovaCardContent className="pt-6">
                 <h4 className="font-medium mb-3">What this script does:</h4>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-start gap-2">
@@ -378,16 +378,16 @@ echo "✅ Done. Submodule ready at $SUBMODULE_PATH"`}
                     <span>Installs required dependencies automatically</span>
                   </li>
                 </ul>
-              </CardContent>
-            </Card>
-          </TabsContent>
+              </NovaCardContent>
+            </NovaCard>
+          </NovaTabsContent>
 
           {/* Manual Method */}
-          <TabsContent value="manual" className="mt-6 space-y-6">
+          <NovaTabsContent value="manual" className="mt-6 space-y-6">
             {/* Step 1 */}
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <Badge className="h-7 w-7 rounded-full p-0 flex items-center justify-center">1</Badge>
+                <NovaBadge className="h-7 w-7 rounded-full p-0 flex items-center justify-center">1</NovaBadge>
                 <h3 className="text-lg font-medium">Clone the repository</h3>
               </div>
               <p className="text-sm text-muted-foreground">Clone Nova.UI directly into your project:</p>
@@ -401,7 +401,7 @@ git checkout v1.0.0  # or your desired version`}
             {/* Step 2 */}
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <Badge className="h-7 w-7 rounded-full p-0 flex items-center justify-center">2</Badge>
+                <NovaBadge className="h-7 w-7 rounded-full p-0 flex items-center justify-center">2</NovaBadge>
                 <h3 className="text-lg font-medium">Install dependencies</h3>
               </div>
               <CodeBlock
@@ -414,7 +414,7 @@ npm install -D tailwindcss-animate`}
             {/* Step 3 */}
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <Badge className="h-7 w-7 rounded-full p-0 flex items-center justify-center">3</Badge>
+                <NovaBadge className="h-7 w-7 rounded-full p-0 flex items-center justify-center">3</NovaBadge>
                 <h3 className="text-lg font-medium">Reorganize files</h3>
               </div>
               <p className="text-sm text-muted-foreground">Move component files to root and clean up:</p>
@@ -429,7 +429,7 @@ rm -f next.config.* tailwind.config.* postcss.config.* .eslintrc.* .gitignore RE
             {/* Step 4 */}
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <Badge className="h-7 w-7 rounded-full p-0 flex items-center justify-center">4</Badge>
+                <NovaBadge className="h-7 w-7 rounded-full p-0 flex items-center justify-center">4</NovaBadge>
                 <h3 className="text-lg font-medium">Create barrel export</h3>
               </div>
               <p className="text-sm text-muted-foreground">
@@ -457,7 +457,7 @@ export * from "./nova-tooltip"
             {/* Step 5 */}
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <Badge className="h-7 w-7 rounded-full p-0 flex items-center justify-center">5</Badge>
+                <NovaBadge className="h-7 w-7 rounded-full p-0 flex items-center justify-center">5</NovaBadge>
                 <h3 className="text-lg font-medium">Configure path alias</h3>
               </div>
               <p className="text-sm text-muted-foreground">
@@ -477,8 +477,8 @@ export * from "./nova-tooltip"
                 language="json"
               />
             </div>
-          </TabsContent>
-        </Tabs>
+          </NovaTabsContent>
+        </NovaTabs>
       </section>
 
       {/* Updating Nova.UI */}
@@ -510,8 +510,8 @@ git commit -m "Update Nova.UI to v1.1.0"`}
           <FolderTree className="h-5 w-5 text-primary" />
           <h2 className="text-2xl font-semibold">Project Structure</h2>
         </div>
-        <Card className="border-border/50">
-          <CardContent className="pt-6">
+        <NovaCard className="border-border/50">
+          <NovaCardContent className="pt-6">
             <pre className="text-sm font-mono text-muted-foreground">
               {`my-app/
 ├── src/
@@ -537,8 +537,8 @@ git commit -m "Update Nova.UI to v1.1.0"`}
 ├── tsconfig.json
 └── package.json`}
             </pre>
-          </CardContent>
-        </Card>
+          </NovaCardContent>
+        </NovaCard>
       </section>
 
       {/* Available Components */}

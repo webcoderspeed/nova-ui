@@ -1,7 +1,20 @@
 import { CodeBlock } from "./code-block"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import {
+  NovaCard,
+  NovaCardContent,
+  NovaCardHeader,
+  NovaCardTitle,
+  NovaCardDescription,
+} from "@/components/nova/nova-card"
+import { NovaBadge } from "@/components/nova/nova-badge"
+import {
+  NovaTable,
+  NovaTableBody,
+  NovaTableCell,
+  NovaTableHead,
+  NovaTableHeader,
+  NovaTableRow,
+} from "@/components/nova/nova-table"
 
 const apiDocs = [
   {
@@ -284,61 +297,53 @@ export function ApiReference() {
         </p>
       </div>
 
-      <div className="space-y-8">
+      <div className="space-y-12">
         {apiDocs.map((doc) => (
-          <Card key={doc.id} data-section={doc.id} id={doc.id} className="scroll-mt-20 bg-card">
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <CardTitle className="font-mono">{doc.name}</CardTitle>
-                <Badge variant="secondary" className="bg-primary/10 text-primary">
-                  Nova.UI
-                </Badge>
+          <NovaCard key={doc.id} id={doc.id} className="scroll-mt-20">
+            <NovaCardHeader>
+              <div className="flex items-center justify-between">
+                <NovaCardTitle className="text-xl font-bold font-mono">{doc.name}</NovaCardTitle>
+                <NovaBadge variant="outline">Component</NovaBadge>
               </div>
-              <p className="text-muted-foreground">{doc.description}</p>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div>
-                <h4 className="mb-3 text-sm font-semibold text-foreground">TypeScript Interface</h4>
-                <CodeBlock code={doc.interface} language="tsx" />
-              </div>
+              <NovaCardDescription className="mt-2">{doc.description}</NovaCardDescription>
+            </NovaCardHeader>
+            <NovaCardContent className="space-y-6">
+              {doc.props && (
+                <div>
+                  <h4 className="text-sm font-semibold mb-3">Props</h4>
+                  <div className="rounded-md border">
+                    <NovaTable>
+                      <NovaTableHeader>
+                        <NovaTableRow>
+                          <NovaTableHead className="w-[150px]">Prop</NovaTableHead>
+                          <NovaTableHead className="w-[150px]">Type</NovaTableHead>
+                          <NovaTableHead className="w-[150px]">Default</NovaTableHead>
+                          <NovaTableHead>Description</NovaTableHead>
+                        </NovaTableRow>
+                      </NovaTableHeader>
+                      <NovaTableBody>
+                        {doc.props.map((prop) => (
+                          <NovaTableRow key={prop.name}>
+                            <NovaTableCell className="font-mono font-medium">{prop.name}</NovaTableCell>
+                            <NovaTableCell className="font-mono text-xs text-muted-foreground">{prop.type}</NovaTableCell>
+                            <NovaTableCell className="font-mono text-xs text-muted-foreground">
+                              {prop.default || "-"}
+                            </NovaTableCell>
+                            <NovaTableCell>{prop.description}</NovaTableCell>
+                          </NovaTableRow>
+                        ))}
+                      </NovaTableBody>
+                    </NovaTable>
+                  </div>
+                </div>
+              )}
 
               <div>
-                <h4 className="mb-3 text-sm font-semibold text-foreground">Props</h4>
-                <div className="overflow-x-auto rounded-lg border border-border">
-                  <Table>
-                    <TableHeader>
-                      <TableRow className="bg-secondary/50">
-                        <TableHead className="font-semibold">Prop</TableHead>
-                        <TableHead className="font-semibold">Type</TableHead>
-                        <TableHead className="font-semibold hidden sm:table-cell">Default</TableHead>
-                        <TableHead className="font-semibold hidden md:table-cell">Description</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {doc.props.map((prop) => (
-                        <TableRow key={prop.name}>
-                          <TableCell>
-                            <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs text-primary">
-                              {prop.name}
-                            </code>
-                          </TableCell>
-                          <TableCell>
-                            <code className="font-mono text-xs text-muted-foreground">{prop.type}</code>
-                          </TableCell>
-                          <TableCell className="hidden sm:table-cell">
-                            <code className="font-mono text-xs">{prop.default || "-"}</code>
-                          </TableCell>
-                          <TableCell className="text-sm text-muted-foreground hidden md:table-cell">
-                            {prop.description}
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </div>
+                <h4 className="text-sm font-semibold mb-3">Interface</h4>
+                <CodeBlock code={doc.interface} language="typescript" />
               </div>
-            </CardContent>
-          </Card>
+            </NovaCardContent>
+          </NovaCard>
         ))}
       </div>
     </section>

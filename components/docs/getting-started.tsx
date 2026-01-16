@@ -1,5 +1,5 @@
 import { CodeBlock } from "./code-block"
-import { Card, CardContent } from "@/components/ui/card"
+import { NovaCard, NovaCardContent } from "@/components/nova/nova-card"
 import { CheckCircle2, Terminal, Sparkles, Zap, Globe } from "lucide-react"
 
 export function GettingStarted() {
@@ -12,8 +12,8 @@ export function GettingStarted() {
           and TypeScript-first development.
         </p>
         <div className="grid gap-4 sm:grid-cols-3 mb-8">
-          <Card className="bg-card border-primary/20">
-            <CardContent className="flex items-center gap-3 p-4">
+          <NovaCard className="bg-card border-primary/20">
+            <NovaCardContent className="flex items-center gap-3 p-4">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
                 <Sparkles className="h-5 w-5 text-primary" />
               </div>
@@ -21,10 +21,10 @@ export function GettingStarted() {
                 <p className="font-semibold text-foreground">Enhanced Components</p>
                 <p className="text-sm text-muted-foreground">45+ styled components</p>
               </div>
-            </CardContent>
-          </Card>
-          <Card className="bg-card border-primary/20">
-            <CardContent className="flex items-center gap-3 p-4">
+            </NovaCardContent>
+          </NovaCard>
+          <NovaCard className="bg-card border-primary/20">
+            <NovaCardContent className="flex items-center gap-3 p-4">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
                 <Zap className="h-5 w-5 text-primary" />
               </div>
@@ -32,10 +32,10 @@ export function GettingStarted() {
                 <p className="font-semibold text-foreground">Animations Built-in</p>
                 <p className="text-sm text-muted-foreground">Framer Motion & GSAP</p>
               </div>
-            </CardContent>
-          </Card>
-          <Card className="bg-card border-primary/20">
-            <CardContent className="flex items-center gap-3 p-4">
+            </NovaCardContent>
+          </NovaCard>
+          <NovaCard className="bg-card border-primary/20">
+            <NovaCardContent className="flex items-center gap-3 p-4">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
                 <Globe className="h-5 w-5 text-primary" />
               </div>
@@ -43,8 +43,8 @@ export function GettingStarted() {
                 <p className="font-semibold text-foreground">i18n & RTL Ready</p>
                 <p className="text-sm text-muted-foreground">Global-first design</p>
               </div>
-            </CardContent>
-          </Card>
+            </NovaCardContent>
+          </NovaCard>
         </div>
       </div>
 
@@ -121,33 +121,33 @@ export default config`}
       <div data-section="prerequisites" id="prerequisites" className="mb-10 scroll-mt-20">
         <h2 className="mb-4 text-xl font-semibold text-foreground">Prerequisites</h2>
         <div className="grid gap-4 sm:grid-cols-3">
-          <Card className="bg-card">
-            <CardContent className="flex items-start gap-3 p-4">
+          <NovaCard className="bg-card">
+            <NovaCardContent className="flex items-start gap-3 p-4">
               <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
               <div>
                 <p className="font-medium text-foreground">Node.js 18+</p>
                 <p className="text-sm text-muted-foreground">LTS version recommended</p>
               </div>
-            </CardContent>
-          </Card>
-          <Card className="bg-card">
-            <CardContent className="flex items-start gap-3 p-4">
+            </NovaCardContent>
+          </NovaCard>
+          <NovaCard className="bg-card">
+            <NovaCardContent className="flex items-start gap-3 p-4">
               <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
               <div>
                 <p className="font-medium text-foreground">TypeScript 5+</p>
                 <p className="text-sm text-muted-foreground">Strict mode enabled</p>
               </div>
-            </CardContent>
-          </Card>
-          <Card className="bg-card">
-            <CardContent className="flex items-start gap-3 p-4">
+            </NovaCardContent>
+          </NovaCard>
+          <NovaCard className="bg-card">
+            <NovaCardContent className="flex items-start gap-3 p-4">
               <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
               <div>
                 <p className="font-medium text-foreground">Tailwind CSS 3+</p>
                 <p className="text-sm text-muted-foreground">With PostCSS configured</p>
               </div>
-            </CardContent>
-          </Card>
+            </NovaCardContent>
+          </NovaCard>
         </div>
       </div>
 
