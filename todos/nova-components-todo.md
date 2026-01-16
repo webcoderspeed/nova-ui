@@ -7,7 +7,7 @@ This document tracks the implementation status of Nova components compared to th
 - **Nova Components**: `/components/nova/` (28 components)
 - **UI Components**: `/components/ui/` (65 components)
 
-## ✅ Completed Nova Components (44)
+## ✅ Completed Nova Components (48)
 These components already exist in the nova/ directory:
 
 | Component | File | Status |
@@ -20,8 +20,11 @@ These components already exist in the nova/ directory:
 | Badge | `nova-badge.tsx` | ✅ Complete |
 | Breadcrumb | `nova-breadcrumb.tsx` | ✅ Complete |
 | Button | `nova-button.tsx` | ✅ Complete |
+| Button Group | `nova-button-group.tsx` | ✅ Complete |
 | Calendar | `nova-calendar.tsx` | ✅ Complete |
 | Card | `nova-card.tsx` | ✅ Complete |
+| Carousel | `nova-carousel.tsx` | ✅ Complete |
+| Chart | `nova-chart.tsx` | ✅ Complete |
 | Checkbox | `nova-checkbox.tsx` | ✅ Complete |
 | Collapsible | `nova-collapsible.tsx` | ✅ Complete |
 | Command | `nova-command.tsx` | ✅ Complete |
@@ -29,6 +32,7 @@ These components already exist in the nova/ directory:
 | Dialog | `nova-dialog.tsx` | ✅ Complete |
 | Drawer | `nova-drawer.tsx` | ✅ Complete |
 | Dropdown Menu | `nova-dropdown-menu.tsx` | ✅ Complete |
+| Empty | `nova-empty.tsx` | ✅ Complete |
 | Form | `nova-form.tsx` | ✅ Complete |
 | Input | `nova-input.tsx` | ✅ Complete |
 | Menubar | `nova-menubar.tsx` | ✅ Complete |
@@ -52,7 +56,7 @@ These components already exist in the nova/ directory:
 | Tooltip | `nova-tooltip.tsx` | ✅ Complete |
 | Index | `index.ts` | ✅ Complete |
 
-## 🚧 Missing Nova Components (21)
+## 🚧 Missing Nova Components (17)
 These components exist in ui/ but are missing from nova/ directory:
 
 ### High Priority Components
@@ -63,14 +67,14 @@ These components exist in ui/ but are missing from nova/ directory:
 ### Medium Priority Components
 | Component | UI File | Priority | Status |
 |-----------|---------|----------|--------|
-| Button Group | `button-group.tsx` | 🟡 Medium | ❌ Missing |
-| Carousel | `carousel.tsx` | 🟡 Medium | ❌ Missing |
-| Chart | `chart.tsx` | 🟡 Medium | ❌ Missing |
+| Button Group | `nova-button-group.tsx` | ✅ Complete |
+| Carousel | `nova-carousel.tsx` | ✅ Complete |
+| Chart | `nova-chart.tsx` | ✅ Complete |
 | Collapsible | `nova-collapsible.tsx` | ✅ Complete |
 | Command | `nova-command.tsx` | ✅ Complete |
 | Context Menu | `nova-context-menu.tsx` | ✅ Complete |
 | Drawer | `nova-drawer.tsx` | ✅ Complete |
-| Empty | `empty.tsx` | 🟡 Medium | ❌ Missing |
+| Empty | `nova-empty.tsx` | ✅ Complete |
 | Field | `nova-field.tsx` | ✅ Complete |
 | Hover Card | `nova-hover-card.tsx` | ✅ Complete |
 | Input Group | `nova-input-group.tsx` | ✅ Complete |
@@ -97,10 +101,10 @@ These components exist in ui/ but are missing from nova/ directory:
 
 ## 📈 Statistics
 - **Total UI Components**: 65
-- **Completed Nova Components**: 44 (67.7%)
-- **Missing Components**: 21 (32.3%)
+- **Completed Nova Components**: 48 (73.8%)
+- **Missing Components**: 17 (26.2%)
 - **High Priority Missing**: 0 components
-- **Medium Priority Missing**: 19 components
+- **Medium Priority Missing**: 15 components
 - **Low Priority Missing**: 2 components
 
 ## 🎯 Implementation Strategy
