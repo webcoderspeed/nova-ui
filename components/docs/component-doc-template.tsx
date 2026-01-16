@@ -1,8 +1,8 @@
 "use client";
 
 import type React from "react";
-import { useState } from "react";
 import Link from "next/link";
+import { CodeBlock } from "./code-block"
 import {
   NovaButton,
   NovaTabs,
@@ -13,10 +13,8 @@ import {
 } from "@/components/nova"
 import {
   Check,
-  Copy,
   ChevronRight,
   ExternalLink,
-  Terminal,
   Info,
   AlertTriangle,
   AlertCircle,
@@ -89,43 +87,6 @@ function HintBlock({ hint }: { hint: HintItem }) {
   );
 }
 
-function CodeBlock({
-  code,
-  language = "tsx",
-  className,
-}: {
-  code: string;
-  language?: string;
-  className?: string;
-}) {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(code);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  return (
-    <div className={cn("group relative", className)}>
-      <pre className="overflow-x-auto rounded-xl bg-zinc-950 p-4 text-sm font-mono leading-relaxed border border-zinc-800">
-        <code className="text-zinc-100 block">{code}</code>
-      </pre>
-      <NovaButton
-        size="icon"
-        variant="ghost"
-        onClick={handleCopy}
-        className="absolute right-2 top-2 h-8 w-8 opacity-0 transition-all duration-200 group-hover:opacity-100 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800"
-      >
-        {copied ? (
-          <Check className="h-4 w-4 text-green-500" />
-        ) : (
-          <Copy className="h-4 w-4" />
-        )}
-      </NovaButton>
-    </div>
-  );
-}
 
 function PreviewContainer({
   children,

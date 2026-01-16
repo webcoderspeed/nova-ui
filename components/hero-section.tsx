@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { Button } from "@/components/ui/button"
+import { NovaButton } from "@/components/nova/nova-button"
 import { ArrowRight, Copy, Check } from "lucide-react"
 import { useState } from "react"
 
@@ -104,10 +104,10 @@ export function HeroSection() {
             accessible out of the box.
           </p>
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <Button size="lg" className="gap-2">
+            <NovaButton size="lg" className="gap-2" animation="shine">
               Explore Components
               <ArrowRight className="h-4 w-4" />
-            </Button>
+            </NovaButton>
             <div className="flex items-center gap-2 rounded-lg border border-border bg-card px-4 py-2">
               <code className="text-sm text-muted-foreground font-mono">git submodule add nova-ui</code>
               <button
