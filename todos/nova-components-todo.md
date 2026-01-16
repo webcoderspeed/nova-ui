@@ -7,7 +7,7 @@ This document tracks the implementation status of Nova components compared to th
 - **Nova Components**: `/components/nova/` (28 components)
 - **UI Components**: `/components/ui/` (65 components)
 
-## ✅ Completed Nova Components (48)
+## ✅ Completed Nova Components (51)
 These components already exist in the nova/ directory:
 
 | Component | File | Status |
@@ -35,6 +35,8 @@ These components already exist in the nova/ directory:
 | Empty | `nova-empty.tsx` | ✅ Complete |
 | Form | `nova-form.tsx` | ✅ Complete |
 | Input | `nova-input.tsx` | ✅ Complete |
+| Item | `nova-item.tsx` | ✅ Complete |
+| KBD | `nova-kbd.tsx` | ✅ Complete |
 | Menubar | `nova-menubar.tsx` | ✅ Complete |
 | Navigation Menu | `nova-navigation-menu.tsx` | ✅ Complete |
 | Pagination | `nova-pagination.tsx` | ✅ Complete |
@@ -53,10 +55,11 @@ These components already exist in the nova/ directory:
 | Tabs | `nova-tabs.tsx` | ✅ Complete |
 | Textarea | `nova-textarea.tsx` | ✅ Complete |
 | Toast | `nova-toast.tsx` | ✅ Complete |
+| Toaster | `nova-toaster.tsx` | ✅ Complete |
 | Tooltip | `nova-tooltip.tsx` | ✅ Complete |
 | Index | `index.ts` | ✅ Complete |
 
-## 🚧 Missing Nova Components (17)
+## 🚧 Missing Nova Components (14)
 These components exist in ui/ but are missing from nova/ directory:
 
 ### High Priority Components
@@ -79,8 +82,8 @@ These components exist in ui/ but are missing from nova/ directory:
 | Hover Card | `nova-hover-card.tsx` | ✅ Complete |
 | Input Group | `nova-input-group.tsx` | ✅ Complete |
 | Input OTP | `nova-input-otp.tsx` | ✅ Complete |
-| Item | `item.tsx` | 🟡 Medium | ❌ Missing |
-| KBD | `kbd.tsx` | 🟡 Medium | ❌ Missing |
+| Item | `nova-item.tsx` | ✅ Complete |
+| KBD | `nova-kbd.tsx` | ✅ Complete |
 | Label | `nova-label.tsx` | ✅ Complete |
 | Menubar | `nova-menubar.tsx` | ✅ Complete |
 | Popover | `nova-popover.tsx` | ✅ Complete |
@@ -89,7 +92,7 @@ These components exist in ui/ but are missing from nova/ directory:
 | Sidebar | `nova-sidebar.tsx` | ✅ Complete |
 | Sonner | `nova-sonner.tsx` | ✅ Complete |
 | Spinner | `nova-spinner.tsx` | ✅ Complete |
-| Toaster | `toaster.tsx` | 🟡 Medium | ❌ Missing |
+| Toaster | `nova-toaster.tsx` | ✅ Complete |
 | Toggle Group | `nova-toggle-group.tsx` | ✅ Complete |
 | Toggle | `nova-toggle.tsx` | ✅ Complete |
 
@@ -101,10 +104,10 @@ These components exist in ui/ but are missing from nova/ directory:
 
 ## 📈 Statistics
 - **Total UI Components**: 65
-- **Completed Nova Components**: 48 (73.8%)
-- **Missing Components**: 17 (26.2%)
+- **Completed Nova Components**: 51 (78.5%)
+- **Missing Components**: 14 (21.5%)
 - **High Priority Missing**: 0 components
-- **Medium Priority Missing**: 15 components
+- **Medium Priority Missing**: 12 components
 - **Low Priority Missing**: 2 components
 
 ## 🎯 Implementation Strategy
