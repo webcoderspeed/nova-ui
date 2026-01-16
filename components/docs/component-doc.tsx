@@ -24,6 +24,7 @@ interface ComponentDocProps {
     preview: ReactNode
   }>
   isNova?: boolean
+  badgeText?: string
 }
 
 export function ComponentDoc({
@@ -36,6 +37,7 @@ export function ComponentDoc({
   props,
   variants,
   isNova,
+  badgeText,
 }: ComponentDocProps) {
   return (
     <section id={id} data-section={id} className="scroll-mt-20 py-8 border-b border-border last:border-0">
@@ -44,6 +46,11 @@ export function ComponentDoc({
         {isNova && (
           <Badge variant="secondary" className="bg-primary/10 text-primary">
             Nova.UI
+          </Badge>
+        )}
+        {badgeText && (
+          <Badge variant="outline" className="text-muted-foreground">
+            {badgeText}
           </Badge>
         )}
       </div>

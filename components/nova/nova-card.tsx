@@ -27,11 +27,19 @@ const novaCardVariants = cva("transition-all duration-300", {
       md: "",
       lg: "[&>*]:p-8",
     },
+    hover: {
+      none: "",
+      lift: "hover:-translate-y-1 hover:shadow-lg transition-all duration-300",
+      scale: "hover:scale-[1.02] transition-transform duration-300",
+      glow: "hover:shadow-[0_0_20px_rgba(var(--primary),0.2)] transition-shadow duration-300",
+      border: "hover:border-primary transition-colors duration-300",
+    },
   },
   defaultVariants: {
     variant: "default",
     glow: "none",
     padding: "md",
+    hover: "none",
   },
 })
 
@@ -40,12 +48,12 @@ export interface NovaCardProps extends React.ComponentProps<typeof Card>, Varian
   loading?: boolean
 }
 
-function NovaCard({ className, variant, glow, padding, hoverable, loading, children, ...props }: NovaCardProps) {
+function NovaCard({ className, variant, glow, padding, hover, hoverable, loading, children, ...props }: NovaCardProps) {
   return (
     <Card
       className={cn(
-        novaCardVariants({ variant, glow, padding }),
-        hoverable && "hover:border-primary/50 transition-colors",
+        novaCardVariants({ variant, glow, padding, hover }),
+        hoverable && !hover && "hover:border-primary/50 transition-colors",
         loading && "animate-pulse",
         className,
       )}

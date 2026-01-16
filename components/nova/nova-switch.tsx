@@ -27,7 +27,7 @@ const novaSwitchVariants = cva("transition-all duration-200", {
 })
 
 export interface NovaSwitchProps
-  extends Omit<React.ComponentProps<typeof Switch>, "size">,
+  extends Omit<React.ComponentProps<typeof Switch>, "size" | "color">,
     VariantProps<typeof novaSwitchVariants> {
   label?: string
   description?: string

@@ -27,7 +27,7 @@ const novaCheckboxVariants = cva("transition-all duration-200", {
 })
 
 export interface NovaCheckboxProps
-  extends Omit<React.ComponentProps<typeof Checkbox>, "size">,
+  extends Omit<React.ComponentProps<typeof Checkbox>, "size" | "color">,
     VariantProps<typeof novaCheckboxVariants> {
   label?: string
   description?: string

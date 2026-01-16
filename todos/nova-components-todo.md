@@ -63,23 +63,23 @@ These components exist in ui/ but are missing from nova/ directory:
 | Context Menu | `context-menu.tsx` | 🟡 Medium | ❌ Missing |
 | Drawer | `drawer.tsx` | 🟡 Medium | ❌ Missing |
 | Empty | `empty.tsx` | 🟡 Medium | ❌ Missing |
-| Field | `field.tsx` | 🟡 Medium | ❌ Missing |
-| Hover Card | `hover-card.tsx` | 🟡 Medium | ❌ Missing |
-| Input Group | `input-group.tsx` | 🟡 Medium | ❌ Missing |
+| Field | `nova-field.tsx` | ✅ Complete |
+| Hover Card | `nova-hover-card.tsx` | ✅ Complete |
+| Input Group | `nova-input-group.tsx` | ✅ Complete |
 | Input OTP | `nova-input-otp.tsx` | ✅ Complete |
 | Item | `item.tsx` | 🟡 Medium | ❌ Missing |
 | KBD | `kbd.tsx` | 🟡 Medium | ❌ Missing |
 | Label | `nova-label.tsx` | ✅ Complete |
 | Menubar | `menubar.tsx` | 🟡 Medium | ❌ Missing |
-| Popover | `popover.tsx` | 🟡 Medium | ❌ Missing |
+| Popover | `nova-popover.tsx` | ✅ Complete |
 | Resizable | `resizable.tsx` | 🟡 Medium | ❌ Missing |
 | Sheet | `sheet.tsx` | 🟡 Medium | ❌ Missing |
 | Sidebar | `sidebar.tsx` | 🟡 Medium | ❌ Missing |
 | Sonner | `nova-sonner.tsx` | ✅ Complete |
-| Spinner | `spinner.tsx` | 🟡 Medium | ❌ Missing |
+| Spinner | `nova-spinner.tsx` | ✅ Complete |
 | Toaster | `toaster.tsx` | 🟡 Medium | ❌ Missing |
-| Toggle Group | `toggle-group.tsx` | 🟡 Medium | ❌ Missing |
-| Toggle | `toggle.tsx` | 🟡 Medium | ❌ Missing |
+| Toggle Group | `nova-toggle-group.tsx` | ✅ Complete |
+| Toggle | `nova-toggle.tsx` | ✅ Complete |
 
 ### Low Priority Components
 | Component | UI File | Priority | Status |
@@ -89,8 +89,8 @@ These components exist in ui/ but are missing from nova/ directory:
 
 ## 📈 Statistics
 - **Total UI Components**: 65
-- **Completed Nova Components**: 30 (46%)
-- **Missing Components**: 35 (54%)
+- **Completed Nova Components**: 36 (55%)
+- **Missing Components**: 29 (45%)
 - **High Priority Missing**: 0 components
 - **Medium Priority Missing**: 27 components
 - **Low Priority Missing**: 2 components

@@ -21,20 +21,22 @@ const novaAccordionVariants = cva("", {
   },
 })
 
-export interface NovaAccordionProps
-  extends React.ComponentProps<typeof Accordion>,
-    VariantProps<typeof novaAccordionVariants> {
-  items?: Array<{
-    value: string
-    trigger: React.ReactNode
-    content: React.ReactNode
-    disabled?: boolean
-  }>
-}
+export type NovaAccordionProps = React.ComponentProps<typeof Accordion> &
+  VariantProps<typeof novaAccordionVariants> & {
+    items?: Array<{
+      value: string
+      trigger: React.ReactNode
+      content: React.ReactNode
+      disabled?: boolean
+    }>
+  }
 
 function NovaAccordion({ className, variant, items, children, ...props }: NovaAccordionProps) {
   return (
-    <Accordion className={cn(novaAccordionVariants({ variant }), className)} {...props}>
+    <Accordion
+      className={cn(novaAccordionVariants({ variant }), className)}
+      {...(props as React.ComponentProps<typeof Accordion>)}
+    >
       {items
         ? items.map((item) => (
             <AccordionItem key={item.value} value={item.value} disabled={item.disabled}>

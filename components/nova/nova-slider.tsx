@@ -27,7 +27,7 @@ const novaSliderVariants = cva("transition-all duration-200", {
 })
 
 export interface NovaSliderProps
-  extends Omit<React.ComponentProps<typeof Slider>, "size">,
+  extends Omit<React.ComponentProps<typeof Slider>, "size" | "color">,
     VariantProps<typeof novaSliderVariants> {
   label?: string
   showValue?: boolean

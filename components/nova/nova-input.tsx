@@ -39,6 +39,8 @@ export interface NovaInputProps
   clearable?: boolean
   showPasswordToggle?: boolean
   onClear?: () => void
+  floatingLabel?: string
+  icon?: React.ReactNode
 }
 
 function NovaInput({
@@ -57,6 +59,8 @@ function NovaInput({
   type,
   value,
   onChange,
+  floatingLabel,
+  icon,
   ...props
 }: NovaInputProps) {
   const [showPassword, setShowPassword] = React.useState(false)
@@ -73,18 +77,21 @@ function NovaInput({
     onClear?.()
   }
 
+  const finalLabel = floatingLabel || label
+  const finalVariant = floatingLabel ? "floating" : variant
+  const finalLeftIcon = leftIcon || icon
   const displayValue = value !== undefined ? value : internalValue
-  const isFloating = variant === "floating"
+  const isFloating = finalVariant === "floating"
   const hasValue = Boolean(displayValue)
   const inputType = showPasswordToggle && type === "password" ? (showPassword ? "text" : "password") : type
 
   return (
     <div className="relative w-full">
-      {label && !isFloating && (
-        <Label className={cn("mb-1.5 block text-sm", error && "text-destructive")}>{label}</Label>
+      {finalLabel && !isFloating && (
+        <Label className={cn("mb-1.5 block text-sm", error && "text-destructive")}>{finalLabel}</Label>
       )}
       <div className="relative">
-        {leftIcon && <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">{leftIcon}</div>}
+        {finalLeftIcon && <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">{finalLeftIcon}</div>}
         <Input
           type={inputType}
           value={displayValue}
@@ -92,8 +99,8 @@ function NovaInput({
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           className={cn(
-            novaInputVariants({ variant, inputSize }),
-            leftIcon && "pl-10",
+            novaInputVariants({ variant: finalVariant, inputSize }),
+            finalLeftIcon && "pl-10",
             (rightIcon || clearable || showPasswordToggle || error || success) && "pr-10",
             error && "border-destructive focus-visible:ring-destructive/50",
             success && "border-green-500 focus-visible:ring-green-500/50",
@@ -104,7 +111,7 @@ function NovaInput({
           aria-describedby={error ? `${props.id}-error` : helperText ? `${props.id}-helper` : undefined}
           {...props}
         />
-        {isFloating && label && (
+        {isFloating && finalLabel && (
           <Label
             className={cn(
               "absolute left-3 transition-all duration-200 pointer-events-none",
@@ -113,7 +120,7 @@ function NovaInput({
                 : "top-1/2 -translate-y-1/2 text-sm text-muted-foreground",
             )}
           >
-            {label}
+            {finalLabel}
           </Label>
         )}
         <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1">

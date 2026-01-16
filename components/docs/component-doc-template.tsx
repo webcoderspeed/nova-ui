@@ -34,6 +34,7 @@ interface ComponentDocProps {
   apiReference?: string
   relatedComponents?: { name: string; href: string }[]
   sourceLink?: string
+  badgeText?: string
 }
 
 function CodeBlock({ code, language = "tsx" }: { code: string; language?: string }) {
@@ -73,6 +74,7 @@ export function ComponentDocTemplate({
   examples,
   relatedComponents,
   sourceLink,
+  badgeText,
 }: ComponentDocProps) {
   return (
     <div className="space-y-12">
@@ -87,6 +89,11 @@ export function ComponentDocTemplate({
         </Link>
         <ChevronRight className="h-4 w-4" />
         <span className="text-foreground font-medium">{title}</span>
+        {badgeText && (
+          <Badge variant="outline" className="ml-2">
+            {badgeText}
+          </Badge>
+        )}
       </nav>
 
       {/* Header */}

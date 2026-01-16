@@ -35,6 +35,7 @@ export interface NovaButtonProps extends React.ComponentProps<typeof Button>, Va
   loadingText?: string
   leftIcon?: React.ReactNode
   rightIcon?: React.ReactNode
+  animate?: boolean
 }
 
 function NovaButton({
@@ -47,12 +48,15 @@ function NovaButton({
   leftIcon,
   rightIcon,
   disabled,
+  animate,
   ...props
 }: NovaButtonProps) {
   const [ripples, setRipples] = React.useState<{ x: number; y: number; id: number }[]>([])
 
+  const finalAnimation = animate === false ? "none" : animation
+
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (animation === "ripple") {
+    if (finalAnimation === "ripple") {
       const rect = e.currentTarget.getBoundingClientRect()
       const x = e.clientX - rect.left
       const y = e.clientY - rect.top
@@ -67,7 +71,7 @@ function NovaButton({
 
   return (
     <Button
-      className={cn(novaButtonVariants({ animation, rounded }), className)}
+      className={cn(novaButtonVariants({ animation: finalAnimation, rounded }), className)}
       disabled={disabled || loading}
       onClick={handleClick}
       {...props}
@@ -76,7 +80,7 @@ function NovaButton({
       {!loading && leftIcon}
       {loading && loadingText ? loadingText : children}
       {!loading && rightIcon}
-      {animation === "ripple" &&
+      {finalAnimation === "ripple" &&
         ripples.map((ripple) => (
           <span
             key={ripple.id}

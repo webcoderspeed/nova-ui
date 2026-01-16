@@ -43,7 +43,7 @@ const novaProgressVariants = cva("transition-all duration-300", {
 })
 
 export interface NovaProgressProps
-  extends React.ComponentProps<typeof Progress>,
+  extends Omit<React.ComponentProps<typeof Progress>, "color">,
     VariantProps<typeof novaProgressVariants> {
   label?: string
   showValue?: boolean
