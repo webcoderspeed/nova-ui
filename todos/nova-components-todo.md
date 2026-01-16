@@ -7,7 +7,7 @@ This document tracks the implementation status of Nova components compared to th
 - **Nova Components**: `/components/nova/` (28 components)
 - **UI Components**: `/components/ui/` (65 components)
 
-## ✅ Completed Nova Components (28)
+## ✅ Completed Nova Components (44)
 These components already exist in the nova/ directory:
 
 | Component | File | Status |
@@ -23,17 +23,25 @@ These components already exist in the nova/ directory:
 | Calendar | `nova-calendar.tsx` | ✅ Complete |
 | Card | `nova-card.tsx` | ✅ Complete |
 | Checkbox | `nova-checkbox.tsx` | ✅ Complete |
+| Collapsible | `nova-collapsible.tsx` | ✅ Complete |
+| Command | `nova-command.tsx` | ✅ Complete |
+| Context Menu | `nova-context-menu.tsx` | ✅ Complete |
 | Dialog | `nova-dialog.tsx` | ✅ Complete |
+| Drawer | `nova-drawer.tsx` | ✅ Complete |
 | Dropdown Menu | `nova-dropdown-menu.tsx` | ✅ Complete |
 | Form | `nova-form.tsx` | ✅ Complete |
 | Input | `nova-input.tsx` | ✅ Complete |
+| Menubar | `nova-menubar.tsx` | ✅ Complete |
 | Navigation Menu | `nova-navigation-menu.tsx` | ✅ Complete |
 | Pagination | `nova-pagination.tsx` | ✅ Complete |
 | Progress | `nova-progress.tsx` | ✅ Complete |
 | Radio Group | `nova-radio-group.tsx` | ✅ Complete |
+| Resizable | `nova-resizable.tsx` | ✅ Complete |
 | Scroll Area | `nova-scroll-area.tsx` | ✅ Complete |
 | Select | `nova-select.tsx` | ✅ Complete |
 | Separator | `nova-separator.tsx` | ✅ Complete |
+| Sheet | `nova-sheet.tsx` | ✅ Complete |
+| Sidebar | `nova-sidebar.tsx` | ✅ Complete |
 | Skeleton | `nova-skeleton.tsx` | ✅ Complete |
 | Slider | `nova-slider.tsx` | ✅ Complete |
 | Switch | `nova-switch.tsx` | ✅ Complete |
@@ -44,7 +52,7 @@ These components already exist in the nova/ directory:
 | Tooltip | `nova-tooltip.tsx` | ✅ Complete |
 | Index | `index.ts` | ✅ Complete |
 
-## 🚧 Missing Nova Components (37)
+## 🚧 Missing Nova Components (21)
 These components exist in ui/ but are missing from nova/ directory:
 
 ### High Priority Components
@@ -58,10 +66,10 @@ These components exist in ui/ but are missing from nova/ directory:
 | Button Group | `button-group.tsx` | 🟡 Medium | ❌ Missing |
 | Carousel | `carousel.tsx` | 🟡 Medium | ❌ Missing |
 | Chart | `chart.tsx` | 🟡 Medium | ❌ Missing |
-| Collapsible | `collapsible.tsx` | 🟡 Medium | ❌ Missing |
-| Command | `command.tsx` | 🟡 Medium | ❌ Missing |
-| Context Menu | `context-menu.tsx` | 🟡 Medium | ❌ Missing |
-| Drawer | `drawer.tsx` | 🟡 Medium | ❌ Missing |
+| Collapsible | `nova-collapsible.tsx` | ✅ Complete |
+| Command | `nova-command.tsx` | ✅ Complete |
+| Context Menu | `nova-context-menu.tsx` | ✅ Complete |
+| Drawer | `nova-drawer.tsx` | ✅ Complete |
 | Empty | `empty.tsx` | 🟡 Medium | ❌ Missing |
 | Field | `nova-field.tsx` | ✅ Complete |
 | Hover Card | `nova-hover-card.tsx` | ✅ Complete |
@@ -70,11 +78,11 @@ These components exist in ui/ but are missing from nova/ directory:
 | Item | `item.tsx` | 🟡 Medium | ❌ Missing |
 | KBD | `kbd.tsx` | 🟡 Medium | ❌ Missing |
 | Label | `nova-label.tsx` | ✅ Complete |
-| Menubar | `menubar.tsx` | 🟡 Medium | ❌ Missing |
+| Menubar | `nova-menubar.tsx` | ✅ Complete |
 | Popover | `nova-popover.tsx` | ✅ Complete |
-| Resizable | `resizable.tsx` | 🟡 Medium | ❌ Missing |
-| Sheet | `sheet.tsx` | 🟡 Medium | ❌ Missing |
-| Sidebar | `sidebar.tsx` | 🟡 Medium | ❌ Missing |
+| Resizable | `nova-resizable.tsx` | ✅ Complete |
+| Sheet | `nova-sheet.tsx` | ✅ Complete |
+| Sidebar | `nova-sidebar.tsx` | ✅ Complete |
 | Sonner | `nova-sonner.tsx` | ✅ Complete |
 | Spinner | `nova-spinner.tsx` | ✅ Complete |
 | Toaster | `toaster.tsx` | 🟡 Medium | ❌ Missing |
@@ -89,10 +97,10 @@ These components exist in ui/ but are missing from nova/ directory:
 
 ## 📈 Statistics
 - **Total UI Components**: 65
-- **Completed Nova Components**: 36 (55%)
-- **Missing Components**: 29 (45%)
+- **Completed Nova Components**: 44 (67.7%)
+- **Missing Components**: 21 (32.3%)
 - **High Priority Missing**: 0 components
-- **Medium Priority Missing**: 27 components
+- **Medium Priority Missing**: 19 components
 - **Low Priority Missing**: 2 components
 
 ## 🎯 Implementation Strategy
