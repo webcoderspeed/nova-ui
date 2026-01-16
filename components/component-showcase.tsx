@@ -1,10 +1,15 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Badge } from "@/components/ui/badge"
+import {
+  NovaButton as Button,
+  NovaCard as Card,
+  NovaCardContent as CardContent,
+  NovaCardHeader as CardHeader,
+  NovaCardTitle as CardTitle,
+  NovaInput as Input,
+  NovaBadge as Badge
+} from "@/components/nova"
 import { ArrowRight, Mail, Lock, Loader2 } from "lucide-react"
 
 const componentCategories = ["All", "Buttons", "Cards", "Forms", "Modals"]

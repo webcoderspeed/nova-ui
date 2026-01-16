@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import { NovaButton as Button } from "@/components/nova"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Menu, X, Github, Search } from "lucide-react"
 

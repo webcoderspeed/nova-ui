@@ -1,5 +1,10 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  NovaButton as Button,
+  NovaCard as Card,
+  NovaCardContent as CardContent,
+  NovaCardHeader as CardHeader,
+  NovaCardTitle as CardTitle
+} from "@/components/nova"
 import { Github, BookOpen, MessageSquare, Bug } from "lucide-react"
 
 const links = [

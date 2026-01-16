@@ -2,15 +2,15 @@
 
 import { Moon, Sun, Palette, Check } from "lucide-react"
 import { useTheme } from "@/components/theme-provider"
-import { Button } from "@/components/ui/button"
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-  DropdownMenuSeparator,
-  DropdownMenuLabel,
-} from "@/components/ui/dropdown-menu"
+  NovaButton as Button,
+  NovaDropdownMenu as DropdownMenu,
+  NovaDropdownMenuContent as DropdownMenuContent,
+  NovaDropdownMenuItem as DropdownMenuItem,
+  NovaDropdownMenuTrigger as DropdownMenuTrigger,
+  NovaDropdownMenuSeparator as DropdownMenuSeparator,
+  NovaDropdownMenuLabel as DropdownMenuLabel,
+} from "@/components/nova"
 
 export function ThemeToggle() {
   const { brand, mode, setBrand, setMode, resolvedMode, mounted } = useTheme()

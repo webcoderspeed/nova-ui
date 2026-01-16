@@ -1,5 +1,8 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import {
+  NovaCard as Card,
+  NovaCardContent as CardContent,
+  NovaAvatar as Avatar
+} from "@/components/nova"
 
 const testimonials = [
   {
@@ -39,15 +42,15 @@ export function TestimonialsSection() {
                   <p className="text-sm leading-relaxed">"{testimonial.quote}"</p>
                 </blockquote>
                 <div className="mt-6 flex items-center gap-3">
-                  <Avatar className="h-10 w-10">
-                    <AvatarImage src={testimonial.avatar || "/placeholder.svg"} alt={testimonial.author} />
-                    <AvatarFallback className="bg-primary/20 text-primary">
-                      {testimonial.author
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")}
-                    </AvatarFallback>
-                  </Avatar>
+                  <Avatar
+                    className="h-10 w-10"
+                    src={testimonial.avatar || "/placeholder.svg"}
+                    alt={testimonial.author}
+                    fallback={testimonial.author
+                      .split(" ")
+                      .map((n) => n[0])
+                      .join("")}
+                  />
                   <div>
                     <p className="text-sm font-medium text-foreground">{testimonial.author}</p>
                     <p className="text-xs text-muted-foreground">{testimonial.role}</p>

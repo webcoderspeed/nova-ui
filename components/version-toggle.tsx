@@ -1,15 +1,15 @@
 "use client"
 
 import { useVersion, type Version } from "@/components/version-provider"
-import { Button } from "@/components/ui/button"
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+  NovaButton as Button,
+  NovaDropdownMenu as DropdownMenu,
+  NovaDropdownMenuContent as DropdownMenuContent,
+  NovaDropdownMenuItem as DropdownMenuItem,
+  NovaDropdownMenuLabel as DropdownMenuLabel,
+  NovaDropdownMenuSeparator as DropdownMenuSeparator,
+  NovaDropdownMenuTrigger as DropdownMenuTrigger,
+} from "@/components/nova"
 import { ChevronDown, Check, Tag, Sparkles, FlaskConical } from "lucide-react"
 
 export function VersionToggle() {
