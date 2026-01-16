@@ -67,13 +67,13 @@ export function ResizableDemo() {
         {
           name: "variant",
           type: '"default" | "glass" | "primary"',
-          default: '"default"',
+          defaultValue: '"default"',
           description: "Visual style variant for the resize handle.",
         },
         {
           name: "withHandle",
           type: "boolean",
-          default: "false",
+          defaultValue: "false",
           description: "Whether to show a small grip icon in the center of the handle.",
         }
       ]}

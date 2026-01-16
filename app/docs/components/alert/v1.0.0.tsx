@@ -52,7 +52,7 @@ export function AlertDemo() {
         {
           name: "status",
           type: '"default" | "success" | "warning" | "error" | "info"',
-          default: '"default"',
+          defaultValue: '"default"',
           description: "Visual style variant indicating the nature of the message.",
         },
         {
@@ -73,19 +73,19 @@ export function AlertDemo() {
         {
           name: "showIcon",
           type: "boolean",
-          default: "true",
+          defaultValue: "true",
           description: "Whether to show the status icon.",
         },
         {
           name: "dismissible",
           type: "boolean",
-          default: "false",
+          defaultValue: "false",
           description: "If true, shows a close button that dismisses the alert.",
         },
         {
           name: "animation",
           type: '"none" | "fade" | "slide"',
-          default: '"fade"',
+          defaultValue: '"fade"',
           description: "Entry animation style.",
         },
         {

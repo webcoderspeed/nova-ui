@@ -82,19 +82,19 @@ export function CardDemo() {
         {
           name: "variant",
           type: '"default" | "glass" | "gradient" | "outline" | "elevated" | "interactive"',
-          default: '"default"',
+          defaultValue: '"default"',
           description: "Visual style variant.",
         },
         {
           name: "glow",
           type: '"none" | "subtle" | "medium" | "strong"',
-          default: '"none"',
+          defaultValue: '"none"',
           description: "Adds a glowing shadow effect (useful for dark mode).",
         },
         {
           name: "hover",
           type: '"none" | "lift" | "scale" | "glow" | "border"',
-          default: '"none"',
+          defaultValue: '"none"',
           description: "Interaction effect on hover.",
         },
         {

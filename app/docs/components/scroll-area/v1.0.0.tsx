@@ -56,13 +56,13 @@ export function ScrollAreaDemo() {
         {
           name: "variant",
           type: '"default" | "glass" | "glow" | "gradient" | "neon"',
-          default: '"default"',
+          defaultValue: '"default"',
           description: "Visual style variant for the scrollbar thumb and track.",
         },
         {
           name: "scrollbarSize",
           type: '"default" | "thin" | "thick" | "hidden"',
-          default: '"default"',
+          defaultValue: '"default"',
           description: "Controls the thickness of the scrollbar.",
         },
       ]}

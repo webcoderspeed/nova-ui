@@ -53,19 +53,19 @@ export function AspectRatioDemo() {
         {
           name: "ratio",
           type: "number",
-          default: "16/9",
+          defaultValue: "16/9",
           description: "The desired aspect ratio (width / height).",
         },
         {
           name: "variant",
           type: '"default" | "glass" | "frame" | "shadow" | "gradient"',
-          default: '"default"',
+          defaultValue: '"default"',
           description: "Visual style variant for the container.",
         },
         {
           name: "rounded",
           type: '"none" | "default" | "lg" | "xl" | "full"',
-          default: '"default"',
+          defaultValue: '"default"',
           description: "Border radius of the container.",
         },
       ]}

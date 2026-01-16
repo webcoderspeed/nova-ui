@@ -24,7 +24,7 @@ import { cn } from "@/lib/utils";
 interface PropItem {
   name: string;
   type: string;
-  default?: string;
+  defaultValue?: string;
   description: string;
   required?: boolean;
 }
@@ -340,9 +340,9 @@ export function ComponentDocTemplate({
                     </code>
                   </td>
                   <td className="py-4 px-6">
-                    {prop.default ? (
+                    {prop.defaultValue ? (
                       <code className="text-muted-foreground font-mono text-xs">
-                        {prop.default}
+                        {prop.defaultValue}
                       </code>
                     ) : (
                       <span className="text-muted-foreground text-xs italic">
