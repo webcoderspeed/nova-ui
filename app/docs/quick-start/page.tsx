@@ -2,9 +2,12 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import {
+  NovaButton as Button,
+  NovaCard as Card,
+  NovaCardContent as CardContent,
+  NovaBadge as Badge
+} from "@/components/nova"
 import { Check, Copy, ChevronRight, ArrowRight, Rocket } from "lucide-react"
 
 function CodeBlock({ code }: { code: string }) {

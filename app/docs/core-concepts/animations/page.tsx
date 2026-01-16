@@ -2,9 +2,15 @@
 
 import { useState } from "react"
 import { CodeBlock } from "@/components/docs/code-block"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import {
+  NovaCard as Card,
+  NovaCardContent as CardContent,
+  NovaButton as Button,
+  NovaTabs as Tabs,
+  NovaTabsContent as TabsContent,
+  NovaTabsList as TabsList,
+  NovaTabsTrigger as TabsTrigger
+} from "@/components/nova"
 import { ArrowRight, Sparkles, Play } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 

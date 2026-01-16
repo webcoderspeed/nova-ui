@@ -1,7 +1,13 @@
 import { CodeBlock } from "@/components/docs/code-block"
-import { NovaCard, NovaCardContent } from "@/components/nova/nova-card"
-import { NovaAccordion, NovaAccordionContent, NovaAccordionItem, NovaAccordionTrigger } from "@/components/nova/nova-accordion"
-import { NovaBadge } from "@/components/nova/nova-badge"
+import {
+  NovaCard,
+  NovaCardContent,
+  NovaAccordion,
+  NovaAccordionContent,
+  NovaAccordionItem,
+  NovaAccordionTrigger,
+  NovaBadge
+} from "@/components/nova"
 import { AlertTriangle, MessageCircle, Github, BookOpen } from "lucide-react"
 
 const faqs = [

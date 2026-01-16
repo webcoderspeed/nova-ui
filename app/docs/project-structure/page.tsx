@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { CodeBlock } from "@/components/docs/code-block"
-import { NovaCard, NovaCardContent } from "@/components/nova/nova-card"
+import { NovaCard, NovaCardContent } from "@/components/nova"
 import { Folder, File, FileCode, FileJson, Palette, Settings, Box, Layers } from "lucide-react"
 
 export default function ProjectStructurePage() {

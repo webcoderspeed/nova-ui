@@ -1,5 +1,5 @@
 import { CodeBlock } from "@/components/docs/code-block"
-import { Card, CardContent } from "@/components/ui/card"
+import { NovaCard as Card, NovaCardContent as CardContent } from "@/components/nova"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 

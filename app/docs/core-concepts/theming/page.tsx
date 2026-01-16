@@ -1,8 +1,14 @@
 "use client"
 
 import { CodeBlock } from "@/components/docs/code-block"
-import { Card, CardContent } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import {
+  NovaCard as Card,
+  NovaCardContent as CardContent,
+  NovaTabs as Tabs,
+  NovaTabsContent as TabsContent,
+  NovaTabsList as TabsList,
+  NovaTabsTrigger as TabsTrigger
+} from "@/components/nova"
 import { ArrowRight, Sun, Moon } from "lucide-react"
 
 export default function ThemingPage() {

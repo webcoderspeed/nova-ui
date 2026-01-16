@@ -1,7 +1,13 @@
 import { CodeBlock } from "@/components/docs/code-block"
-import { Card, CardContent } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Badge } from "@/components/ui/badge"
+import {
+  NovaCard as Card,
+  NovaCardContent as CardContent,
+  NovaTabs as Tabs,
+  NovaTabsContent as TabsContent,
+  NovaTabsList as TabsList,
+  NovaTabsTrigger as TabsTrigger,
+  NovaBadge as Badge
+} from "@/components/nova"
 import { Layers, Box, Puzzle, ArrowRight } from "lucide-react"
 
 export default function ArchitecturePage() {

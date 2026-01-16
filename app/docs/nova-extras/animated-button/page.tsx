@@ -2,11 +2,22 @@
 
 import { useState } from "react"
 import { CodeBlock } from "@/components/docs/code-block"
-import { Card, CardContent } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Badge } from "@/components/ui/badge"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { NovaButton } from "@/components/nova/nova-button"
+import {
+  NovaCard as Card,
+  NovaCardContent as CardContent,
+  NovaTabs as Tabs,
+  NovaTabsContent as TabsContent,
+  NovaTabsList as TabsList,
+  NovaTabsTrigger as TabsTrigger,
+  NovaBadge as Badge,
+  NovaTable as Table,
+  NovaTableBody as TableBody,
+  NovaTableCell as TableCell,
+  NovaTableHead as TableHead,
+  NovaTableHeader as TableHeader,
+  NovaTableRow as TableRow,
+  NovaButton
+} from "@/components/nova"
 import { ArrowRight, Sparkles, Send, Download } from "lucide-react"
 import Link from "next/link"
 

@@ -1,10 +1,20 @@
 "use client"
 
 import { CodeBlock } from "@/components/docs/code-block"
-import { NovaCard } from "@/components/nova/nova-card"
-import { NovaTable, NovaTableBody, NovaTableCell, NovaTableHead, NovaTableHeader, NovaTableRow } from "@/components/nova/nova-table"
-import { NovaBadge } from "@/components/nova/nova-badge"
-import { NovaTabs, NovaTabsContent, NovaTabsList, NovaTabsTrigger } from "@/components/nova/nova-tabs"
+import {
+  NovaCard,
+  NovaTable,
+  NovaTableBody,
+  NovaTableCell,
+  NovaTableHead,
+  NovaTableHeader,
+  NovaTableRow,
+  NovaBadge,
+  NovaTabs,
+  NovaTabsContent,
+  NovaTabsList,
+  NovaTabsTrigger
+} from "@/components/nova"
 
 export default function ApiReferencePage() {
   return (

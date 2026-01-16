@@ -1,6 +1,6 @@
 "use client"
 
-import { Card, CardContent } from "@/components/ui/card"
+import { NovaCard as Card, NovaCardContent as CardContent } from "@/components/nova"
 import { Blocks, Shield, Sparkles, Palette, Globe, Accessibility } from "lucide-react"
 
 const features = [
