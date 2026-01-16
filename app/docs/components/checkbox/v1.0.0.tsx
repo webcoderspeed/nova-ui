@@ -62,13 +62,13 @@ export function CheckboxDemo() {
         {
           name: "size",
           type: '"sm" | "md" | "lg"',
-          default: '"md"',
+          defaultValue: '"md"',
           description: "Size of the checkbox.",
         },
         {
           name: "color",
           type: '"default" | "success" | "warning" | "error"',
-          default: '"default"',
+          defaultValue: '"default"',
           description: "Color theme for the checked state.",
         },
       ]}

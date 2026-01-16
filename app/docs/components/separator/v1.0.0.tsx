@@ -67,19 +67,19 @@ export function SeparatorDemo() {
         {
           name: "variant",
           type: '"default" | "glass" | "gradient" | "glow" | "dashed" | "dotted"',
-          default: '"default"',
+          defaultValue: '"default"',
           description: "Visual style of the separator.",
         },
         {
           name: "size",
           type: '"default" | "thick" | "heavy"',
-          default: '"default"',
+          defaultValue: '"default"',
           description: "Thickness of the separator.",
         },
         {
           name: "orientation",
           type: '"horizontal" | "vertical"',
-          default: '"horizontal"',
+          defaultValue: '"horizontal"',
           description: "Orientation of the separator.",
         },
       ]}

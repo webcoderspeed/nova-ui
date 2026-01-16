@@ -49,13 +49,13 @@ export function SkeletonDemo() {
         {
           name: "animation",
           type: '"pulse" | "shimmer" | "wave"',
-          default: '"pulse"',
+          defaultValue: '"pulse"',
           description: "Animation style for the skeleton.",
         },
         {
           name: "variant",
           type: '"default" | "card" | "circle"',
-          default: '"default"',
+          defaultValue: '"default"',
           description: "Shape variant.",
         },
       ]}

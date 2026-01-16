@@ -100,13 +100,13 @@ export function CardDemo() {
         {
           name: "padding",
           type: '"none" | "sm" | "md" | "lg"',
-          default: '"md"',
+          defaultValue: '"md"',
           description: "Controls the padding of child elements.",
         },
         {
           name: "loading",
           type: "boolean",
-          default: "false",
+          defaultValue: "false",
           description: "If true, shows a skeleton loading state.",
         },
       ]}

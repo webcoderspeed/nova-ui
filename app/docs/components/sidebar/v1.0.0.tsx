@@ -128,7 +128,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {
           name: "effect",
           type: '"default" | "glass" | "solid"',
-          default: '"default"',
+          defaultValue: '"default"',
           description: "Visual style of the sidebar background.",
         }
       ]}

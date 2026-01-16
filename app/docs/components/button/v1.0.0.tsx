@@ -64,31 +64,31 @@ export function ButtonDemo() {
         {
           name: "variant",
           type: '"default" | "destructive" | "outline" | "secondary" | "ghost" | "link"',
-          default: '"default"',
+          defaultValue: '"default"',
           description: "The visual style of the button.",
         },
         {
           name: "size",
           type: '"default" | "sm" | "lg" | "icon"',
-          default: '"default"',
+          defaultValue: '"default"',
           description: "The size of the button.",
         },
         {
           name: "animation",
           type: '"none" | "pulse" | "bounce" | "shine" | "glow" | "scale" | "ripple"',
-          default: '"scale"',
+          defaultValue: '"scale"',
           description: "Interaction animation.",
         },
         {
           name: "rounded",
           type: '"default" | "full" | "none"',
-          default: '"default"',
+          defaultValue: '"default"',
           description: "Border radius style.",
         },
         {
           name: "loading",
           type: "boolean",
-          default: "false",
+          defaultValue: "false",
           description: "Shows a loading spinner and disables the button.",
         },
         {

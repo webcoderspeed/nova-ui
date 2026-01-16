@@ -66,13 +66,13 @@ export function FieldDemo() {
         {
           name: "variant",
           type: '"default" | "card" | "glass" | "highlight" | "ghost"',
-          default: '"default"',
+          defaultValue: '"default"',
           description: "Visual style of the field container.",
         },
         {
           name: "spacing",
           type: '"default" | "tight" | "loose"',
-          default: '"default"',
+          defaultValue: '"default"',
           description: "Spacing between elements within the field.",
         },
       ]}
