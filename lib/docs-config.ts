@@ -20,6 +20,9 @@ export const componentVersions = {
   "badge": [
     "1.0.0"
   ],
+  "big-calendar": [
+    "1.0.0"
+  ],
   "breadcrumb": [
     "1.0.0"
   ],
