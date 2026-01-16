@@ -7,6 +7,7 @@ import { AlertCircle, Terminal } from "lucide-react"
 export default function AlertDocsV1() {
   return (
     <ComponentDocTemplate
+      badgeText="v1.0.0"
       title="Alert"
       description="Displays a callout for user attention. Basic version with default and destructive variants."
       preview={
