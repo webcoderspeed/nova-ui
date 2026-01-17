@@ -16,6 +16,7 @@
 # Misc
 .DS_Store
 *.pem
+example/
 
 # Debug
 npm-debug.log*
@@ -45,3 +46,5 @@ next-env.d.ts
 .idea
 *.swp
 *.swo
+example/*
+example
