@@ -205,15 +205,57 @@ function CalendarDashboard() {
     }
   }, [])
 
+  const onEventDrop = React.useCallback(
+    (args: { event: NovaEvent; start: string | Date; end: string | Date; isAllDay?: boolean }) => {
+      const { event, start, end } = args
+      const startDate = typeof start === 'string' ? new Date(start) : start
+      const endDate = typeof end === 'string' ? new Date(end) : end
+
+      setEvents((prev) =>
+        prev.map((e) =>
+          e === event
+            ? { ...e, start: startDate, end: endDate }
+            : e
+        )
+      )
+      toast.success("Event moved", {
+        description: `${format(startDate, "MMM d, h:mm a")} - ${format(endDate, "h:mm a")}`
+      })
+    },
+    []
+  )
+
+  const onEventResize = React.useCallback(
+    (args: { event: NovaEvent; start: string | Date; end: string | Date; isAllDay?: boolean }) => {
+      const { event, start, end } = args
+      const startDate = typeof start === 'string' ? new Date(start) : start
+      const endDate = typeof end === 'string' ? new Date(end) : end
+
+      setEvents((prev) =>
+        prev.map((e) =>
+          e === event
+            ? { ...e, start: startDate, end: endDate }
+            : e
+        )
+      )
+      toast.success("Event resized", {
+        description: `${format(startDate, "MMM d, h:mm a")} - ${format(endDate, "h:mm a")}`
+      })
+    },
+    []
+  )
+
   return (
     <div className="h-[800px] w-full font-sans p-6 bg-background border rounded-xl shadow-sm relative group">
       <div className="absolute top-4 right-6 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
         <div className="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full font-medium">
-          Try clicking a date to add an event
+          Try dragging, resizing, or clicking to add events
         </div>
       </div>
       <NovaBigCalendar<NovaEvent>
         selectable
+        resizable
+        withDnD
         events={events}
         defaultView="month"
         views={["month", "week", "day", "agenda"]}
@@ -226,6 +268,8 @@ function CalendarDashboard() {
         }}
         onSelectSlot={handleSelectSlot}
         onSelectEvent={handleSelectEvent}
+        onEventDrop={onEventDrop}
+        onEventResize={onEventResize}
         className={cn(
             "h-full",
             // Premium Month View Styles

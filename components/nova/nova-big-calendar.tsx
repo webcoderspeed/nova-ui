@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { Calendar, dateFnsLocalizer, type CalendarProps, type EventProps, type ToolbarProps, type View, type Components, type DateLocalizer } from "react-big-calendar"
+import withDragAndDrop, { type withDragAndDropProps } from "react-big-calendar/lib/addons/dragAndDrop"
 import { format, parse, startOfWeek, getDay, isSameDay } from "date-fns"
 import { enUS } from "date-fns/locale"
 import { cva, type VariantProps } from "class-variance-authority"
@@ -10,6 +11,7 @@ import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, Clock, MoreHorizon
 import { NovaAvatar } from "./nova-avatar"
 import { NovaButton } from "./nova-button"
 import "react-big-calendar/lib/css/react-big-calendar.css"
+import "react-big-calendar/lib/addons/dragAndDrop/styles.css"
 
 const locales = {
   "en-US": enUS,
@@ -22,6 +24,8 @@ const localizer = dateFnsLocalizer({
   getDay,
   locales,
 })
+
+const DnDCalendar = withDragAndDrop(Calendar)
 
 const novaBigCalendarVariants = cva(
   "rounded-lg overflow-hidden transition-all duration-300 [&_.rbc-toolbar]:mb-4 [&_.rbc-toolbar_button]:hidden [&_.rbc-header]:p-2 [&_.rbc-header]:font-medium [&_.rbc-header]:text-muted-foreground [&_.rbc-header]:uppercase [&_.rbc-header]:text-xs [&_.rbc-event]:bg-transparent [&_.rbc-event]:p-0 [&_.rbc-event]:rounded-lg [&_.rbc-event.rbc-selected]:bg-transparent [&_.rbc-event:focus]:outline-none [&_.rbc-day-slot_.rbc-event]:border-none [&_.rbc-time-slot]:border-border/50 [&_.rbc-day-bg]:border-border/50 [&_.rbc-header]:border-border/50 [&_.rbc-month-view]:border-border/50 [&_.rbc-month-row]:border-border/50",
@@ -52,8 +56,10 @@ export interface NovaEvent {
 
 export interface NovaBigCalendarProps<TEvent extends object = NovaEvent, TResource extends object = object>
   extends Omit<CalendarProps<TEvent, TResource>, "localizer">,
+    withDragAndDropProps<TEvent, TResource>,
     VariantProps<typeof novaBigCalendarVariants> {
   localizer?: DateLocalizer
+  withDnD?: boolean
 }
 
 function CustomEvent<TEvent extends NovaEvent>({ event }: EventProps<TEvent>) {
@@ -168,6 +174,7 @@ function NovaBigCalendar<TEvent extends NovaEvent = NovaEvent, TResource extends
   localizer: customLocalizer,
   style,
   components: userComponents,
+  withDnD = false,
   ...props
 }: NovaBigCalendarProps<TEvent, TResource>) {
   
@@ -177,13 +184,15 @@ function NovaBigCalendar<TEvent extends NovaEvent = NovaEvent, TResource extends
     ...userComponents,
   }), [userComponents])
 
+  const CalendarComponent = withDnD ? DnDCalendar : Calendar
+
   return (
     <div className={cn(novaBigCalendarVariants({ variant }), className)}>
-      <Calendar
+      <CalendarComponent
         localizer={customLocalizer || localizer}
         style={{ height: 600, ...style }}
         components={components}
-        {...props}
+        {...(props as any)}
       />
     </div>
   )
