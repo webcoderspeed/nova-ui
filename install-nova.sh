@@ -167,8 +167,9 @@ cd "$INSTALL_PATH"
 # Create styles directory if it doesn't exist
 mkdir -p styles
 
-# Copy global css if it exists in app/globals.css and styles/globals.css doesn't exist
-if [ -f "app/globals.css" ] && [ ! -f "styles/globals.css" ]; then
+# Copy global css if it exists in app/globals.css
+# We prioritize app/globals.css as it contains the main theme
+if [ -f "app/globals.css" ]; then
     cp "app/globals.css" "styles/globals.css"
     echo -e "${GREEN}✨ Copied app/globals.css to styles/globals.css${NC}"
 fi
