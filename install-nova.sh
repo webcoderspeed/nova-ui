@@ -42,10 +42,21 @@ fi
 
 # 1. Add Submodule
 echo -e "\n${BLUE}📂 Adding submodule from ${REPO_URL} to ${INSTALL_PATH}...${NC}"
+
+# Handle "Zombie" state: Path is in git index but directory is missing
+# This causes 'already exists in the index' error during submodule add
+if git ls-files --error-unmatch "$INSTALL_PATH" &> /dev/null; then
+    if [ ! -d "$INSTALL_PATH" ]; then
+        echo -e "${YELLOW}⚠️  Found '${INSTALL_PATH}' in git index but missing on disk (Zombie state).${NC}"
+        echo -e "${YELLOW}🧹 Removing from index to allow fresh install...${NC}"
+        git rm --cached "$INSTALL_PATH"
+    fi
+fi
+
 if [ -d "$INSTALL_PATH" ]; then
     echo -e "${YELLOW}⚠️  Directory ${INSTALL_PATH} already exists. Skipping submodule add.${NC}"
 else
-    git submodule add "$REPO_URL" "$INSTALL_PATH"
+    git submodule add --force "$REPO_URL" "$INSTALL_PATH"
 fi
 
 # 1.5 Switch to Version (if specified)
