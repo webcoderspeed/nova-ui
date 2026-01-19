@@ -15,6 +15,7 @@ GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 YELLOW='\033[0;33m'
 RED='\033[0;31m'
+CYAN='\033[0;36m'
 NC='\033[0m'
 
 echo -e "${BLUE}
@@ -61,47 +62,113 @@ fi
 echo -e "\n${BLUE}📦 Installing dependencies...${NC}"
 # Check if the setup script exists
 SETUP_SCRIPT="$INSTALL_PATH/scripts/setup-submodule.mjs"
+
 if [ -f "$SETUP_SCRIPT" ]; then
-    node "$SETUP_SCRIPT"
+    echo -e "${CYAN}🔧 Running automatic dependency setup...${NC}"
+    # Run setup script and automatically answer 'Y' to install
+    echo "Y" | node "$SETUP_SCRIPT"
+    
+    # Check if setup was successful and extract configuration suggestions
+    echo -e "\n${BLUE}⚙️  Applying automatic configuration...${NC}"
+    
+    # Auto-detect and update tailwind config
+    if [ -f "tailwind.config.js" ] || [ -f "tailwind.config.ts" ]; then
+        echo -e "${GREEN}✅ Found Tailwind config - updating content paths${NC}"
+        # Get relative path to nova-ui components
+        RELATIVE_PATH="$INSTALL_PATH/components/**/*.{ts,tsx}"
+        
+        # Update tailwind config
+        if [ -f "tailwind.config.js" ]; then
+            # Add nova-ui components to content array
+            if ! grep -q "$RELATIVE_PATH" "tailwind.config.js"; then
+                sed -i '' "s/content: \[/content: [\n    \"$RELATIVE_PATH\",/" "tailwind.config.js"
+                echo -e "${GREEN}✨ Added Nova UI components to Tailwind config${NC}"
+            fi
+        fi
+    fi
+    
+    # Auto-update tsconfig paths
+    if [ -f "tsconfig.json" ]; then
+        echo -e "${GREEN}✅ Found TypeScript config - adding path aliases${NC}"
+        
+        # Use Node.js to update tsconfig safely (preserves comments, handles loose JSON better than jq)
+        node -e "
+        const fs = require('fs');
+        const installPath = '$INSTALL_PATH';
+        const file = 'tsconfig.json';
+        
+        try {
+            let content = fs.readFileSync(file, 'utf8');
+            let updated = false;
+            
+            // 1. Add @nova-ui/* alias
+            if (!content.includes('\"@nova-ui/*\"')) {
+                const newAlias = '\"@nova-ui/*\": [\"./' + installPath + '/*\"]';
+                if (content.includes('\"paths\": {')) {
+                    content = content.replace('\"paths\": {', '\"paths\": {\n      ' + newAlias + ',');
+                    updated = true;
+                } else if (content.includes('\"compilerOptions\": {')) {
+                    content = content.replace('\"compilerOptions\": {', '\"compilerOptions\": {\n    \"paths\": {\n      ' + newAlias + '\n    },');
+                    updated = true;
+                }
+            }
+            
+            // 2. Add @/packages/nova-ui/* alias (Backward Compatibility)
+            if (!content.includes('\"@/packages/nova-ui/*\"')) {
+                const newAlias = '\"@/packages/nova-ui/*\": [\"./' + installPath + '/*\"]';
+                // If we just added paths, we can find it now
+                if (content.includes('\"paths\": {')) {
+                    content = content.replace('\"paths\": {', '\"paths\": {\n      ' + newAlias + ',');
+                    updated = true;
+                }
+            }
+            
+            if (updated) {
+                fs.writeFileSync(file, content);
+                console.log('✨ Added path aliases to tsconfig.json');
+            } else {
+                console.log('✅ Path aliases already exist');
+            }
+        } catch (e) {
+            console.error('❌ Failed to update tsconfig.json:', e);
+            process.exit(1);
+        }
+        "
+    fi
+    
 else
     echo -e "${YELLOW}⚠️  Setup script not found at $SETUP_SCRIPT. Skipping dependency installation.${NC}"
 fi
 
-# 3. Cleanup (Clean Setup)
-echo -e "\n${BLUE}🧹 Cleaning up workspace (Keeping only essential files)...${NC}"
+# 3. Cleanup (Strict Mode)
+echo -e "\n${BLUE}🧹 Cleaning up workspace (Strict mode - Keeping only requested files)...${NC}"
 cd "$INSTALL_PATH"
 
 # Create styles directory if it doesn't exist
 mkdir -p styles
 
-# Copy global css if it exists in app/globals.css
-if [ -f "app/globals.css" ]; then
+# Copy global css if it exists in app/globals.css and styles/globals.css doesn't exist
+if [ -f "app/globals.css" ] && [ ! -f "styles/globals.css" ]; then
     cp "app/globals.css" "styles/globals.css"
     echo -e "${GREEN}✨ Copied app/globals.css to styles/globals.css${NC}"
 fi
 
-# Define the files/folders to KEEP
-# We will move them to a temporary directory, delete everything, then move them back
 TEMP_DIR=$(mktemp -d)
 
-# Function to safely move if exists
-safe_move() {
-    if [ -e "$1" ]; then
-        cp -R "$1" "$TEMP_DIR/"
+# Move Root Items
+# hooks, lib, styles, index.ts, package.json, postcss.config.mjs
+items=("hooks" "lib" "styles" "index.ts" "package.json" "postcss.config.mjs")
+for item in "${items[@]}"; do
+    if [ -e "$item" ]; then
+        cp -R "$item" "$TEMP_DIR/"
     fi
-}
+done
 
-safe_move "components"
-safe_move "libs"
-safe_move "lib" # legacy support
-safe_move "hooks"
-safe_move "theme-provider.tsx"
-safe_move "index.ts"
-safe_move "package.json"
-safe_move "tsconfig.json"
-safe_move "styles" # The one we just created
-safe_move "scripts" # Keep scripts for future updates if needed
-safe_move "postcss.config.mjs"
+# Move Granular Components
+mkdir -p "$TEMP_DIR/components"
+if [ -d "components/nova" ]; then cp -R "components/nova" "$TEMP_DIR/components/"; fi
+if [ -d "components/ui" ]; then cp -R "components/ui" "$TEMP_DIR/components/"; fi
+if [ -f "components/index.ts" ]; then cp "components/index.ts" "$TEMP_DIR/components/"; fi
 
 # Delete everything in the current directory (hidden files too, except .git)
 # We need to be careful not to delete .git directory
@@ -110,6 +177,21 @@ find . -maxdepth 1 ! -name '.' ! -name '..' ! -name '.git' -exec rm -rf {} +
 # Move files back from temp
 cp -R "$TEMP_DIR/"* .
 rm -rf "$TEMP_DIR"
+
+# 4. Rewrite Internal Imports
+echo -e "\n${BLUE}🔄 Rewriting internal imports to match new structure...${NC}"
+# Find all .ts and .tsx files in the installed package
+find . -type f \( -name "*.ts" -o -name "*.tsx" \) -print0 | while IFS= read -r -d '' file; do
+    # Replace "@/ with "@/packages/nova-ui/ (using the INSTALL_PATH logic, but hardcoded to user preference if they want strict pattern)
+    # Actually, INSTALL_PATH is "packages/nova-ui". So we want "@/ + INSTALL_PATH + /"
+    
+    # We use | as delimiter for sed to avoid escaping slashes in path
+    if grep -q "from \"@/" "$file" || grep -q "from '@/" "$file"; then
+        sed -i '' "s|from \"@/|from \"@/$INSTALL_PATH/|g" "$file"
+        sed -i '' "s|from '@/|from '@/$INSTALL_PATH/|g" "$file"
+    fi
+done
+echo -e "${GREEN}✨ Updated internal imports to use @/$INSTALL_PATH/* pattern${NC}"
 
 echo -e "\n${GREEN}✅ Nova UI installed successfully!${NC}"
 echo -e "   Location: ${INSTALL_PATH}"
