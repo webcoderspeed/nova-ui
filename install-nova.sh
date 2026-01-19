@@ -43,21 +43,30 @@ fi
 # 1. Add Submodule
 echo -e "\n${BLUE}📂 Adding submodule from ${REPO_URL} to ${INSTALL_PATH}...${NC}"
 
-# Handle "Zombie" state: Path is in git index but directory is missing
-# This causes 'already exists in the index' error during submodule add
-if git ls-files --error-unmatch "$INSTALL_PATH" &> /dev/null; then
-    if [ ! -d "$INSTALL_PATH" ]; then
-        echo -e "${YELLOW}⚠️  Found '${INSTALL_PATH}' in git index but missing on disk (Zombie state).${NC}"
-        echo -e "${YELLOW}🧹 Removing from index to allow fresh install...${NC}"
-        git rm --cached "$INSTALL_PATH"
-    fi
+# Remove trailing slash from INSTALL_PATH if present
+INSTALL_PATH=${INSTALL_PATH%/}
+
+# Full Cleanup / Fresh Install Logic
+if [ -d "$INSTALL_PATH" ] || git ls-files --error-unmatch "$INSTALL_PATH" &> /dev/null; then
+    echo -e "${YELLOW}⚠️  Existing installation detected at ${INSTALL_PATH}.${NC}"
+    echo -e "${RED}🔥 Removing for a fresh install (Files + Git Index)...${NC}"
+
+    # 1. Deinit submodule (removes from .git/config)
+    git submodule deinit -f "$INSTALL_PATH" > /dev/null 2>&1 || true
+
+    # 2. Remove from git index (removes from .gitmodules)
+    git rm -f "$INSTALL_PATH" > /dev/null 2>&1 || true
+    
+    # 3. Force remove directory (in case git rm left it or it wasn't in git)
+    rm -rf "$INSTALL_PATH"
+
+    # 4. Clean up internal git directory (crucial for true fresh clone)
+    rm -rf ".git/modules/$INSTALL_PATH"
 fi
 
-if [ -d "$INSTALL_PATH" ]; then
-    echo -e "${YELLOW}⚠️  Directory ${INSTALL_PATH} already exists. Skipping submodule add.${NC}"
-else
-    git submodule add --force "$REPO_URL" "$INSTALL_PATH"
-fi
+# Now add it fresh
+git submodule add --force "$REPO_URL" "$INSTALL_PATH"
+
 
 # 1.5 Switch to Version (if specified)
 if [ -n "$VERSION" ]; then
@@ -209,6 +218,13 @@ find . -type f \( -name "*.ts" -o -name "*.tsx" \) -print0 | while IFS= read -r 
     fi
 done
 echo -e "${GREEN}✨ Updated internal imports to use @/$INSTALL_PATH/* pattern${NC}"
+
+# Configure git to ignore dirty state for this submodule
+# This prevents "modified content" status when we delete/modify files inside
+echo -e "\n${BLUE}🙈 Configuring Git to ignore internal submodule changes...${NC}"
+cd "$OLDPWD" # Ensure we are back at root for git config
+git config -f .gitmodules submodule."$INSTALL_PATH".ignore all
+git config submodule."$INSTALL_PATH".ignore all
 
 echo -e "\n${GREEN}✅ Nova UI installed successfully!${NC}"
 echo -e "   Location: ${INSTALL_PATH}"

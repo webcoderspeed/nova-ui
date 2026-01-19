@@ -1,14 +1,40 @@
 {
-  "name": "my-v0-project",
-  "version": "0.1.0",
-  "private": true,
+  "name": "nova-ui",
+  "version": "1.0.0",
+  "description": "A modern, highly customizable, and accessible UI component library built with Radix UI and Tailwind CSS.",
+  "author": "WebCoderSpeed",
+  "license": "MIT",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webcoderspeed/nova-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/webcoderspeed/nova-ui/issues"
+  },
+  "homepage": "https://nova-ui.webcoderspeed.com",
+  "keywords": [
+    "react",
+    "nextjs",
+    "tailwindcss",
+    "radix-ui",
+    "components",
+    "ui-kit",
+    "accessible",
+    "design-system"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
-    "generate-docs": "node scripts/generate-docs-data.mjs",
-    "type:check": "npx tsc --noEmit --skipLibCheck",
-    "build": "npm run generate-docs && npm run type:check && next build",
     "dev": "npm run generate-docs && next dev",
-    "lint": "eslint .",
-    "start": "next start"
+    "build": "npm run generate-docs && npm run type:check && next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type:check": "tsc --noEmit --skipLibCheck",
+    "generate-docs": "node scripts/generate-docs-data.mjs",
+    "clean": "rm -rf .next node_modules",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "dependencies": {
     "@emotion/is-prop-valid": "latest",
@@ -72,7 +98,10 @@
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.0",
     "postcss": "^8.5",
+    "prettier": "^3.0.0",
     "tailwindcss": "^4.1.9",
     "tw-animate-css": "^1.3.3",
     "typescript": "^5"

@@ -63,32 +63,75 @@ async function main() {
 
   // Read nova package.json
   const novaPkg = JSON.parse(fs.readFileSync(novaPackageJsonPath, 'utf-8'));
-  const dependencies = novaPkg.dependencies || {};
+  // Include peerDependencies as well, as they are often required
+  const dependencies = {
+    ...(novaPkg.dependencies || {}),
+    ...(novaPkg.peerDependencies || {})
+  };
   
-  // Filter dependencies
-  const depsToInstall = Object.keys(dependencies).filter(dep => {
+  // Read Host Package if available to compare
+  let hostPkg = {};
+  if (isSubmodule) {
+    try {
+      hostPkg = JSON.parse(fs.readFileSync(hostPackageJsonPath, 'utf-8'));
+    } catch (e) {
+      warn('⚠️  Could not read host package.json');
+    }
+  }
+  
+  const hostDeps = {
+    ...(hostPkg.dependencies || {}),
+    ...(hostPkg.devDependencies || {})
+  };
+
+  const depsToInstall = [];
+  const missingDeps = [];
+  const versionMismatchDeps = [];
+
+  Object.keys(dependencies).forEach(dep => {
     // Exclude core frameworks and dev tools
-    if (['react', 'react-dom', 'next', 'typescript'].includes(dep)) return false;
-    if (dep.startsWith('@types/')) return false;
-    if (dep.startsWith('eslint')) return false;
-    if (['postcss', 'autoprefixer', 'tailwindcss', '@tailwindcss/postcss'].includes(dep)) return false;
-    if (dep === 'sharp') return false; // usually optional or platform specific
-    if (dep === 'prism-react-renderer') return false; // docs only
-    if (dep === '@vercel/analytics') return false; // docs only
-    return true;
-  }).map(dep => {
-    const version = dependencies[dep];
+    if (['react', 'react-dom', 'next', 'typescript'].includes(dep)) return;
+    if (dep.startsWith('@types/')) return;
+    if (dep.startsWith('eslint')) return;
+    if (['postcss', 'autoprefixer', 'tailwindcss', '@tailwindcss/postcss'].includes(dep)) return;
+    if (dep === 'sharp') return; // usually optional or platform specific
+    if (dep === 'prism-react-renderer') return; // docs only
+    if (dep === '@vercel/analytics') return; // docs only
+
+    const requiredVersion = dependencies[dep];
+    const hostVersion = hostDeps[dep];
     // Use quotes to safely handle special characters in version ranges
-    return `"${dep}@${version}"`;
+    const installStr = `"${dep}@${requiredVersion}"`;
+
+    if (!hostVersion) {
+        missingDeps.push(dep);
+        depsToInstall.push(installStr);
+    } else if (hostVersion !== requiredVersion) {
+        // If host has different version, we suggest update/install
+        // We track it to inform the user
+        versionMismatchDeps.push(`${dep} (Host: ${hostVersion} -> Nova: ${requiredVersion})`);
+        depsToInstall.push(installStr);
+    }
   });
 
   if (depsToInstall.length === 0) {
-    log('✅ No dependencies to install.');
+    log('✅ All Nova UI dependencies are already satisfied.');
+    // Still show config suggestions just in case? 
+    // Usually if deps are done, we might want to skip config spam, 
+    // but users might want to see it. Let's show it if requested or maybe just exit.
+    // For now, let's exit to keep it clean, as re-running usually implies checking deps.
     return;
   }
 
-  info(`📦 Found ${depsToInstall.length} dependencies required for Nova UI:`);
-  console.log(depsToInstall.map(d => `   - ${d}`).join('\n'));
+  info(`📦 Dependency Check Results:`);
+  if (missingDeps.length > 0) {
+      console.log(`${YELLOW}🆕 Missing Dependencies:${RESET}`);
+      console.log(missingDeps.map(d => `   - ${d}`).join('\n'));
+  }
+  if (versionMismatchDeps.length > 0) {
+      console.log(`${YELLOW}🔄 Version Mismatches (will be updated):${RESET}`);
+      console.log(versionMismatchDeps.map(d => `   - ${d}`).join('\n'));
+  }
   console.log('\n');
 
   if (!isSubmodule || !hostPackageJsonPath) {
@@ -106,18 +149,11 @@ async function main() {
 
   info(`Detected package manager: ${pm}`);
 
-  const rl = createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
+  const args = process.argv.slice(2);
+  const isCI = process.env.CI || process.env.CONTINUOUS_INTEGRATION;
+  const autoConfirm = args.includes('-y') || args.includes('--yes') || isCI;
 
-  rl.question(`\n❓ Do you want to install these dependencies using ${pm}? (Y/n) `, (answer) => {
-    rl.close();
-    if (answer.toLowerCase() === 'n') {
-      log('Skipping installation.');
-      return;
-    }
-
+  const runInstall = () => {
     log(`\nRunning installation with ${pm}...`);
     
     let cmd = '';
@@ -154,6 +190,26 @@ async function main() {
       error('❌ Installation failed.');
       console.error(e.message);
     }
+  };
+
+  if (autoConfirm) {
+    info('ℹ️  Non-interactive mode detected (CI or --yes flag). Automatically installing dependencies.');
+    runInstall();
+    return;
+  }
+
+  const rl = createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
+  rl.question(`\n❓ Do you want to install/update these dependencies using ${pm}? (Y/n) `, (answer) => {
+    rl.close();
+    if (answer.toLowerCase() === 'n') {
+      log('Skipping installation.');
+      return;
+    }
+    runInstall();
   });
 }
 
