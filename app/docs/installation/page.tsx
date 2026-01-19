@@ -137,8 +137,8 @@ export default function InstallationPage() {
               </div>
               <p className="text-sm text-muted-foreground">First, download the Nova.UI submodule setup script:</p>
               <CodeBlock
-                code={`curl -O https://raw.githubusercontent.com/acefone/nova-ui/main/add-submodule.sh
-chmod +x add-submodule.sh`}
+                code={`curl -O https://raw.githubusercontent.com/acefone/nova-ui/main/install-nova.sh
+chmod +x install-nova.sh`}
               />
             </div>
 
@@ -151,7 +151,7 @@ chmod +x add-submodule.sh`}
               <p className="text-sm text-muted-foreground">
                 Execute the script with the Nova.UI repository URL and your desired path:
               </p>
-              <CodeBlock code={`./add-submodule.sh https://bitbucket.org/acefone/nova-ui.git src/nova-ui v1.0.0`} />
+              <CodeBlock code={`./install-nova.sh https://bitbucket.org/acefone/nova-ui.git src/nova-ui v1.0.0`} />
               <NovaCard className="border-amber-500/30 bg-amber-500/5">
                 <NovaCardContent className="pt-4">
                   <p className="text-sm text-amber-200">
@@ -242,106 +242,127 @@ export function MyComponent() {
               <CodeBlock
                 code={`#!/bin/bash
 
-# Nova.UI Submodule Setup Script
-# Usage:
-#   ./add-submodule.sh <repo-url> <submodule-path> [branch_or_tag]
-# Example:
-#   ./add-submodule.sh https://bitbucket.org/acefone/nova-ui.git src/nova-ui v1.0.0
+# Nova UI Installation Script
+# Usage: ./install-nova.sh [repo_url] [install_path] [version]
+# Example: ./install-nova.sh git@webcoderspeed:webcoderspeed/nova-ui.git packages/nova-ui v1.0.0
 
 set -e
 
-REPO_URL=$1
-SUBMODULE_PATH=$2
-BRANCH=\${3:-main}
+REPO_URL=\${1:-"git@webcoderspeed:webcoderspeed/nova-ui.git"}
+INSTALL_PATH=\${2:-"packages/nova-ui"}
+VERSION=$3
 
-if [ -z "$REPO_URL" ] || [ -z "$SUBMODULE_PATH" ]; then
-  echo "Usage: $0 <repo-url> <submodule-path> [branch_or_tag]"
-  exit 1
+# Colors
+GREEN='\x1b[0;32m'
+BLUE='\x1b[0;34m'
+YELLOW='\x1b[0;33m'
+RED='\x1b[0;31m'
+NC='\x1b[0m'
+
+echo -e "\${BLUE}
+  _   _                  _   _ ___ 
+ | \\ | | _____   ____ _ | | | |_ _|
+ |  \\| |/ _ \\ \\ / / _\` || | | || | 
+ | |\\  | (_) \\ V / (_| || |_| || | 
+ |_| \\_|\\___/ \\_/ \\__,_| \\___/|___|
+                                   
+\${NC}"
+echo -e "\${BLUE}🚀 Starting Nova UI Installation...\${NC}"
+
+# Check Git
+if ! command -v git &> /dev/null; then
+    echo -e "\${RED}❌ Git is not installed.\${NC}"
+    exit 1
 fi
 
-echo "➡️ Preparing to add submodule from $REPO_URL into $SUBMODULE_PATH (branch/tag: $BRANCH)"
-
-# Clean up existing folder/submodule if present
-if git config --file .gitmodules --get-regexp path | grep -q "$SUBMODULE_PATH"; then
-  echo "⚠️ Submodule already exists — removing cleanly..."
-  git submodule deinit -f "$SUBMODULE_PATH" || true
-  git rm -f "$SUBMODULE_PATH" || true
-  rm -rf ".git/modules/$SUBMODULE_PATH"
-  git commit -m "Removed existing submodule at $SUBMODULE_PATH" || true
-elif [ -d "$SUBMODULE_PATH" ]; then
-  echo "⚠️ Directory $SUBMODULE_PATH already exists — removing..."
-  rm -rf "$SUBMODULE_PATH"
+# Check Node.js
+if ! command -v node &> /dev/null; then
+    echo -e "\${RED}❌ Node.js is not installed.\${NC}"
+    exit 1
 fi
 
-# Add the new submodule
-echo "➡️ Adding submodule..."
-git submodule add -b "$BRANCH" "$REPO_URL" "$SUBMODULE_PATH"
-git submodule update --init --recursive -f "$SUBMODULE_PATH"
-
-cd "$SUBMODULE_PATH"
-
-echo "➡️ Checking out branch/tag $BRANCH..."
-git fetch --tags origin
-git checkout "$BRANCH" || git checkout -b "$BRANCH" origin/"$BRANCH" || true
-git pull origin "$BRANCH" || true
-
-echo "➡️ Cleaning unnecessary files..."
-find . -maxdepth 1 ! -name "package.json" \\
-                  ! -name "package-lock.json" \\
-                  ! -name "pnpm-lock.yaml" \\
-                  ! -name "yarn.lock" \\
-                  ! -name "dist" \\
-                  ! -name "src" \\
-                  ! -name "." \\
-                  -exec rm -rf {} +
-
-# Move files from components/ui/* to root and delete everything else
-if [ -d "components/ui" ]; then
-  echo "➡️ Moving files from components/ui to root..."
-
-  shopt -s dotglob nullglob
-  mv components/ui/* ./
-  shopt -u dotglob nullglob
-
-  echo "🧹 Removing everything except moved UI files..."
-  find . -mindepth 1 -maxdepth 1 ! -name "package.json" \\
-                                ! -name "package-lock.json" \\
-                                ! -name "pnpm-lock.yaml" \\
-                                ! -name "yarn.lock" \\
-                                ! -name "." \\
-                                ! -name "$(basename "$SUBMODULE_PATH")" \\
-                                -exec rm -rf {} +
-
-  rm -rf components
-  echo "🎉 UI files moved and cleanup complete."
+# 1. Add Submodule
+echo -e "\n\${BLUE}📂 Adding submodule from \${REPO_URL} to \${INSTALL_PATH}...\${NC}"
+if [ -d "$INSTALL_PATH" ]; then
+    echo -e "\${YELLOW}⚠️  Directory \${INSTALL_PATH} already exists. Skipping submodule add.\${NC}"
 else
-  echo "⚠️ components/ui not found!"
+    git submodule add "$REPO_URL" "$INSTALL_PATH"
 fi
 
-echo "➡️ Installing dependencies (with legacy peer deps)..."
-if command -v npm &> /dev/null; then
-  npm install --legacy-peer-deps
-elif command -v yarn &> /dev/null; then
-  yarn install
-elif command -v pnpm &> /dev/null; then
-  pnpm install --shamefully-hoist
+# 1.5 Switch to Version (if specified)
+if [ -n "$VERSION" ]; then
+    echo -e "\n\${BLUE}🔀 Switching to version \${VERSION}...\${NC}"
+    cd "$INSTALL_PATH"
+    # Fetch all tags and branches to ensure we can checkout
+    git fetch --all --tags
+    git checkout "$VERSION"
+    cd - > /dev/null
+fi
+
+# 2. Install Dependencies
+echo -e "\n\${BLUE}📦 Installing dependencies...\${NC}"
+# Check if the setup script exists
+SETUP_SCRIPT="$INSTALL_PATH/scripts/setup-submodule.mjs"
+if [ -f "$SETUP_SCRIPT" ]; then
+    node "$SETUP_SCRIPT"
 else
-  echo "⚠️ No package manager (npm/yarn/pnpm) found!"
+    echo -e "\${YELLOW}⚠️  Setup script not found at \${SETUP_SCRIPT}. Skipping dependency installation.\${NC}"
 fi
 
-cd -
+# 3. Cleanup (Clean Setup)
+echo -e "\n\${BLUE}🧹 Cleaning up workspace (Keeping only essential files)...\${NC}"
+cd "$INSTALL_PATH"
 
-git add .gitmodules "$SUBMODULE_PATH"
+# Create styles directory if it doesn't exist
+mkdir -p styles
 
-echo "✅ Done. Submodule ready at $SUBMODULE_PATH"`}
+# Copy global css if it exists in app/globals.css
+if [ -f "app/globals.css" ]; then
+    cp "app/globals.css" "styles/globals.css"
+    echo -e "\${GREEN}✨ Copied app/globals.css to styles/globals.css\${NC}"
+fi
+
+# Define the files/folders to KEEP
+# We will move them to a temporary directory, delete everything, then move them back
+TEMP_DIR=$(mktemp -d)
+
+# Function to safely move if exists
+safe_move() {
+    if [ -e "$1" ]; then
+        cp -R "$1" "$TEMP_DIR/"
+    fi
+}
+
+safe_move "components"
+safe_move "libs"
+safe_move "lib" # legacy support
+safe_move "hooks"
+safe_move "theme-provider.tsx"
+safe_move "index.ts"
+safe_move "package.json"
+safe_move "tsconfig.json"
+safe_move "styles" # The one we just created
+safe_move "scripts" # Keep scripts for future updates if needed
+
+# Delete everything in the current directory (hidden files too, except .git)
+# We need to be careful not to delete .git directory
+find . -maxdepth 1 ! -name '.' ! -name '..' ! -name '.git' -exec rm -rf {} +
+
+# Move files back from temp
+cp -R "$TEMP_DIR/"* .
+rm -rf "$TEMP_DIR"
+
+echo -e "\n\${GREEN}✅ Nova UI installed successfully!\${NC}"
+echo -e "   Location: \${INSTALL_PATH}"
+echo -e "   Only essential files are retained."`}
                 language="bash"
               />
               <p className="text-sm text-muted-foreground">
-                Save this as <code className="rounded bg-muted px-1.5 py-0.5 text-sm">add-submodule.sh</code> and run:
+                Save this as <code className="rounded bg-muted px-1.5 py-0.5 text-sm">install-nova.sh</code> and run:
               </p>
               <CodeBlock
-                code={`chmod +x add-submodule.sh
-./add-submodule.sh https://bitbucket.org/acefone/nova-ui.git src/nova-ui v1.0.0`}
+                code={`chmod +x install-nova.sh
+./install-nova.sh https://bitbucket.org/acefone/nova-ui.git src/nova-ui v1.0.0`}
               />
             </div>
 

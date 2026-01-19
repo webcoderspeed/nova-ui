@@ -127,6 +127,21 @@ async function main() {
       console.log('\n');
       log('✅ Dependencies installed successfully!');
       
+      console.log('\n✨ Suggested Configuration Updates:');
+
+      // 1. Tailwind Config
+      const submoduleRelativePath = path.relative(hostDir, path.resolve(scriptDir, '..'));
+      const tailwindContent = `"${submoduleRelativePath}/components/**/*.{ts,tsx}"`;
+      
+      console.log(`${CYAN}1. Update your tailwind configuration to include Nova UI components:${RESET}`);
+      console.log(`   Add this to your content array: ${YELLOW}${tailwindContent}${RESET}`);
+      
+      // 2. TSConfig
+      console.log(`\n${CYAN}2. (Optional) Add path alias in tsconfig.json:${RESET}`);
+      console.log(`   "paths": {`);
+      console.log(`     "${YELLOW}@nova-ui/*${RESET}": ["${YELLOW}./${submoduleRelativePath}/*${RESET}"]`);
+      console.log(`   }`);
+
       console.log('\n🎉 Nova UI is ready to use!');
       console.log('   Import components: import { Button } from "nova-ui";');
       console.log('   Use theme: import { ThemeProvider } from "nova-ui/theme-provider";');
