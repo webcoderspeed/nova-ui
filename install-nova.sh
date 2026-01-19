@@ -169,6 +169,7 @@ mkdir -p "$TEMP_DIR/components"
 if [ -d "components/nova" ]; then cp -R "components/nova" "$TEMP_DIR/components/"; fi
 if [ -d "components/ui" ]; then cp -R "components/ui" "$TEMP_DIR/components/"; fi
 if [ -f "components/index.ts" ]; then cp "components/index.ts" "$TEMP_DIR/components/"; fi
+if [ -f "components/theme-provider.tsx" ]; then cp "components/theme-provider.tsx" "$TEMP_DIR/components/"; fi
 
 # Delete everything in the current directory (hidden files too, except .git)
 # We need to be careful not to delete .git directory
