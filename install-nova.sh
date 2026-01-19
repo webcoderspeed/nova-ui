@@ -182,6 +182,11 @@ if [ -d "components/ui" ]; then cp -R "components/ui" "$TEMP_DIR/components/"; f
 if [ -f "components/index.ts" ]; then cp "components/index.ts" "$TEMP_DIR/components/"; fi
 if [ -f "components/theme-provider.tsx" ]; then cp "components/theme-provider.tsx" "$TEMP_DIR/components/"; fi
 
+# Preserve setup script
+mkdir -p "$TEMP_DIR/scripts"
+if [ -f "scripts/setup-submodule.mjs" ]; then cp "scripts/setup-submodule.mjs" "$TEMP_DIR/scripts/"; fi
+
+
 # Delete everything in the current directory (hidden files too, except .git)
 # We need to be careful not to delete .git directory
 find . -maxdepth 1 ! -name '.' ! -name '..' ! -name '.git' -exec rm -rf {} +
