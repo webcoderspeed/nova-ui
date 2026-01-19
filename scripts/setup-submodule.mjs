@@ -76,6 +76,10 @@ async function main() {
     if (dep === 'prism-react-renderer') return false; // docs only
     if (dep === '@vercel/analytics') return false; // docs only
     return true;
+  }).map(dep => {
+    const version = dependencies[dep];
+    // Use quotes to safely handle special characters in version ranges
+    return `"${dep}@${version}"`;
   });
 
   if (depsToInstall.length === 0) {
