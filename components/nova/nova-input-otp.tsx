@@ -15,7 +15,7 @@ const novaInputOTPVariants = cva(
         glass: "[&_[data-slot=input-otp-slot]]:bg-white/10 [&_[data-slot=input-otp-slot]]:backdrop-blur-md [&_[data-slot=input-otp-slot]]:border-white/20",
         neon: "[&_[data-slot=input-otp-slot][data-active=true]]:border-primary [&_[data-slot=input-otp-slot][data-active=true]]:shadow-[0_0_5px_theme(colors.primary.DEFAULT),0_0_10px_theme(colors.primary.DEFAULT)]",
       },
-      size: {
+      dimension: {
         default: "",
         lg: "[&_[data-slot=input-otp-slot]]:h-12 [&_[data-slot=input-otp-slot]]:w-12 [&_[data-slot=input-otp-slot]]:text-lg",
         sm: "[&_[data-slot=input-otp-slot]]:h-8 [&_[data-slot=input-otp-slot]]:w-8 [&_[data-slot=input-otp-slot]]:text-xs",
@@ -23,7 +23,7 @@ const novaInputOTPVariants = cva(
     },
     defaultVariants: {
       variant: "default",
-      size: "default",
+      dimension: "default",
     },
   }
 )
@@ -31,10 +31,10 @@ const novaInputOTPVariants = cva(
 type NovaInputOTPProps = React.ComponentProps<typeof InputOTP> &
   VariantProps<typeof novaInputOTPVariants>
 
-function NovaInputOTP({ className, variant, size, ...props }: NovaInputOTPProps) {
+function NovaInputOTP({ className, variant, dimension, ...props }: NovaInputOTPProps) {
   return (
     <InputOTP
-      className={cn(novaInputOTPVariants({ variant, size }), className)}
+      className={cn(novaInputOTPVariants({ variant, dimension }), className)}
       {...props}
     />
   )

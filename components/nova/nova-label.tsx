@@ -17,6 +17,8 @@ const novaLabelVariants = cva(
         warning: "text-yellow-500 font-semibold",
         ghost: "text-muted-foreground font-normal",
         glass: "text-foreground/80 drop-shadow-sm",
+        optional: "text-muted-foreground font-normal italic",
+        required: "text-destructive font-bold after:content-['*'] after:ml-0.5 after:text-destructive",
       },
       size: {
         default: "text-sm",

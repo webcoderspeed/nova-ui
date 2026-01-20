@@ -6,13 +6,7 @@ import { cn } from "@/lib/utils"
 import {
   Toast,
   type ToastProps,
-  ToastClose,
-  ToastDescription,
-  ToastProvider,
-  ToastTitle,
-  ToastViewport,
 } from "@/components/ui/toast"
-import { useToast } from "@/components/ui/use-toast"
 
 const novaToastVariants = cva(
   "transition-all duration-300",
@@ -54,28 +48,6 @@ const NovaToast = React.forwardRef<
 })
 NovaToast.displayName = "NovaToast"
 
-function NovaToaster() {
-  const { toasts } = useToast()
 
-  return (
-    <ToastProvider>
-      {toasts.map(function ({ id, title, description, action, ...props }) {
-        return (
-          <NovaToast key={id} {...props} variant={props.variant as NovaToastProps["variant"]}>
-            <div className="grid gap-1">
-              {title && <ToastTitle>{title}</ToastTitle>}
-              {description && (
-                <ToastDescription>{description}</ToastDescription>
-              )}
-            </div>
-            {action}
-            <ToastClose />
-          </NovaToast>
-        )
-      })}
-      <ToastViewport />
-    </ToastProvider>
-  )
-}
 
-export { NovaToast, NovaToaster }
+export { NovaToast }

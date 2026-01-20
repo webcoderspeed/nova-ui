@@ -2,4 +2,4 @@
 
 import { useIsMobile } from "@/components/ui/use-mobile"
 
-export { useIsMobile }
+export { useIsMobile as useNovaIsMobile }

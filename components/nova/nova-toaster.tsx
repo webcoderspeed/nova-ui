@@ -9,11 +9,14 @@ import {
   ToastViewport,
   type ToastProps,
 } from "@/components/ui/toast"
-import { useToast } from "@/hooks/use-toast"
+import { useToast } from "@/components/ui/use-toast"
 import { NovaToast, type NovaToastProps } from "@/components/nova/nova-toast"
 
 export function NovaToaster() {
   const { toasts } = useToast()
+  
+  // Debug log to verify toasts are received
+  // console.log("NovaToaster toasts:", toasts)
 
   return (
     <ToastProvider>

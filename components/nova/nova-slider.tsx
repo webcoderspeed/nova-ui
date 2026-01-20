@@ -18,11 +18,20 @@ const novaSliderVariants = cva("transition-all duration-200", {
       success: "[&_[data-slot=slider-range]]:bg-green-500",
       warning: "[&_[data-slot=slider-range]]:bg-yellow-500",
       error: "[&_[data-slot=slider-range]]:bg-destructive",
+      accent: "[&_[data-slot=slider-range]]:bg-accent-foreground",
+    },
+    variant: {
+      default: "",
+      gradient: "[&_[data-slot=slider-range]]:bg-gradient-to-r [&_[data-slot=slider-range]]:from-primary [&_[data-slot=slider-range]]:to-purple-500",
+      neumorphic: "[&_[data-slot=slider-track]]:shadow-inner [&_[data-slot=slider-thumb]]:shadow-[-2px_-2px_5px_rgba(255,255,255,0.8),2px_2px_5px_rgba(0,0,0,0.2)]",
+      glass: "[&_[data-slot=slider-track]]:bg-white/10 [&_[data-slot=slider-thumb]]:bg-white/20 [&_[data-slot=slider-thumb]]:backdrop-blur-md",
+      neon: "[&_[data-slot=slider-thumb]]:shadow-[0_0_10px_theme(colors.primary.DEFAULT)] [&_[data-slot=slider-range]]:shadow-[0_0_5px_theme(colors.primary.DEFAULT)]",
     },
   },
   defaultVariants: {
     size: "md",
     color: "default",
+    variant: "default",
   },
 })
 
@@ -39,6 +48,7 @@ function NovaSlider({
   className,
   size,
   color,
+  variant,
   label,
   showValue,
   formatValue = (v) => String(v),
@@ -60,7 +70,7 @@ function NovaSlider({
       <Slider
         value={value}
         defaultValue={defaultValue}
-        className={cn(novaSliderVariants({ size, color }), className)}
+        className={cn(novaSliderVariants({ size, color, variant }), className)}
         {...props}
       />
       {marks && marks.length > 0 && (

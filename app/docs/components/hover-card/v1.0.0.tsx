@@ -7,7 +7,7 @@ import {
 } from "@/components/nova/nova-hover-card"
 import { ComponentDocTemplate } from "@/components/docs/component-doc-template"
 import { NovaButton } from "@/components/nova/nova-button"
-import { NovaAvatar, NovaAvatarImage, NovaAvatarFallback } from "@/components/nova/nova-avatar"
+import { NovaAvatar } from "@/components/nova/nova-avatar"
 import { CalendarDays } from "lucide-react"
 
 export default function HoverCardDocsV1() {

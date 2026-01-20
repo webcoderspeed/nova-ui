@@ -1,12 +1,11 @@
 "use client"
 
-import { NovaToast, NovaToaster } from "@/components/nova/nova-toast"
 import { ComponentDocTemplate } from "@/components/docs/component-doc-template"
 import { NovaButton } from "@/components/nova/nova-button"
-import { useToast } from "@/components/ui/use-toast"
+import { useNovaToast } from "@/hooks/nova"
 
 export default function ToastDocsV1() {
-  const { toast } = useToast()
+  const { toast } = useNovaToast()
 
   return (
     <ComponentDocTemplate
@@ -20,11 +19,10 @@ export default function ToastDocsV1() {
       ]}
       hints={[
         { type: "info", content: "Supports `success`, `warning`, `info`, `glass`, and `gradient` variants." },
-        { type: "info", content: "Use `<NovaToaster />` instead of `<Toaster />` to enable custom variants." }
+        { type: "info", content: "Use `<NovaToast />` instead of `<Toaster />` to enable custom variants." }
       ]}
       preview={
         <div className="flex flex-col gap-4">
-          <NovaToaster />
           <NovaButton
             variant="outline"
             onClick={() => {
@@ -39,7 +37,7 @@ export default function ToastDocsV1() {
         </div>
       }
       installCommand="npx nova-ui@latest add toast"
-      importCode={`import { NovaToaster } from "@/components/nova/nova-toast"
+      importCode={`import { NovaToast } from "@/components/nova/nova-toast"
 import { useToast } from "@/components/ui/use-toast"`}
       usageCode={`// In your layout.tsx
 <NovaToaster />
@@ -136,7 +134,7 @@ toast({
                 className="bg-white/20 border-white/40 text-white hover:bg-white/30 hover:text-white"
                 onClick={() => {
                     toast({
-                    variant: "glass" as any,
+                    variant: "glass",
                     title: "Glass Toast",
                     description: "This is a glass toast.",
                     })

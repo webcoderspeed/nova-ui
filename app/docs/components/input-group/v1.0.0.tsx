@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { NovaInputGroup, NovaInputGroupText } from "@/components/nova/nova-input-group"
+import { NovaInputGroup, NovaInputGroupAddon } from "@/components/nova/nova-input-group"
 import { NovaInput } from "@/components/nova/nova-input"
 import { ComponentDocTemplate } from "@/components/docs/component-doc-template"
 import { Search, Mail, Globe, Lock, CreditCard } from "lucide-react"
@@ -18,40 +18,40 @@ export default function InputGroupDocsV1() {
         "When creating complex form layouts."
       ]}
       hints={[
-        { type: "info", content: "Use `NovaInputGroupText` for static text or icons." },
+        { type: "info", content: "Use `NovaInputGroupAddon` for static text or icons." },
         { type: "info", content: "Supports various variants including `neumorphic`, `glass`, and `neon`." },
         { type: "info", content: "Can be set to `full` width or `auto`." }
       ]}
       preview={
         <div className="flex flex-col gap-4 w-full max-w-sm">
           <NovaInputGroup>
-            <NovaInputGroupText>
+            <NovaInputGroupAddon>
               <Mail className="h-4 w-4" />
-            </NovaInputGroupText>
+            </NovaInputGroupAddon>
             <NovaInput placeholder="Email" />
           </NovaInputGroup>
           
           <NovaInputGroup variant="glow">
-            <NovaInputGroupText>
+            <NovaInputGroupAddon>
               <Lock className="h-4 w-4" />
-            </NovaInputGroupText>
+            </NovaInputGroupAddon>
             <NovaInput placeholder="Password" type="password" />
           </NovaInputGroup>
 
           <NovaInputGroup variant="glass">
-            <NovaInputGroupText>https://</NovaInputGroupText>
+            <NovaInputGroupAddon>https://</NovaInputGroupAddon>
             <NovaInput placeholder="example.com" />
-            <NovaInputGroupText>
+            <NovaInputGroupAddon>
               <Globe className="h-4 w-4" />
-            </NovaInputGroupText>
+            </NovaInputGroupAddon>
           </NovaInputGroup>
         </div>
       }
       installCommand="npx shadcn@latest add input"
-      importCode={`import { NovaInputGroup, NovaInputGroupText } from "@/components/nova/nova-input-group"
+      importCode={`import { NovaInputGroup, NovaInputGroupAddon } from "@/components/nova/nova-input-group"
 import { NovaInput } from "@/components/nova/nova-input"`}
       usageCode={`<NovaInputGroup>
-  <NovaInputGroupText>@</NovaInputGroupText>
+  <NovaInputGroupAddon>@</NovaInputGroupAddon>
   <NovaInput placeholder="Username" />
 </NovaInputGroup>`}
       props={[
@@ -80,38 +80,38 @@ import { NovaInput } from "@/components/nova/nova-input"`}
           description: "Different visual styles for the input group.",
           code: `<div className="space-y-4">
   <NovaInputGroup variant="filled">
-    <NovaInputGroupText>Filled</NovaInputGroupText>
+    <NovaInputGroupAddon>Filled</NovaInputGroupAddon>
     <NovaInput placeholder="Filled variant" />
   </NovaInputGroup>
   <NovaInputGroup variant="outline">
-    <NovaInputGroupText>Outline</NovaInputGroupText>
+    <NovaInputGroupAddon>Outline</NovaInputGroupAddon>
     <NovaInput placeholder="Outline variant" />
   </NovaInputGroup>
   <NovaInputGroup variant="neumorphic">
-    <NovaInputGroupText>Neu</NovaInputGroupText>
+    <NovaInputGroupAddon>Neu</NovaInputGroupAddon>
     <NovaInput placeholder="Neumorphic variant" />
   </NovaInputGroup>
    <NovaInputGroup variant="neon">
-    <NovaInputGroupText>Neon</NovaInputGroupText>
+    <NovaInputGroupAddon>Neon</NovaInputGroupAddon>
     <NovaInput placeholder="Neon variant" />
   </NovaInputGroup>
 </div>`,
           preview: (
             <div className="space-y-4 w-full max-w-sm">
               <NovaInputGroup variant="filled">
-                <NovaInputGroupText>Filled</NovaInputGroupText>
+                <NovaInputGroupAddon>Filled</NovaInputGroupAddon>
                 <NovaInput placeholder="Filled variant" />
               </NovaInputGroup>
               <NovaInputGroup variant="outline">
-                <NovaInputGroupText>Outline</NovaInputGroupText>
+                <NovaInputGroupAddon>Outline</NovaInputGroupAddon>
                 <NovaInput placeholder="Outline variant" />
               </NovaInputGroup>
               <NovaInputGroup variant="neumorphic">
-                <NovaInputGroupText>Neu</NovaInputGroupText>
+                <NovaInputGroupAddon>Neu</NovaInputGroupAddon>
                 <NovaInput placeholder="Neumorphic variant" />
               </NovaInputGroup>
                <NovaInputGroup variant="neon">
-                <NovaInputGroupText>Neon</NovaInputGroupText>
+                <NovaInputGroupAddon>Neon</NovaInputGroupAddon>
                 <NovaInput placeholder="Neon variant" />
               </NovaInputGroup>
             </div>
@@ -122,30 +122,30 @@ import { NovaInput } from "@/components/nova/nova-input"`}
           description: "Available sizes for the input group.",
           code: `<div className="space-y-4">
   <NovaInputGroup size="sm">
-    <NovaInputGroupText>SM</NovaInputGroupText>
+    <NovaInputGroupAddon>SM</NovaInputGroupAddon>
     <NovaInput placeholder="Small" />
   </NovaInputGroup>
   <NovaInputGroup size="default">
-    <NovaInputGroupText>DEF</NovaInputGroupText>
+    <NovaInputGroupAddon>DEF</NovaInputGroupAddon>
     <NovaInput placeholder="Default" />
   </NovaInputGroup>
   <NovaInputGroup size="lg">
-    <NovaInputGroupText>LG</NovaInputGroupText>
+    <NovaInputGroupAddon>LG</NovaInputGroupAddon>
     <NovaInput placeholder="Large" />
   </NovaInputGroup>
 </div>`,
           preview: (
             <div className="space-y-4 w-full max-w-sm">
               <NovaInputGroup size="sm">
-                <NovaInputGroupText>SM</NovaInputGroupText>
+                <NovaInputGroupAddon>SM</NovaInputGroupAddon>
                 <NovaInput placeholder="Small" />
               </NovaInputGroup>
               <NovaInputGroup size="default">
-                <NovaInputGroupText>DEF</NovaInputGroupText>
+                <NovaInputGroupAddon>DEF</NovaInputGroupAddon>
                 <NovaInput placeholder="Default" />
               </NovaInputGroup>
               <NovaInputGroup size="lg">
-                <NovaInputGroupText>LG</NovaInputGroupText>
+                <NovaInputGroupAddon>LG</NovaInputGroupAddon>
                 <NovaInput placeholder="Large" />
               </NovaInputGroup>
             </div>
@@ -156,23 +156,23 @@ import { NovaInput } from "@/components/nova/nova-input"`}
           description: "Using icons within the input group.",
           code: `<div className="space-y-4">
   <NovaInputGroup>
-    <NovaInputGroupText><Search className="h-4 w-4" /></NovaInputGroupText>
+    <NovaInputGroupAddon><Search className="h-4 w-4" /></NovaInputGroupAddon>
     <NovaInput placeholder="Search..." />
   </NovaInputGroup>
   <NovaInputGroup>
     <NovaInput placeholder="Card number" />
-    <NovaInputGroupText><CreditCard className="h-4 w-4" /></NovaInputGroupText>
+    <NovaInputGroupAddon><CreditCard className="h-4 w-4" /></NovaInputGroupAddon>
   </NovaInputGroup>
 </div>`,
           preview: (
             <div className="space-y-4 w-full max-w-sm">
               <NovaInputGroup>
-                <NovaInputGroupText><Search className="h-4 w-4" /></NovaInputGroupText>
+                <NovaInputGroupAddon><Search className="h-4 w-4" /></NovaInputGroupAddon>
                 <NovaInput placeholder="Search..." />
               </NovaInputGroup>
               <NovaInputGroup>
                 <NovaInput placeholder="Card number" />
-                <NovaInputGroupText><CreditCard className="h-4 w-4" /></NovaInputGroupText>
+                <NovaInputGroupAddon><CreditCard className="h-4 w-4" /></NovaInputGroupAddon>
               </NovaInputGroup>
             </div>
           )

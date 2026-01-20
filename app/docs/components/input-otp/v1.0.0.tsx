@@ -65,7 +65,7 @@ export default function InputOTPDocsV1() {
           description: "Visual style of the OTP input."
         },
         {
-          name: "size",
+          name: "dimension",
           type: '"default" | "sm" | "lg" | "xl"',
           defaultValue: '"default"',
           description: "Size of the input slots."
@@ -126,7 +126,7 @@ export default function InputOTPDocsV1() {
           title: "Sizes",
           description: "Available sizes for the OTP input.",
           code: `<div className="flex flex-col gap-4 items-center">
-  <NovaInputOTP maxLength={3} size="sm">
+  <NovaInputOTP maxLength={3} dimension="sm">
     <NovaInputOTPGroup>
       <NovaInputOTPSlot index={0} />
       <NovaInputOTPSlot index={1} />
@@ -134,7 +134,7 @@ export default function InputOTPDocsV1() {
     </NovaInputOTPGroup>
   </NovaInputOTP>
   
-  <NovaInputOTP maxLength={3} size="xl">
+  <NovaInputOTP maxLength={3} dimension="xl">
     <NovaInputOTPGroup>
       <NovaInputOTPSlot index={0} />
       <NovaInputOTPSlot index={1} />
@@ -144,7 +144,7 @@ export default function InputOTPDocsV1() {
 </div>`,
           preview: (
             <div className="flex flex-col gap-4 items-center">
-              <NovaInputOTP maxLength={3} size="sm">
+              <NovaInputOTP maxLength={3} dimension="sm">
                 <NovaInputOTPGroup>
                   <NovaInputOTPSlot index={0} />
                   <NovaInputOTPSlot index={1} />
@@ -152,7 +152,7 @@ export default function InputOTPDocsV1() {
                 </NovaInputOTPGroup>
               </NovaInputOTP>
               
-              <NovaInputOTP maxLength={3} size="xl">
+              <NovaInputOTP maxLength={3} dimension="lg">
                 <NovaInputOTPGroup>
                   <NovaInputOTPSlot index={0} />
                   <NovaInputOTPSlot index={1} />

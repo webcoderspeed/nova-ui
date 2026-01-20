@@ -79,7 +79,7 @@ export default function SelectDocsV1() {
           description: "Grouping options with labels.",
           code: `<NovaSelect
   placeholder="Select a food"
-  options={[
+  groups={[
     {
       label: "Fruits",
       options: [
@@ -100,7 +100,7 @@ export default function SelectDocsV1() {
             <div className="w-full max-w-sm">
               <NovaSelect
                 placeholder="Select a food"
-                options={[
+                groups={[
                   {
                     label: "Fruits",
                     options: [

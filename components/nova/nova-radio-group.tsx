@@ -27,11 +27,33 @@ const novaRadioGroupItemVariants = cva(
   }
 )
 
+const novaRadioGroupVariants = cva(
+  "grid gap-3",
+  {
+    variants: {
+      variant: {
+        default: "",
+        card: "grid-cols-2 gap-4",
+        glow: "",
+        pill: "flex flex-wrap gap-2",
+      }
+    },
+    defaultVariants: {
+      variant: "default",
+    }
+  }
+)
+
+export interface NovaRadioGroupProps
+  extends React.ComponentProps<typeof RadioGroup>,
+    VariantProps<typeof novaRadioGroupVariants> {}
+
 function NovaRadioGroup({
   className,
+  variant,
   ...props
-}: React.ComponentProps<typeof RadioGroup>) {
-  return <RadioGroup className={cn("grid gap-3", className)} {...props} />
+}: NovaRadioGroupProps) {
+  return <RadioGroup className={cn(novaRadioGroupVariants({ variant }), className)} {...props} />
 }
 
 function NovaRadioGroupItem({
