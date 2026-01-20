@@ -3,6 +3,7 @@
 import { ComponentDocTemplate } from "@/components/docs/component-doc-template"
 import { NovaButton } from "@/components/nova/nova-button"
 import { useNovaToast } from "@/hooks/nova"
+import { ToastAction } from "@/components/ui/toast"
 
 export default function ToastDocsV1() {
   const { toast } = useNovaToast()
@@ -19,7 +20,7 @@ export default function ToastDocsV1() {
       ]}
       hints={[
         { type: "info", content: "Supports `success`, `warning`, `info`, `glass`, and `gradient` variants." },
-        { type: "info", content: "Use `<NovaToast />` instead of `<Toaster />` to enable custom variants." }
+        { type: "info", content: "Use `useNovaToast` hook to trigger toasts with custom variants." }
       ]}
       preview={
         <div className="flex flex-col gap-4">
@@ -38,17 +39,29 @@ export default function ToastDocsV1() {
       }
       installCommand="npx nova-ui@latest add toast"
       importCode={`import { NovaToast } from "@/components/nova/nova-toast"
-import { useToast } from "@/components/ui/use-toast"`}
+import { useNovaToast } from "@/hooks/nova"`}
       usageCode={`// In your layout.tsx
 <NovaToaster />
 
 // In your component
-const { toast } = useToast()
+import { useNovaToast } from "@/hooks/nova"
 
-toast({
-  title: "Scheduled: Catch up",
-  description: "Friday, February 10, 2023 at 5:57 PM",
-})`}
+export function MyComponent() {
+  const { toast } = useNovaToast()
+
+  return (
+    <button
+      onClick={() => {
+        toast({
+          title: "Scheduled: Catch up",
+          description: "Friday, February 10, 2023 at 5:57 PM",
+        })
+      }}
+    >
+      Show Toast
+    </button>
+  )
+}`}
       props={[
         {
           name: "variant",
@@ -86,13 +99,59 @@ toast({
               variant="outline"
               onClick={() => {
                 toast({
-                  variant: "success" as any,
+                  variant: "success",
                   title: "Success!",
                   description: "Your changes have been saved.",
                 })
               }}
             >
               Show Success Toast
+            </NovaButton>
+          )
+        },
+        {
+          title: "Warning Variant",
+          description: "A toast indicating a warning state.",
+          code: `toast({
+  variant: "warning",
+  title: "Warning!",
+  description: "This action cannot be undone.",
+})`,
+          preview: (
+            <NovaButton
+              variant="outline"
+              onClick={() => {
+                toast({
+                  variant: "warning",
+                  title: "Warning!",
+                  description: "This action cannot be undone.",
+                })
+              }}
+            >
+              Show Warning Toast
+            </NovaButton>
+          )
+        },
+        {
+          title: "Info Variant",
+          description: "A toast for informational messages.",
+          code: `toast({
+  variant: "info",
+  title: "Info",
+  description: "A new version is available.",
+})`,
+          preview: (
+            <NovaButton
+              variant="outline"
+              onClick={() => {
+                toast({
+                  variant: "info",
+                  title: "Info",
+                  description: "A new version is available.",
+                })
+              }}
+            >
+              Show Info Toast
             </NovaButton>
           )
         },
@@ -143,6 +202,52 @@ toast({
                 Show Glass Toast
                 </NovaButton>
             </div>
+          )
+        },
+        {
+          title: "Gradient Variant",
+          description: "A toast with a gradient background.",
+          code: `toast({
+  variant: "gradient",
+  title: "Gradient Toast",
+  description: "This is a gradient toast.",
+})`,
+          preview: (
+            <NovaButton
+              variant="outline"
+              onClick={() => {
+                toast({
+                  variant: "gradient",
+                  title: "Gradient Toast",
+                  description: "This is a gradient toast.",
+                })
+              }}
+            >
+              Show Gradient Toast
+            </NovaButton>
+          )
+        },
+        {
+          title: "With Action",
+          description: "A toast with an action button.",
+          code: `toast({
+  title: "Uh oh! Something went wrong.",
+  description: "There was a problem with your request.",
+  action: <ToastAction altText="Try again">Try again</ToastAction>,
+})`,
+          preview: (
+            <NovaButton
+              variant="outline"
+              onClick={() => {
+                toast({
+                  title: "Uh oh! Something went wrong.",
+                  description: "There was a problem with your request.",
+                  action: <ToastAction altText="Try again">Try again</ToastAction>,
+                })
+              }}
+            >
+              Show Toast with Action
+            </NovaButton>
           )
         }
       ]}
