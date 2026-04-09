@@ -1,0 +1,142 @@
+:root,
+[data-theme="light"] {
+  /* Backgrounds */
+  --nova-bg-primary: #ffffff;
+  --nova-bg-secondary: #fafafa;
+  --nova-bg-tertiary: #f5f5f5;
+  --nova-bg-inverse: #171717;
+
+  /* Text */
+  --nova-text-primary: #171717;
+  --nova-text-secondary: #525252;
+  --nova-text-tertiary: #a3a3a3;
+  --nova-text-inverse: #ffffff;
+  --nova-text-link: #2563eb;
+
+  /* Brand */
+  --nova-color-primary: #2563eb;
+  --nova-color-primary-hover: #1d4ed8;
+  --nova-color-primary-active: #1e40af;
+
+  /* Semantic */
+  --nova-color-success: #16a34a;
+  --nova-color-warning: #d97706;
+  --nova-color-error: #dc2626;
+  --nova-color-info: #3b82f6;
+
+  /* Borders */
+  --nova-border-default: #e5e5e5;
+  --nova-border-strong: #d4d4d4;
+  --nova-border-focus: #3b82f6;
+
+  /* Shadows */
+  --nova-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --nova-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --nova-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* Border Radius */
+  --nova-radius-sm: 0.25rem;
+  --nova-radius-md: 0.375rem;
+  --nova-radius-lg: 0.5rem;
+  --nova-radius-xl: 0.75rem;
+  --nova-radius-2xl: 1rem;
+  --nova-radius-full: 9999px;
+
+  /* Spacing (4px grid) */
+  --nova-space-0: 0;
+  --nova-space-1: 0.25rem;
+  --nova-space-2: 0.5rem;
+  --nova-space-3: 0.75rem;
+  --nova-space-4: 1rem;
+  --nova-space-5: 1.25rem;
+  --nova-space-6: 1.5rem;
+  --nova-space-8: 2rem;
+  --nova-space-10: 2.5rem;
+  --nova-space-12: 3rem;
+  --nova-space-16: 4rem;
+  --nova-space-20: 5rem;
+  --nova-space-24: 6rem;
+
+  /* Motion */
+  --nova-duration-fast: 150ms;
+  --nova-duration-normal: 250ms;
+  --nova-duration-slow: 400ms;
+  --nova-easing-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --nova-easing-in: cubic-bezier(0.4, 0, 1, 1);
+  --nova-easing-out: cubic-bezier(0, 0, 0.2, 1);
+  --nova-easing-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Surfaces */
+  --nova-surface-raised: #ffffff;
+  --nova-surface-overlay: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] {
+  --nova-bg-primary: #0a0a0a;
+  --nova-bg-secondary: #171717;
+  --nova-bg-tertiary: #262626;
+  --nova-bg-inverse: #ffffff;
+
+  --nova-text-primary: #fafafa;
+  --nova-text-secondary: #a3a3a3;
+  --nova-text-tertiary: #737373;
+  --nova-text-inverse: #171717;
+  --nova-text-link: #60a5fa;
+
+  --nova-color-primary: #3b82f6;
+  --nova-color-primary-hover: #60a5fa;
+  --nova-color-primary-active: #93c5fd;
+
+  --nova-color-success: #22c55e;
+  --nova-color-warning: #f59e0b;
+  --nova-color-error: #ef4444;
+  --nova-color-info: #60a5fa;
+
+  --nova-border-default: #262626;
+  --nova-border-strong: #404040;
+  --nova-border-focus: #60a5fa;
+
+  --nova-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --nova-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --nova-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+
+  --nova-surface-raised: #171717;
+  --nova-surface-overlay: rgba(0, 0, 0, 0.7);
+}
+
+@theme {
+  --color-nova-primary: var(--nova-color-primary);
+  --color-nova-primary-hover: var(--nova-color-primary-hover);
+  --color-nova-primary-active: var(--nova-color-primary-active);
+  --color-nova-success: var(--nova-color-success);
+  --color-nova-warning: var(--nova-color-warning);
+  --color-nova-error: var(--nova-color-error);
+  --color-nova-info: var(--nova-color-info);
+
+  --color-bg-primary: var(--nova-bg-primary);
+  --color-bg-secondary: var(--nova-bg-secondary);
+  --color-bg-tertiary: var(--nova-bg-tertiary);
+  --color-bg-inverse: var(--nova-bg-inverse);
+
+  --color-fg-primary: var(--nova-text-primary);
+  --color-fg-secondary: var(--nova-text-secondary);
+  --color-fg-tertiary: var(--nova-text-tertiary);
+  --color-fg-inverse: var(--nova-text-inverse);
+  --color-fg-link: var(--nova-text-link);
+
+  --color-border-default: var(--nova-border-default);
+  --color-border-strong: var(--nova-border-strong);
+  --color-border-focus: var(--nova-border-focus);
+
+  --shadow-nova-sm: var(--nova-shadow-sm);
+  --shadow-nova-md: var(--nova-shadow-md);
+  --shadow-nova-lg: var(--nova-shadow-lg);
+
+  --radius-nova-sm: var(--nova-radius-sm);
+  --radius-nova-md: var(--nova-radius-md);
+  --radius-nova-lg: var(--nova-radius-lg);
+  --radius-nova-xl: var(--nova-radius-xl);
+
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "Consolas", monospace;
+}

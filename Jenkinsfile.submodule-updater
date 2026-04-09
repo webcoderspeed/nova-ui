@@ -1,0 +1,102 @@
+// Jenkins job: submodule-updater
+// Triggered after successful Nova UI CI on a tag push.
+// Creates PRs in all consuming cohort repos to update the submodule pointer.
+
+pipeline {
+    agent any
+
+    parameters {
+        string(name: 'NOVA_UI_TAG', defaultValue: '', description: 'Nova UI tag to update to (e.g. v1.2.0)')
+    }
+
+    environment {
+        BITBUCKET_WORKSPACE = 'your-workspace'  // TODO: Replace with actual workspace
+    }
+
+    stages {
+        stage('Validate') {
+            steps {
+                script {
+                    if (!params.NOVA_UI_TAG) {
+                        error('NOVA_UI_TAG parameter is required')
+                    }
+                }
+            }
+        }
+
+        stage('Update Consuming Projects') {
+            steps {
+                script {
+                    // TODO: Add all cohort repo names here
+                    def repos = [
+                        [name: 'cohort-app-frontend', branch: 'main'],
+                        [name: 'admin-dashboard', branch: 'main'],
+                        [name: 'customer-portal', branch: 'main'],
+                        // Add more repos as they adopt Nova UI
+                    ]
+
+                    for (repo in repos) {
+                        echo "Updating ${repo.name} to ${params.NOVA_UI_TAG}..."
+
+                        dir(repo.name) {
+                            git credentialsId: 'bitbucket-ssh',
+                                url: "git@bitbucket.org:${BITBUCKET_WORKSPACE}/${repo.name}.git",
+                                branch: repo.branch
+
+                            sh """
+                                git checkout -b chore/update-nova-ui-${params.NOVA_UI_TAG}
+                                git submodule update --init nova-ui
+                                cd nova-ui
+                                git fetch origin --tags
+                                git checkout ${params.NOVA_UI_TAG}
+                                cd ..
+                                git add nova-ui
+                                git commit -m "chore: update nova-ui to ${params.NOVA_UI_TAG}"
+                                git push origin chore/update-nova-ui-${params.NOVA_UI_TAG}
+                            """
+
+                            // Create PR via Bitbucket REST API
+                            withCredentials([usernamePassword(
+                                credentialsId: 'bitbucket-api',
+                                usernameVariable: 'BB_USER',
+                                passwordVariable: 'BB_PASS'
+                            )]) {
+                                sh """
+                                    curl -s -X POST \
+                                      -u \$BB_USER:\$BB_PASS \
+                                      https://api.bitbucket.org/2.0/repositories/${BITBUCKET_WORKSPACE}/${repo.name}/pullrequests \
+                                      -H 'Content-Type: application/json' \
+                                      -d '{
+                                        "title": "chore: update nova-ui to ${params.NOVA_UI_TAG}",
+                                        "source": {
+                                          "branch": {"name": "chore/update-nova-ui-${params.NOVA_UI_TAG}"}
+                                        },
+                                        "destination": {
+                                          "branch": {"name": "${repo.branch}"}
+                                        },
+                                        "description": "Automated PR to update nova-ui submodule to ${params.NOVA_UI_TAG}.\\n\\nPlease review and merge when ready.",
+                                        "close_source_branch": true
+                                      }'
+                                """
+                            }
+                        }
+
+                        echo "PR created for ${repo.name}"
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "All cohort repos updated to ${params.NOVA_UI_TAG}"
+        }
+        failure {
+            echo "Failed to update some repos. Check logs."
+        }
+        always {
+            cleanWs()
+        }
+    }
+}
