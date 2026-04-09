@@ -7,6 +7,8 @@ export { CHECKBOX_TEST_IDS, NovaCheckbox } from './Checkbox';
 export { INPUT_TEST_IDS, NovaInput } from './Input';
 export { MODAL_TEST_IDS, NovaModal } from './Modal';
 export { NovaRadio, NovaRadioGroup, RADIO_TEST_IDS } from './Radio';
+export type { NovaSelectProps, SelectOption } from './Select';
+export { NovaSelect, SELECT_TEST_IDS } from './Select';
 export { NovaSpinner, SPINNER_TEST_IDS } from './Spinner';
 export { NovaSwitch, SWITCH_TEST_IDS } from './Switch';
 export { NovaTable, TABLE_TEST_IDS } from './Table';

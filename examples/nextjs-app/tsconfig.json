@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "preserve",
+    "skipLibCheck": true,
+    "incremental": true,
+    "plugins": [{ "name": "next" }],
+    "baseUrl": ".",
+    "paths": {
+      "@nova-ui/*": ["../../src/*"],
+      "@nova-ui": ["../../src"],
+      "@/*": ["./app/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "app", "../../src", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}

@@ -7,6 +7,7 @@ import { NovaCheckbox } from '../components/Checkbox';
 import { NovaInput } from '../components/Input';
 import { NovaModal } from '../components/Modal';
 import { NovaRadio, NovaRadioGroup } from '../components/Radio';
+import { NovaSelect } from '../components/Select';
 import { NovaSpinner } from '../components/Spinner';
 import { NovaSwitch } from '../components/Switch';
 import { NovaTable } from '../components/Table';
@@ -422,6 +423,41 @@ function PlaygroundContent() {
                 </NovaTable.Row>
               </NovaTable.Body>
             </NovaTable>
+          </section>
+
+          {/* Select */}
+          <section>
+            <NovaHeading level={2} className="mb-4">
+              NovaSelect
+            </NovaHeading>
+            <div className="space-y-4">
+              <NovaSelect
+                label="Framework"
+                options={[
+                  { value: 'react', label: 'React' },
+                  { value: 'vue', label: 'Vue' },
+                  { value: 'angular', label: 'Angular' },
+                  { value: 'svelte', label: 'Svelte', disabled: true },
+                ]}
+                placeholder="Choose a framework"
+              />
+              <NovaSelect
+                label="Size — Small"
+                size="sm"
+                options={[
+                  { value: '1', label: 'Option 1' },
+                  { value: '2', label: 'Option 2' },
+                ]}
+              />
+              <NovaSelect
+                label="With Error"
+                options={[
+                  { value: '1', label: 'Option 1' },
+                  { value: '2', label: 'Option 2' },
+                ]}
+                error="This field is required"
+              />
+            </div>
           </section>
 
           {/* Color Tokens */}

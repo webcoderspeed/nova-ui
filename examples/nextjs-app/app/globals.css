@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+@source '../../../src/**/*.{ts,tsx}';
+@import '../../../src/css/tokens.css';
+@import '../../../src/css/reset.css';
+@import '../../../src/css/typography.css';
+@import '../../../src/css/animations.css';
