@@ -122,7 +122,7 @@ const TabsTrigger = forwardRef<HTMLButtonElement, TabsTriggerProps>(
         onClick={() => !disabled && setActiveTab(value)}
         onKeyDown={handleKeyDown}
         className={cn(
-          'px-4 py-2 text-sm font-medium outline-none transition-colors duration-[var(--nova-duration-fast)]',
+          'px-4 py-2 text-sm font-medium transition-colors duration-[var(--nova-duration-fast)] outline-none',
           'focus-visible:ring-2 focus-visible:ring-[var(--nova-border-focus)] focus-visible:ring-inset',
           isActive
             ? 'border-b-2 border-[var(--nova-color-primary)] text-[var(--nova-color-primary)]'

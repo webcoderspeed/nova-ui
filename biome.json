@@ -46,7 +46,9 @@
       "!**/coverage",
       "!**/playwright-report",
       "!**/test-results",
-      "!**/*.min.js"
+      "!**/*.min.js",
+      "!**/examples",
+      "!**/.next"
     ]
   }
 }

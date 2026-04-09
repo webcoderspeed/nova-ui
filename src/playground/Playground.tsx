@@ -34,7 +34,7 @@ function ThemeToggle() {
 function ToastDemo() {
   const { toast } = useToast();
   return (
-    <div className="flex gap-2 flex-wrap">
+    <div className="flex flex-wrap gap-2">
       <NovaButton
         size="sm"
         variant="primary"
@@ -94,7 +94,7 @@ function PlaygroundContent() {
               NovaButton
             </NovaHeading>
             <div className="space-y-4">
-              <div className="flex items-center gap-3 flex-wrap">
+              <div className="flex flex-wrap items-center gap-3">
                 <NovaButton variant="primary">Primary</NovaButton>
                 <NovaButton variant="secondary">Secondary</NovaButton>
                 <NovaButton variant="ghost">Ghost</NovaButton>
@@ -144,7 +144,7 @@ function PlaygroundContent() {
             <NovaHeading level={2} className="mb-4">
               NovaBadge
             </NovaHeading>
-            <div className="flex items-center gap-3 flex-wrap">
+            <div className="flex flex-wrap items-center gap-3">
               <NovaBadge>Default</NovaBadge>
               <NovaBadge variant="success">Success</NovaBadge>
               <NovaBadge variant="warning">Warning</NovaBadge>
@@ -189,7 +189,7 @@ function PlaygroundContent() {
             <NovaHeading level={2} className="mb-4">
               NovaInput
             </NovaHeading>
-            <div className="grid grid-cols-2 gap-4 max-w-xl">
+            <div className="grid max-w-xl grid-cols-2 gap-4">
               <NovaInput label="Name" placeholder="John Doe" />
               <NovaInput label="Email" type="email" placeholder="john@example.com" required />
               <NovaInput label="With error" error="This field is required" />
@@ -246,7 +246,7 @@ function PlaygroundContent() {
             <NovaHeading level={2} className="mb-4">
               Form Controls
             </NovaHeading>
-            <div className="space-y-4 max-w-md">
+            <div className="max-w-md space-y-4">
               <NovaCheckbox label="Accept terms and conditions" />
               <NovaCheckbox label="Subscribe to newsletter" defaultChecked />
               <NovaCheckbox label="Indeterminate" indeterminate />
@@ -430,16 +430,16 @@ function PlaygroundContent() {
               Design Tokens
             </NovaHeading>
             <div className="grid grid-cols-4 gap-3">
-              <div className="rounded-lg bg-(--nova-color-primary) p-4 text-white text-sm">
+              <div className="rounded-lg bg-(--nova-color-primary) p-4 text-sm text-white">
                 Primary
               </div>
-              <div className="rounded-lg bg-(--nova-color-success) p-4 text-white text-sm">
+              <div className="rounded-lg bg-(--nova-color-success) p-4 text-sm text-white">
                 Success
               </div>
-              <div className="rounded-lg bg-(--nova-color-warning) p-4 text-white text-sm">
+              <div className="rounded-lg bg-(--nova-color-warning) p-4 text-sm text-white">
                 Warning
               </div>
-              <div className="rounded-lg bg-(--nova-color-error) p-4 text-white text-sm">Error</div>
+              <div className="rounded-lg bg-(--nova-color-error) p-4 text-sm text-white">Error</div>
             </div>
           </section>
         </div>

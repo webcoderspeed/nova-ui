@@ -142,4 +142,50 @@ describe('NovaButton', () => {
     const { container } = render(<NovaButton loading>Loading</NovaButton>);
     expect(await axe(container)).toHaveNoViolations();
   });
+
+  it('applies outline variant classes', () => {
+    render(<NovaButton variant="outline">Outline</NovaButton>);
+    expect(screen.getByRole('button')).toHaveClass('bg-transparent');
+  });
+
+  it('applies link variant without height', () => {
+    render(<NovaButton variant="link">Link</NovaButton>);
+    const btn = screen.getByRole('button');
+    expect(btn).toHaveClass('h-auto');
+    expect(btn).toHaveClass('p-0');
+  });
+
+  it('applies danger-outline variant', () => {
+    render(<NovaButton variant="danger-outline">Danger Outline</NovaButton>);
+    expect(screen.getByRole('button')).toHaveClass('bg-transparent');
+  });
+
+  it('applies xs size', () => {
+    render(<NovaButton size="xs">XS</NovaButton>);
+    expect(screen.getByRole('button')).toHaveClass('h-7');
+  });
+
+  it('applies icon size when iconOnly', () => {
+    render(<NovaButton iconOnly>X</NovaButton>);
+    expect(screen.getByRole('button')).toHaveClass('w-10');
+  });
+
+  it('renders full width when block', () => {
+    render(<NovaButton block>Block</NovaButton>);
+    expect(screen.getByRole('button')).toHaveClass('w-full');
+  });
+
+  it('applies round shape', () => {
+    render(<NovaButton shape="round">Round</NovaButton>);
+    expect(screen.getByRole('button')).toHaveClass('rounded-full');
+  });
+
+  it('applies circle shape', () => {
+    render(
+      <NovaButton shape="circle" iconOnly>
+        C
+      </NovaButton>,
+    );
+    expect(screen.getByRole('button')).toHaveClass('rounded-full');
+  });
 });

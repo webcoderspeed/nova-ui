@@ -73,7 +73,7 @@ export const NovaInput = forwardRef<HTMLInputElement, InputProps>(
             aria-describedby={describedBy}
             aria-required={rest.required || undefined}
             className={cn(
-              'w-full rounded-[var(--nova-radius-md)] border bg-[var(--nova-bg-primary)] text-[var(--nova-text-primary)] outline-none transition-colors duration-[var(--nova-duration-fast)]',
+              'w-full rounded-[var(--nova-radius-md)] border bg-[var(--nova-bg-primary)] text-[var(--nova-text-primary)] transition-colors duration-[var(--nova-duration-fast)] outline-none',
               'placeholder:text-[var(--nova-text-tertiary)]',
               'focus:border-[var(--nova-border-focus)] focus:ring-2 focus:ring-[var(--nova-border-focus)]/20',
               'disabled:cursor-not-allowed disabled:opacity-50',

@@ -55,7 +55,7 @@ export const NovaSwitch = forwardRef<HTMLInputElement, SwitchProps>(
             className={cn(
               'rounded-full bg-[var(--nova-border-strong)] transition-colors duration-[var(--nova-duration-fast)]',
               'peer-checked:bg-[var(--nova-color-primary)]',
-              'peer-disabled:opacity-50 peer-disabled:cursor-not-allowed',
+              'peer-disabled:cursor-not-allowed peer-disabled:opacity-50',
               'peer-focus-visible:ring-2 peer-focus-visible:ring-[var(--nova-border-focus)] peer-focus-visible:ring-offset-2',
               trackSizes[switchSize],
             )}
@@ -63,7 +63,7 @@ export const NovaSwitch = forwardRef<HTMLInputElement, SwitchProps>(
           <div
             data-nova-test={`${novaTestId}-thumb`}
             className={cn(
-              'pointer-events-none absolute left-0.5 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-sm transition-transform duration-[var(--nova-duration-fast)]',
+              'pointer-events-none absolute top-1/2 left-0.5 -translate-y-1/2 rounded-full bg-white shadow-sm transition-transform duration-[var(--nova-duration-fast)]',
               thumbSizes[switchSize],
               thumbTranslate[switchSize],
             )}

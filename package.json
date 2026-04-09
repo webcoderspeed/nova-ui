@@ -8,8 +8,8 @@
   "scripts": {
     "playground": "vite",
     "type-check": "tsc --noEmit",
-    "lint": "biome check . && eslint . && prettier --check .",
-    "lint:fix": "biome check --write . && eslint --fix . && prettier --write .",
+    "lint": "biome check . && eslint .",
+    "lint:fix": "prettier --write . && biome check --write . && eslint --fix .",
     "test": "vitest",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",

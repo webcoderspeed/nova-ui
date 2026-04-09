@@ -76,7 +76,7 @@ export function NovaTooltip({
           role="tooltip"
           data-nova-test={`${novaTestId}-content`}
           className={cn(
-            'absolute z-50 whitespace-nowrap rounded-[var(--nova-radius-md)] px-3 py-1.5 text-xs font-medium',
+            'absolute z-50 rounded-[var(--nova-radius-md)] px-3 py-1.5 text-xs font-medium whitespace-nowrap',
             'bg-[var(--nova-bg-inverse)] text-[var(--nova-text-inverse)]',
             'animate-[nova-fade-in_var(--nova-duration-fast)]',
             'pointer-events-none',

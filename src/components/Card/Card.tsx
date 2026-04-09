@@ -55,7 +55,7 @@ const NovaCardFooter = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>
     <div
       ref={ref}
       data-nova-test={novaTestId}
-      className={cn('px-6 pb-6 pt-0 flex items-center gap-2', className)}
+      className={cn('flex items-center gap-2 px-6 pt-0 pb-6', className)}
       {...rest}
     />
   ),

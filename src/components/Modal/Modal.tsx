@@ -78,7 +78,7 @@ const ModalOverlay = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement> &
         ref={ref}
         data-nova-test={novaTestId || `${baseTestId}-overlay`}
         className={cn(
-          'fixed inset-0 z-50 bg-[var(--nova-surface-overlay)] animate-[nova-fade-in_var(--nova-duration-fast)]',
+          'fixed inset-0 z-50 animate-[nova-fade-in_var(--nova-duration-fast)] bg-[var(--nova-surface-overlay)]',
           className,
         )}
         onClick={onClose}
@@ -185,7 +185,7 @@ const ModalFooter = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement> & 
       <div
         ref={ref}
         data-nova-test={novaTestId || `${baseTestId}-footer`}
-        className={cn('flex items-center justify-end gap-2 px-6 pb-6 pt-0', className)}
+        className={cn('flex items-center justify-end gap-2 px-6 pt-0 pb-6', className)}
         {...props}
       />
     );
@@ -205,9 +205,9 @@ const ModalClose = forwardRef<HTMLButtonElement, HTMLAttributes<HTMLButtonElemen
         data-nova-test={novaTestId || `${baseTestId}-close`}
         onClick={onClose}
         className={cn(
-          'absolute right-4 top-4 rounded-[var(--nova-radius-sm)] p-1 text-[var(--nova-text-tertiary)]',
-          'hover:text-[var(--nova-text-primary)] hover:bg-[var(--nova-bg-tertiary)]',
-          'focus-visible:ring-2 focus-visible:ring-[var(--nova-border-focus)] outline-none',
+          'absolute top-4 right-4 rounded-[var(--nova-radius-sm)] p-1 text-[var(--nova-text-tertiary)]',
+          'hover:bg-[var(--nova-bg-tertiary)] hover:text-[var(--nova-text-primary)]',
+          'outline-none focus-visible:ring-2 focus-visible:ring-[var(--nova-border-focus)]',
           className,
         )}
         {...props}

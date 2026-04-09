@@ -43,7 +43,7 @@ export const NovaAvatar = forwardRef<HTMLDivElement, AvatarProps>(
         data-nova-test={novaTestId}
         className={cn(
           'relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full',
-          'bg-[var(--nova-bg-tertiary)] text-[var(--nova-text-secondary)] font-medium',
+          'bg-[var(--nova-bg-tertiary)] font-medium text-[var(--nova-text-secondary)]',
           sizeClasses[size],
           className,
         )}

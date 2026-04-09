@@ -71,6 +71,7 @@ git push origin main --tags
 ### 7. Automatic propagation
 
 After pushing:
+
 1. Bitbucket webhook triggers Jenkins CI
 2. Jenkins runs quality gates (lint, type-check, test)
 3. On success, Jenkins `submodule-updater` job triggers
@@ -85,6 +86,7 @@ After pushing:
 ## Breaking Changes
 
 For major versions:
+
 1. Create `MIGRATION-vX.md` with upgrade instructions
 2. Deprecate old APIs 1-2 releases before removal
 3. Consider shipping codemods (jscodeshift) for automated migration

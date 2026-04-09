@@ -4,24 +4,24 @@
 
 ## Components (15)
 
-| Component | Pattern | Description |
-|---|---|---|
-| `NovaButton` | Polymorphic, forwardRef | Variants, sizes, loading, icons, `as` prop |
-| `NovaText` | Polymorphic, forwardRef | Fluid type scale, weights, colors, truncate |
-| `NovaHeading` | Polymorphic, forwardRef | Levels 1-6, auto semantic tag |
-| `NovaInput` | forwardRef | Label, error, helper, addons, controlled/uncontrolled |
-| `NovaBadge` | Simple | Variants, sizes, dot indicator |
-| `NovaAvatar` | forwardRef | Image with fallback initials |
-| `NovaSpinner` | Simple | Accessible loading indicator |
-| `NovaCard` | Compound | Header, Body, Footer sub-components |
-| `NovaCheckbox` | forwardRef | Label, indeterminate, a11y |
-| `NovaRadioGroup` + `NovaRadio` | Compound | Context-based group, keyboard nav |
-| `NovaSwitch` | forwardRef | role="switch", sizes |
-| `NovaTabs` | Compound | Keyboard nav, roving tabindex, auto test IDs |
-| `NovaModal` | Compound + Portal | Focus trap, Escape close, overlay, scroll lock |
-| `NovaTooltip` | Wrapper | Hover/focus trigger, positions, Escape dismiss |
-| `NovaToastProvider` + `useToast` | Provider + Hook | Auto-dismiss, variants, live regions |
-| `NovaTable` | Compound | Semantic HTML, striped, bordered |
+| Component                        | Pattern                 | Description                                           |
+| -------------------------------- | ----------------------- | ----------------------------------------------------- |
+| `NovaButton`                     | Polymorphic, forwardRef | Variants, sizes, loading, icons, `as` prop            |
+| `NovaText`                       | Polymorphic, forwardRef | Fluid type scale, weights, colors, truncate           |
+| `NovaHeading`                    | Polymorphic, forwardRef | Levels 1-6, auto semantic tag                         |
+| `NovaInput`                      | forwardRef              | Label, error, helper, addons, controlled/uncontrolled |
+| `NovaBadge`                      | Simple                  | Variants, sizes, dot indicator                        |
+| `NovaAvatar`                     | forwardRef              | Image with fallback initials                          |
+| `NovaSpinner`                    | Simple                  | Accessible loading indicator                          |
+| `NovaCard`                       | Compound                | Header, Body, Footer sub-components                   |
+| `NovaCheckbox`                   | forwardRef              | Label, indeterminate, a11y                            |
+| `NovaRadioGroup` + `NovaRadio`   | Compound                | Context-based group, keyboard nav                     |
+| `NovaSwitch`                     | forwardRef              | role="switch", sizes                                  |
+| `NovaTabs`                       | Compound                | Keyboard nav, roving tabindex, auto test IDs          |
+| `NovaModal`                      | Compound + Portal       | Focus trap, Escape close, overlay, scroll lock        |
+| `NovaTooltip`                    | Wrapper                 | Hover/focus trigger, positions, Escape dismiss        |
+| `NovaToastProvider` + `useToast` | Provider + Hook         | Auto-dismiss, variants, live regions                  |
+| `NovaTable`                      | Compound                | Semantic HTML, striped, bordered                      |
 
 ## Quick Start (Git Submodule)
 
@@ -60,6 +60,7 @@ npm install -D tailwindcss @tailwindcss/postcss # Next.js projects
 ### 4. Configure Vite (or Next.js)
 
 **Vite:**
+
 ```typescript
 // vite.config.ts
 import path from 'node:path';
@@ -77,6 +78,7 @@ export default defineConfig({
 ```
 
 **Next.js:**
+
 ```typescript
 // next.config.ts
 const nextConfig = {
@@ -93,12 +95,12 @@ const nextConfig = {
 
 ```css
 /* your-app/src/index.css or globals.css */
-@import "tailwindcss";
-@source "../nova-ui/src/**/*.{ts,tsx}";
-@import "../nova-ui/src/css/tokens.css";
-@import "../nova-ui/src/css/typography.css";
-@import "../nova-ui/src/css/animations.css";
-@import "../nova-ui/src/css/reset.css";
+@import 'tailwindcss';
+@source '../nova-ui/src/**/*.{ts,tsx}';
+@import '../nova-ui/src/css/tokens.css';
+@import '../nova-ui/src/css/typography.css';
+@import '../nova-ui/src/css/animations.css';
+@import '../nova-ui/src/css/reset.css';
 ```
 
 ### 6. Use components
@@ -157,10 +159,7 @@ npm install -D react-remove-attr
 import removeAttr from 'react-remove-attr';
 
 export default defineConfig({
-  plugins: [
-    removeAttr({ extensions: ['tsx', 'jsx'], attributes: ['data-nova-test'] }),
-    react(),
-  ],
+  plugins: [removeAttr({ extensions: ['tsx', 'jsx'], attributes: ['data-nova-test'] }), react()],
 });
 ```
 
