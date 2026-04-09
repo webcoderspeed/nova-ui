@@ -60,8 +60,6 @@ export const NovaSelect = forwardRef<HTMLDivElement, NovaSelectProps>(
     const selectedValue = controlledValue ?? uncontrolledValue;
     const selectedOption = options.find((o) => o.value === selectedValue);
 
-    const enabledOptions = options.filter((o) => !o.disabled);
-
     useClickOutside(containerRef, () => setIsOpen(false));
 
     const selectOption = useCallback(
