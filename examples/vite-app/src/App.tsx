@@ -1,5 +1,5 @@
 import { NovaButton } from '@nova-ui/components/Button';
-import { NovaCard, NovaCardBody, NovaCardHeader } from '@nova-ui/components/Card';
+import { NovaCard } from '@nova-ui/components/Card';
 import { NovaInput } from '@nova-ui/components/Input';
 import { NovaHeading, NovaText } from '@nova-ui/components/Typography';
 import { NovaThemeProvider, useTheme } from '@nova-ui/hooks/use-theme';
@@ -33,10 +33,10 @@ export function App() {
           </div>
 
           <NovaCard>
-            <NovaCardHeader>
+            <NovaCard.Header>
               <NovaHeading level={3}>Getting Started</NovaHeading>
-            </NovaCardHeader>
-            <NovaCardBody>
+            </NovaCard.Header>
+            <NovaCard.Body>
               <NovaText>
                 This example demonstrates consuming Nova UI as a git submodule in a Vite project.
               </NovaText>
@@ -44,7 +44,7 @@ export function App() {
                 <NovaInput label="Name" placeholder="Enter your name" />
                 <NovaButton variant="primary">Submit</NovaButton>
               </div>
-            </NovaCardBody>
+            </NovaCard.Body>
           </NovaCard>
         </div>
       </div>

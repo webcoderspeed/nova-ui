@@ -1,7 +1,7 @@
 'use client';
 
 import { NovaButton } from '@nova-ui/components/Button';
-import { NovaCard, NovaCardBody, NovaCardHeader } from '@nova-ui/components/Card';
+import { NovaCard } from '@nova-ui/components/Card';
 import { NovaInput } from '@nova-ui/components/Input';
 import { NovaHeading, NovaText } from '@nova-ui/components/Typography';
 import { useTheme } from '@nova-ui/hooks/use-theme';
@@ -29,10 +29,10 @@ export default function Home() {
         </div>
 
         <NovaCard>
-          <NovaCardHeader>
+          <NovaCard.Header>
             <NovaHeading level={3}>Getting Started</NovaHeading>
-          </NovaCardHeader>
-          <NovaCardBody>
+          </NovaCard.Header>
+          <NovaCard.Body>
             <NovaText>
               This example demonstrates consuming Nova UI as a git submodule in a Next.js project.
             </NovaText>
@@ -40,7 +40,7 @@ export default function Home() {
               <NovaInput label="Name" placeholder="Enter your name" />
               <NovaButton variant="primary">Submit</NovaButton>
             </div>
-          </NovaCardBody>
+          </NovaCard.Body>
         </NovaCard>
       </div>
     </div>
