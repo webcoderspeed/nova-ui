@@ -9,8 +9,17 @@ export type { ButtonProps } from './Button';
 export { BUTTON_TEST_IDS, NovaButton } from './Button';
 export { CARD_TEST_IDS, NovaCard } from './Card';
 export { CHECKBOX_TEST_IDS, NovaCheckbox } from './Checkbox';
+export type {
+  DropdownItemProps,
+  DropdownMenuProps,
+  DropdownProps,
+  DropdownTriggerProps,
+} from './Dropdown';
+export { DROPDOWN_TEST_IDS, NovaDropdown } from './Dropdown';
 export { INPUT_TEST_IDS, NovaInput } from './Input';
 export { MODAL_TEST_IDS, NovaModal } from './Modal';
+export type { PaginationProps } from './Pagination';
+export { NovaPagination, PAGINATION_TEST_IDS } from './Pagination';
 export type { NovaProgressProps } from './Progress';
 export { NovaProgress, PROGRESS_TEST_IDS } from './Progress';
 export { NovaRadio, NovaRadioGroup, RADIO_TEST_IDS } from './Radio';

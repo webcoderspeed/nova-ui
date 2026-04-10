@@ -7,8 +7,10 @@ import { NovaBreadcrumb } from '../components/Breadcrumb';
 import { NovaButton } from '../components/Button';
 import { NovaCard } from '../components/Card';
 import { NovaCheckbox } from '../components/Checkbox';
+import { NovaDropdown } from '../components/Dropdown';
 import { NovaInput } from '../components/Input';
 import { NovaModal } from '../components/Modal';
+import { NovaPagination } from '../components/Pagination';
 import { NovaProgress } from '../components/Progress';
 import { NovaRadio, NovaRadioGroup } from '../components/Radio';
 import { NovaSelect } from '../components/Select';
@@ -34,6 +36,16 @@ function ThemeToggle() {
       <option value="dark">Dark</option>
       <option value="system">System</option>
     </select>
+  );
+}
+
+function PaginationDemo() {
+  const [page, setPage] = useState(3);
+  return (
+    <div className="space-y-4">
+      <NovaPagination page={page} totalPages={10} onChange={setPage} />
+      <p className="text-sm text-(--nova-text-tertiary)">Current page: {page}</p>
+    </div>
   );
 }
 
@@ -556,6 +568,43 @@ function PlaygroundContent() {
                 </NovaAccordion.Content>
               </NovaAccordion.Item>
             </NovaAccordion>
+          </section>
+
+          {/* Pagination */}
+          <section>
+            <NovaHeading level={2} className="mb-4">
+              NovaPagination
+            </NovaHeading>
+            <PaginationDemo />
+          </section>
+
+          {/* Dropdown */}
+          <section>
+            <NovaHeading level={2} className="mb-4">
+              NovaDropdown
+            </NovaHeading>
+            <div className="flex flex-wrap gap-4">
+              <NovaDropdown>
+                <NovaDropdown.Trigger>Actions</NovaDropdown.Trigger>
+                <NovaDropdown.Menu>
+                  <NovaDropdown.Item>Edit</NovaDropdown.Item>
+                  <NovaDropdown.Item>Duplicate</NovaDropdown.Item>
+                  <NovaDropdown.Separator />
+                  <NovaDropdown.Item variant="danger">Delete</NovaDropdown.Item>
+                </NovaDropdown.Menu>
+              </NovaDropdown>
+              <NovaDropdown>
+                <NovaDropdown.Trigger>With Groups</NovaDropdown.Trigger>
+                <NovaDropdown.Menu>
+                  <NovaDropdown.Label>Account</NovaDropdown.Label>
+                  <NovaDropdown.Item>Profile</NovaDropdown.Item>
+                  <NovaDropdown.Item>Settings</NovaDropdown.Item>
+                  <NovaDropdown.Separator />
+                  <NovaDropdown.Label>Session</NovaDropdown.Label>
+                  <NovaDropdown.Item variant="danger">Sign out</NovaDropdown.Item>
+                </NovaDropdown.Menu>
+              </NovaDropdown>
+            </div>
           </section>
 
           {/* Color Tokens */}
