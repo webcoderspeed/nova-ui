@@ -1,13 +1,18 @@
 import { useState } from 'react';
+import { NovaAccordion } from '../components/Accordion';
+import { NovaAlert } from '../components/Alert';
 import { NovaAvatar } from '../components/Avatar';
 import { NovaBadge } from '../components/Badge';
+import { NovaBreadcrumb } from '../components/Breadcrumb';
 import { NovaButton } from '../components/Button';
 import { NovaCard } from '../components/Card';
 import { NovaCheckbox } from '../components/Checkbox';
 import { NovaInput } from '../components/Input';
 import { NovaModal } from '../components/Modal';
+import { NovaProgress } from '../components/Progress';
 import { NovaRadio, NovaRadioGroup } from '../components/Radio';
 import { NovaSelect } from '../components/Select';
+import { NovaSkeleton } from '../components/Skeleton';
 import { NovaSpinner } from '../components/Spinner';
 import { NovaSwitch } from '../components/Switch';
 import { NovaTable } from '../components/Table';
@@ -458,6 +463,99 @@ function PlaygroundContent() {
                 error="This field is required"
               />
             </div>
+          </section>
+
+          {/* Alert */}
+          <section>
+            <NovaHeading level={2} className="mb-4">
+              NovaAlert
+            </NovaHeading>
+            <div className="space-y-3">
+              <NovaAlert variant="info" title="Heads up!">
+                This is an informational message.
+              </NovaAlert>
+              <NovaAlert variant="success" title="Success!">
+                Your changes have been saved.
+              </NovaAlert>
+              <NovaAlert variant="warning" title="Warning">
+                Please review before continuing.
+              </NovaAlert>
+              <NovaAlert variant="error" title="Error" onClose={() => {}}>
+                Something went wrong. Please try again.
+              </NovaAlert>
+            </div>
+          </section>
+
+          {/* Breadcrumb */}
+          <section>
+            <NovaHeading level={2} className="mb-4">
+              NovaBreadcrumb
+            </NovaHeading>
+            <NovaBreadcrumb
+              items={[
+                { label: 'Home', href: '/' },
+                { label: 'Components', href: '/components' },
+                { label: 'Breadcrumb' },
+              ]}
+            />
+          </section>
+
+          {/* Progress */}
+          <section>
+            <NovaHeading level={2} className="mb-4">
+              NovaProgress
+            </NovaHeading>
+            <div className="space-y-4">
+              <NovaProgress value={25} showLabel />
+              <NovaProgress value={60} variant="success" size="lg" showLabel />
+              <NovaProgress value={80} variant="warning" />
+              <NovaProgress value={0} indeterminate />
+            </div>
+          </section>
+
+          {/* Skeleton */}
+          <section>
+            <NovaHeading level={2} className="mb-4">
+              NovaSkeleton
+            </NovaHeading>
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <NovaSkeleton variant="circle" width={40} height={40} />
+                <div className="flex-1 space-y-2">
+                  <NovaSkeleton width="40%" />
+                  <NovaSkeleton width="60%" />
+                </div>
+              </div>
+              <NovaSkeleton variant="rect" height={120} />
+            </div>
+          </section>
+
+          {/* Accordion */}
+          <section>
+            <NovaHeading level={2} className="mb-4">
+              NovaAccordion
+            </NovaHeading>
+            <NovaAccordion defaultValue="one">
+              <NovaAccordion.Item value="one">
+                <NovaAccordion.Trigger>What is Nova UI?</NovaAccordion.Trigger>
+                <NovaAccordion.Content>
+                  Nova UI is Acefone's design system built from scratch with React, TypeScript, and
+                  TailwindCSS v4.
+                </NovaAccordion.Content>
+              </NovaAccordion.Item>
+              <NovaAccordion.Item value="two">
+                <NovaAccordion.Trigger>How do I install it?</NovaAccordion.Trigger>
+                <NovaAccordion.Content>
+                  Add it as a git submodule to your project and import components directly.
+                </NovaAccordion.Content>
+              </NovaAccordion.Item>
+              <NovaAccordion.Item value="three">
+                <NovaAccordion.Trigger>Is it accessible?</NovaAccordion.Trigger>
+                <NovaAccordion.Content>
+                  Yes! All components follow WAI-ARIA best practices and are tested with vitest-axe.
+                </NovaAccordion.Content>
+              </NovaAccordion.Item>
+            </NovaAccordion>
           </section>
 
           {/* Color Tokens */}
