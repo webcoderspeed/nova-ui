@@ -1,6 +1,6 @@
 'use client';
 
-import { type ElementType, forwardRef, type ReactNode } from 'react';
+import { type ElementType, forwardRef, type ReactNode, useEffect, useRef, useState } from 'react';
 import type { NovaTestProps } from '../../types/common';
 import { cn } from '../../utils/cn';
 import type { PolymorphicComponentPropsWithRef } from '../../utils/polymorphic';
@@ -10,6 +10,7 @@ type ButtonVariant =
   | 'primary'
   | 'secondary'
   | 'outline'
+  | 'dashed'
   | 'ghost'
   | 'link'
   | 'danger'
@@ -17,12 +18,20 @@ type ButtonVariant =
 
 type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'icon';
 type ButtonShape = 'default' | 'round' | 'circle';
+type ButtonHtmlType = 'button' | 'submit' | 'reset';
+type ButtonLoading = boolean | { delay?: number; icon?: ReactNode };
 
 interface ButtonOwnProps extends NovaTestProps {
   variant?: ButtonVariant;
   size?: ButtonSize;
   shape?: ButtonShape;
-  loading?: boolean;
+  /** Native button type attribute */
+  htmlType?: ButtonHtmlType;
+  /**
+   * Loading state. Pass `true` for immediate loading, or
+   * `{ delay: number }` to delay the spinner (ms), with optional `{ icon }` for a custom icon.
+   */
+  loading?: ButtonLoading;
   block?: boolean;
   iconOnly?: boolean;
   leftIcon?: ReactNode;
@@ -43,6 +52,8 @@ const variantClasses: Record<ButtonVariant, string> = {
     'border border-[var(--nova-border-default)] bg-[var(--nova-bg-secondary)] text-[var(--nova-text-primary)] hover:bg-[var(--nova-bg-tertiary)] active:bg-[var(--nova-bg-secondary)] focus-visible:ring-2 focus-visible:ring-[var(--nova-border-focus)]',
   outline:
     'border border-[var(--nova-border-default)] bg-transparent text-[var(--nova-text-primary)] hover:bg-[var(--nova-bg-secondary)] active:bg-[var(--nova-bg-tertiary)] focus-visible:ring-2 focus-visible:ring-[var(--nova-border-focus)]',
+  dashed:
+    'border border-dashed border-[var(--nova-border-default)] bg-transparent text-[var(--nova-text-primary)] hover:bg-[var(--nova-bg-secondary)] hover:border-[var(--nova-color-primary)] hover:text-[var(--nova-color-primary)] active:bg-[var(--nova-bg-tertiary)] focus-visible:ring-2 focus-visible:ring-[var(--nova-border-focus)]',
   ghost:
     'bg-transparent text-[var(--nova-text-primary)] hover:bg-[var(--nova-bg-tertiary)] active:bg-[var(--nova-bg-secondary)] focus-visible:ring-2 focus-visible:ring-[var(--nova-border-focus)]',
   link: 'bg-transparent text-[var(--nova-text-link)] underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:ring-[var(--nova-border-focus)] p-0 h-auto',
@@ -66,12 +77,34 @@ const shapeClasses: Record<ButtonShape, string> = {
   circle: 'rounded-full',
 };
 
-function NovaButtonInner(
+/** Returns true if the loading value should activate immediately (no delay). */
+function isImmediatelyActive(loading: ButtonLoading): boolean {
+  if (typeof loading === 'boolean') return loading;
+  return !loading.delay || loading.delay <= 0;
+}
+
+/** Renders the appropriate loading indicator based on the loading prop. */
+function LoadingIcon({
+  loading,
+  novaTestId,
+}: {
+  loading: ButtonLoading;
+  novaTestId: string;
+}): ReactNode {
+  const customIcon = typeof loading === 'object' ? loading.icon : undefined;
+  if (customIcon) {
+    return <span data-nova-test={`${novaTestId}-loading-icon`}>{customIcon}</span>;
+  }
+  return <NovaSpinner size="sm" novaTestId={`${novaTestId}-spinner`} />;
+}
+
+export const NovaButton = forwardRef(function NovaButton(
   {
     as,
     variant = 'primary',
     size = 'md',
     shape = 'default',
+    htmlType = 'button',
     loading = false,
     block = false,
     iconOnly = false,
@@ -86,19 +119,43 @@ function NovaButtonInner(
   ref: React.Ref<HTMLButtonElement>,
 ) {
   const Component = as || 'button';
-  const isDisabled = disabled || loading;
+  const [loadingActive, setLoadingActive] = useState(() => isImmediatelyActive(loading));
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  useEffect(() => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+
+    if (typeof loading === 'boolean') {
+      setLoadingActive(loading);
+      return;
+    }
+
+    const delay = loading.delay ?? 0;
+    if (delay <= 0) {
+      setLoadingActive(true);
+    } else {
+      setLoadingActive(false);
+      timerRef.current = setTimeout(() => setLoadingActive(true), delay);
+    }
+
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, [loading]);
+
+  const isDisabled = disabled || loadingActive;
   const effectiveSize = iconOnly && size !== 'icon' ? 'icon' : size;
 
   return (
     <Component
       ref={ref}
       data-nova-test={novaTestId}
+      type={Component === 'button' ? htmlType : undefined}
       disabled={isDisabled}
-      aria-busy={loading || undefined}
+      aria-busy={loadingActive || undefined}
       aria-disabled={isDisabled || undefined}
       className={cn(
-        'inline-flex cursor-pointer items-center justify-center font-medium transition-colors duration-[var(--nova-duration-fast)] ease-[var(--nova-easing-default)] outline-none',
+        'inline-flex cursor-pointer items-center justify-center font-medium transition-colors duration-(--nova-duration-fast) ease-(--nova-easing-default) outline-none',
         shapeClasses[iconOnly && shape === 'default' ? 'default' : shape],
         variantClasses[variant],
         variant !== 'link' && sizeClasses[effectiveSize],
@@ -108,19 +165,17 @@ function NovaButtonInner(
       )}
       {...rest}
     >
-      {loading ? (
-        <NovaSpinner size="sm" novaTestId={`${novaTestId}-spinner`} />
+      {loadingActive ? (
+        <LoadingIcon loading={loading} novaTestId={novaTestId} />
       ) : (
         leftIcon && <span data-nova-test={`${novaTestId}-left-icon`}>{leftIcon}</span>
       )}
       {children}
-      {!loading && rightIcon && (
+      {!loadingActive && rightIcon && (
         <span data-nova-test={`${novaTestId}-right-icon`}>{rightIcon}</span>
       )}
     </Component>
   );
-}
-
-export const NovaButton = forwardRef(NovaButtonInner) as unknown as ButtonComponent;
+}) as unknown as ButtonComponent;
 
 (NovaButton as { displayName?: string }).displayName = 'NovaButton';

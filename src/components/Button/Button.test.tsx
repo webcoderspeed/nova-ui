@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 import { axe } from 'vitest-axe';
@@ -56,6 +56,30 @@ describe('NovaButton', () => {
     );
     await user.click(screen.getByRole('button'));
     expect(onClick).not.toHaveBeenCalled();
+  });
+
+  it('renders loading with custom icon', () => {
+    render(<NovaButton loading={{ icon: <span>⏳</span> }}>Submit</NovaButton>);
+    const btn = screen.getByRole('button');
+    expect(btn).toBeDisabled();
+    expect(btn).toHaveAttribute('aria-busy', 'true');
+    expect(screen.getByText('⏳')).toBeInTheDocument();
+    expect(screen.queryByRole('status')).not.toBeInTheDocument();
+  });
+
+  it('delays loading spinner by specified ms', async () => {
+    vi.useFakeTimers();
+    render(<NovaButton loading={{ delay: 500 }}>Submit</NovaButton>);
+    // spinner should not appear immediately
+    expect(screen.queryByRole('status')).not.toBeInTheDocument();
+    expect(screen.getByRole('button')).not.toBeDisabled();
+    // advance past delay
+    act(() => {
+      vi.advanceTimersByTime(500);
+    });
+    expect(screen.getByRole('status')).toBeInTheDocument();
+    expect(screen.getByRole('button')).toBeDisabled();
+    vi.useRealTimers();
   });
 
   it('renders as anchor when as="a"', () => {
@@ -148,6 +172,13 @@ describe('NovaButton', () => {
     expect(screen.getByRole('button')).toHaveClass('bg-transparent');
   });
 
+  it('applies dashed variant with dashed border', () => {
+    render(<NovaButton variant="dashed">Dashed</NovaButton>);
+    const btn = screen.getByRole('button');
+    expect(btn).toHaveClass('border-dashed');
+    expect(btn).toHaveClass('bg-transparent');
+  });
+
   it('applies link variant without height', () => {
     render(<NovaButton variant="link">Link</NovaButton>);
     const btn = screen.getByRole('button');
@@ -187,5 +218,24 @@ describe('NovaButton', () => {
       </NovaButton>,
     );
     expect(screen.getByRole('button')).toHaveClass('rounded-full');
+  });
+
+  it('sets htmlType on native button', () => {
+    render(<NovaButton htmlType="submit">Submit</NovaButton>);
+    expect(screen.getByRole('button')).toHaveAttribute('type', 'submit');
+  });
+
+  it('defaults htmlType to button', () => {
+    render(<NovaButton>Default</NovaButton>);
+    expect(screen.getByRole('button')).toHaveAttribute('type', 'button');
+  });
+
+  it('does not set type attribute when rendered as anchor', () => {
+    render(
+      <NovaButton as="a" href="/x">
+        Link
+      </NovaButton>,
+    );
+    expect(screen.getByRole('link')).not.toHaveAttribute('type');
   });
 });

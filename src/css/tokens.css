@@ -1,39 +1,19 @@
-:root,
-[data-theme="light"] {
-  /* Backgrounds */
-  --nova-bg-primary: #ffffff;
-  --nova-bg-secondary: #fafafa;
-  --nova-bg-tertiary: #f5f5f5;
-  --nova-bg-inverse: #171717;
+/* ==========================================================================
+   Nova UI Design Tokens
+   Structure:
+     1. Global (unchanging) tokens — radius, spacing, motion, shadows
+     2. Acefone Light (default)
+     3. Acefone Dark
+     4. Smartflo Light
+     5. Smartflo Dark
+     6. Legacy [data-theme] aliases for backwards compat
+     7. Tailwind @theme bridge
+   ========================================================================== */
 
-  /* Text */
-  --nova-text-primary: #171717;
-  --nova-text-secondary: #525252;
-  --nova-text-tertiary: #a3a3a3;
-  --nova-text-inverse: #ffffff;
-  --nova-text-link: #2563eb;
-
-  /* Brand */
-  --nova-color-primary: #2563eb;
-  --nova-color-primary-hover: #1d4ed8;
-  --nova-color-primary-active: #1e40af;
-
-  /* Semantic */
-  --nova-color-success: #16a34a;
-  --nova-color-warning: #d97706;
-  --nova-color-error: #dc2626;
-  --nova-color-info: #3b82f6;
-
-  /* Borders */
-  --nova-border-default: #e5e5e5;
-  --nova-border-strong: #d4d4d4;
-  --nova-border-focus: #3b82f6;
-
-  /* Shadows */
-  --nova-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --nova-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --nova-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-
+/* --------------------------------------------------------------------------
+   1. Global tokens — never change between themes
+   -------------------------------------------------------------------------- */
+:root {
   /* Border Radius */
   --nova-radius-sm: 0.25rem;
   --nova-radius-md: 0.375rem;
@@ -66,44 +46,254 @@
   --nova-easing-out: cubic-bezier(0, 0, 0.2, 1);
   --nova-easing-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
-  /* Surfaces */
-  --nova-surface-raised: #ffffff;
-  --nova-surface-overlay: rgba(0, 0, 0, 0.5);
+  /* Semantic status colors — shared across all themes */
+  --nova-color-success: #16a34a;
+  --nova-color-warning: #d97706;
+  --nova-color-error: #dc2626;
+  --nova-color-info: #3b82f6;
+
+  /* Call status */
+  --nova-color-call-answered: #00ad3f;
+  --nova-color-call-rejected: #d61919;
 }
 
-[data-theme="dark"] {
-  --nova-bg-primary: #0a0a0a;
-  --nova-bg-secondary: #171717;
-  --nova-bg-tertiary: #262626;
-  --nova-bg-inverse: #ffffff;
+/* --------------------------------------------------------------------------
+   2. Acefone Light  (also used as the default :root theme)
+   -------------------------------------------------------------------------- */
+:root,
+html.acefone-light {
+  /* Brand */
+  --nova-color-primary: #2837c3;
+  --nova-color-primary-hover: #1e29a8;
+  --nova-color-primary-active: #151d8c;
 
-  --nova-text-primary: #fafafa;
-  --nova-text-secondary: #a3a3a3;
-  --nova-text-tertiary: #737373;
-  --nova-text-inverse: #171717;
-  --nova-text-link: #60a5fa;
+  /* Backgrounds */
+  --nova-bg-primary: #ffffff;
+  --nova-bg-secondary: #f1f6fd;
+  --nova-bg-tertiary: #dbe4f1;
+  --nova-bg-inverse: #040c2d;
 
-  --nova-color-primary: #3b82f6;
-  --nova-color-primary-hover: #60a5fa;
-  --nova-color-primary-active: #93c5fd;
+  /* Text */
+  --nova-text-primary: #040c2d;
+  --nova-text-secondary: #475569;
+  --nova-text-tertiary: #94a3b8;
+  --nova-text-inverse: #ffffff;
+  --nova-text-link: #2837c3;
 
+  /* Borders */
+  --nova-border-default: #cbd5e1;
+  --nova-border-strong: #94a3b8;
+  --nova-border-focus: #2837c3;
+
+  /* Shadows */
+  --nova-shadow-sm: 0 1px 2px 0 rgb(40 55 195 / 0.06);
+  --nova-shadow-md: 0 4px 6px -1px rgb(40 55 195 / 0.1), 0 2px 4px -2px rgb(40 55 195 / 0.06);
+  --nova-shadow-lg: 0 10px 15px -3px rgb(40 55 195 / 0.1), 0 4px 6px -4px rgb(40 55 195 / 0.06);
+
+  /* Surfaces */
+  --nova-surface-raised: #ffffff;
+  --nova-surface-overlay: rgba(4, 12, 45, 0.5);
+
+  /* Sidebar */
+  --nova-sidebar-bg: #fafafa;
+  --nova-sidebar-text: #040c2d;
+  --nova-sidebar-border: #cbd5e1;
+}
+
+/* --------------------------------------------------------------------------
+   3. Acefone Dark
+   -------------------------------------------------------------------------- */
+html.acefone-dark {
+  /* Brand */
+  --nova-color-primary: #4458d8;
+  --nova-color-primary-hover: #5568e0;
+  --nova-color-primary-active: #6678e8;
+
+  /* Backgrounds */
+  --nova-bg-primary: #040c24;
+  --nova-bg-secondary: #01081c;
+  --nova-bg-tertiary: #1e293b;
+  --nova-bg-inverse: #f7f9fb;
+
+  /* Text */
+  --nova-text-primary: #f7f9fb;
+  --nova-text-secondary: #cbd5e1;
+  --nova-text-tertiary: #64748b;
+  --nova-text-inverse: #040c24;
+  --nova-text-link: #6678e8;
+
+  /* Borders */
+  --nova-border-default: #2d3b55;
+  --nova-border-strong: #3d4f6e;
+  --nova-border-focus: #4458d8;
+
+  /* Shadows */
+  --nova-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.4);
+  --nova-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+  --nova-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.6), 0 4px 6px -4px rgb(0 0 0 / 0.5);
+
+  /* Surfaces */
+  --nova-surface-raised: #0d1a35;
+  --nova-surface-overlay: rgba(0, 0, 0, 0.7);
+
+  /* Sidebar */
+  --nova-sidebar-bg: #040c24;
+  --nova-sidebar-text: #f4f4f5;
+  --nova-sidebar-border: #27272a;
+
+  /* Semantic overrides for dark backgrounds */
   --nova-color-success: #22c55e;
   --nova-color-warning: #f59e0b;
   --nova-color-error: #ef4444;
   --nova-color-info: #60a5fa;
-
-  --nova-border-default: #262626;
-  --nova-border-strong: #404040;
-  --nova-border-focus: #60a5fa;
-
-  --nova-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
-  --nova-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
-  --nova-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.4);
-
-  --nova-surface-raised: #171717;
-  --nova-surface-overlay: rgba(0, 0, 0, 0.7);
 }
 
+/* --------------------------------------------------------------------------
+   4. Smartflo Light
+   -------------------------------------------------------------------------- */
+html.smartflo-light {
+  /* Brand */
+  --nova-color-primary: #f46c23;
+  --nova-color-primary-hover: #e05a10;
+  --nova-color-primary-active: #c44d0e;
+
+  /* Backgrounds */
+  --nova-bg-primary: #ffffff;
+  --nova-bg-secondary: #fef7f1;
+  --nova-bg-tertiary: #efe6e0;
+  --nova-bg-inverse: #45150a;
+
+  /* Text */
+  --nova-text-primary: #2e0d05;
+  --nova-text-secondary: #5c4b45;
+  --nova-text-tertiary: #9c8880;
+  --nova-text-inverse: #ffffff;
+  --nova-text-link: #f46c23;
+
+  /* Borders */
+  --nova-border-default: #e6dbd4;
+  --nova-border-strong: #cbbdb5;
+  --nova-border-focus: #f46c23;
+
+  /* Shadows */
+  --nova-shadow-sm: 0 1px 2px 0 rgb(244 108 35 / 0.06);
+  --nova-shadow-md: 0 4px 6px -1px rgb(244 108 35 / 0.1), 0 2px 4px -2px rgb(244 108 35 / 0.06);
+  --nova-shadow-lg: 0 10px 15px -3px rgb(244 108 35 / 0.1), 0 4px 6px -4px rgb(244 108 35 / 0.06);
+
+  /* Surfaces */
+  --nova-surface-raised: #ffffff;
+  --nova-surface-overlay: rgba(46, 13, 5, 0.5);
+
+  /* Sidebar */
+  --nova-sidebar-bg: #fdf5ef;
+  --nova-sidebar-text: #45150a;
+  --nova-sidebar-border: #f2e9e1;
+}
+
+/* --------------------------------------------------------------------------
+   5. Smartflo Dark
+   -------------------------------------------------------------------------- */
+html.smartflo-dark {
+  /* Brand */
+  --nova-color-primary: #f46c23;
+  --nova-color-primary-hover: #f07d3a;
+  --nova-color-primary-active: #ec8e52;
+
+  /* Backgrounds */
+  --nova-bg-primary: #21130c;
+  --nova-bg-secondary: #170a05;
+  --nova-bg-tertiary: #422d24;
+  --nova-bg-inverse: #f9f3ef;
+
+  /* Text */
+  --nova-text-primary: #f9f3ef;
+  --nova-text-secondary: #d6c2b0;
+  --nova-text-tertiary: #8c7060;
+  --nova-text-inverse: #170a05;
+  --nova-text-link: #f46c23;
+
+  /* Borders */
+  --nova-border-default: #5d4033;
+  --nova-border-strong: #7a5a48;
+  --nova-border-focus: #f46c23;
+
+  /* Shadows */
+  --nova-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.4);
+  --nova-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+  --nova-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.6), 0 4px 6px -4px rgb(0 0 0 / 0.5);
+
+  /* Surfaces */
+  --nova-surface-raised: #2a1810;
+  --nova-surface-overlay: rgba(0, 0, 0, 0.7);
+
+  /* Sidebar */
+  --nova-sidebar-bg: #21130c;
+  --nova-sidebar-text: #f7f2ed;
+  --nova-sidebar-border: #392a22;
+
+  /* Semantic overrides for dark backgrounds */
+  --nova-color-success: #22c55e;
+  --nova-color-warning: #f59e0b;
+  --nova-color-error: #ef4444;
+  --nova-color-info: #60a5fa;
+}
+
+/* --------------------------------------------------------------------------
+   6. Legacy [data-theme] aliases — backwards compat
+   -------------------------------------------------------------------------- */
+[data-theme="light"] {
+  --nova-color-primary: #2837c3;
+  --nova-color-primary-hover: #1e29a8;
+  --nova-color-primary-active: #151d8c;
+  --nova-bg-primary: #ffffff;
+  --nova-bg-secondary: #f1f6fd;
+  --nova-bg-tertiary: #dbe4f1;
+  --nova-bg-inverse: #040c2d;
+  --nova-text-primary: #040c2d;
+  --nova-text-secondary: #475569;
+  --nova-text-tertiary: #94a3b8;
+  --nova-text-inverse: #ffffff;
+  --nova-text-link: #2837c3;
+  --nova-border-default: #cbd5e1;
+  --nova-border-strong: #94a3b8;
+  --nova-border-focus: #2837c3;
+  --nova-shadow-sm: 0 1px 2px 0 rgb(40 55 195 / 0.06);
+  --nova-shadow-md: 0 4px 6px -1px rgb(40 55 195 / 0.1), 0 2px 4px -2px rgb(40 55 195 / 0.06);
+  --nova-shadow-lg: 0 10px 15px -3px rgb(40 55 195 / 0.1), 0 4px 6px -4px rgb(40 55 195 / 0.06);
+  --nova-surface-raised: #ffffff;
+  --nova-surface-overlay: rgba(4, 12, 45, 0.5);
+}
+
+[data-theme="dark"] {
+  --nova-color-primary: #4458d8;
+  --nova-color-primary-hover: #5568e0;
+  --nova-color-primary-active: #6678e8;
+  --nova-bg-primary: #040c24;
+  --nova-bg-secondary: #01081c;
+  --nova-bg-tertiary: #1e293b;
+  --nova-bg-inverse: #f7f9fb;
+  --nova-text-primary: #f7f9fb;
+  --nova-text-secondary: #cbd5e1;
+  --nova-text-tertiary: #64748b;
+  --nova-text-inverse: #040c24;
+  --nova-text-link: #6678e8;
+  --nova-border-default: #2d3b55;
+  --nova-border-strong: #3d4f6e;
+  --nova-border-focus: #4458d8;
+  --nova-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.4);
+  --nova-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+  --nova-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.6), 0 4px 6px -4px rgb(0 0 0 / 0.5);
+  --nova-surface-raised: #0d1a35;
+  --nova-surface-overlay: rgba(0, 0, 0, 0.7);
+  --nova-color-success: #22c55e;
+  --nova-color-warning: #f59e0b;
+  --nova-color-error: #ef4444;
+  --nova-color-info: #60a5fa;
+}
+
+/* --------------------------------------------------------------------------
+   7. Tailwind @theme bridge
+   -------------------------------------------------------------------------- */
 @theme {
   --color-nova-primary: var(--nova-color-primary);
   --color-nova-primary-hover: var(--nova-color-primary-hover);
@@ -128,6 +318,11 @@
   --color-border-strong: var(--nova-border-strong);
   --color-border-focus: var(--nova-border-focus);
 
+  --color-surface-raised: var(--nova-surface-raised);
+
+  --color-nova-call-answered: var(--nova-color-call-answered);
+  --color-nova-call-rejected: var(--nova-color-call-rejected);
+
   --shadow-nova-sm: var(--nova-shadow-sm);
   --shadow-nova-md: var(--nova-shadow-md);
   --shadow-nova-lg: var(--nova-shadow-lg);
@@ -137,6 +332,14 @@
   --radius-nova-lg: var(--nova-radius-lg);
   --radius-nova-xl: var(--nova-radius-xl);
 
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  /* Fonts — Acefone uses Poppins, Smartflo uses Roboto, fallback Inter */
+  --font-sans:
+    "Poppins", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", "Consolas", monospace;
+}
+
+/* Brand-specific font overrides */
+html.smartflo-light,
+html.smartflo-dark {
+  --nova-font-sans: "Roboto", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
